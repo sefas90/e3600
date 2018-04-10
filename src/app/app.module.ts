@@ -7,15 +7,16 @@ import { ReadersComponent } from './readers/readers.component';
 import { ManuscriptComponent } from './manuscript/manuscript.component';
 import { EditorsComponent } from './editors/editors.component';
 import { Routes, RouterModule} from '@angular/router';
+import { GenderComponent } from './gender/gender.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'editors', component: EditorsComponent },
   { path: 'readers', component: ReadersComponent },
+  { path: 'gender', component: GenderComponent },
   { path: 'manuscript', component: ManuscriptComponent }
 ];
-
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     HomeComponent,
     ReadersComponent,
     ManuscriptComponent,
-    EditorsComponent
+    EditorsComponent,
+    GenderComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
