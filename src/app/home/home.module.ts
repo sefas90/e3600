@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { ManuscriptModule } from './manuscript/manuscript.module';
 import { MainComponent } from './main/main.component';
+import { BooksModule } from './books/book.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MainComponent } from './main/main.component';
     CommonModule,
     HomeRoutingModule,
     ManuscriptModule,
+    BooksModule,
     ToastModule.forRoot()
   ],
   providers: []

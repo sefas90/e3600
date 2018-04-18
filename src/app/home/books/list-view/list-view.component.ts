@@ -12,10 +12,10 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
   createManuscript() {
-    this.router.navigate(['/manuscript/crud'], {skipLocationChange: true});
+    this.router.navigate(['/book/crud'], {skipLocationChange: true});
   }
 }

@@ -15,4 +15,12 @@ export class CRUDComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  public saveForm(formValid) {
+    if (!formValid) {
+      return;
+    }
+
+    // this.spinner.show(true);
+  }
 }

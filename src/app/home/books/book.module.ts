@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
-import { ManuscriptRoutingModule } from './manuscript-routing.module';
+import { BooksRoutingModule } from './book-routing.module';
 
-import { CRUDComponent } from './crud-view/crud-view.component';
 import { ListViewComponent } from './list-view/list-view.component';
-import { ManuscriptViewComponent } from './manuscript-view/manuscript-view.component';
+import { BooksViewComponent } from './books-view/books-view.component';
 
 @NgModule({
   imports: [
@@ -14,15 +13,14 @@ import { ManuscriptViewComponent } from './manuscript-view/manuscript-view.compo
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    ManuscriptRoutingModule
+    BooksRoutingModule
   ],
   declarations: [
-    CRUDComponent,
     ListViewComponent,
-    ManuscriptViewComponent
+    BooksViewComponent
   ],
   providers: [],
   exports: []
 })
 
-export class ManuscriptModule { }
+export class BooksModule { }

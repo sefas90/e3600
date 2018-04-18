@@ -207,22 +207,19 @@ section
 {
   height: 100%;
 }
-.super_container
-{
+.super_container  {
   width: 100%;
   overflow: hidden;
   padding-left: 45px;
   padding-right: 45px;
 }
-.button
-{
+.button {
   width: 187px;
   height: 66px;
   background: #ff4200;
   overflow: hidden;
 }
-.button a
-{
+.button a {
   display: block;
   width: 100%;
   color: #FFFFFF;
