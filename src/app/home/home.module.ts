@@ -6,6 +6,13 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { ManuscriptModule } from './manuscript/manuscript.module';
 import { MainComponent } from './main/main.component';
 import { BooksModule } from './books/book.module';
+import { GendersModule } from './genders/genders.module';
+import { EditorsModule } from './editors/editors.module';
+import { ReadersModule } from './readers/readers.module';
+import { BookstoresModule } from './bookstores/bookstores.module';
+import { ConciliationsModule } from './conciliations/conciliations.module';
+import { ConsignmentsModule} from './consignment/consignments.module';
+import { SalesModule } from './sales/sales.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +24,13 @@ import { BooksModule } from './books/book.module';
     HomeRoutingModule,
     ManuscriptModule,
     BooksModule,
+    GendersModule,
+    EditorsModule,
+    ReadersModule,
+    BookstoresModule,
+    ConciliationsModule,
+    ConsignmentsModule,
+    SalesModule,
     ToastModule.forRoot()
   ],
   providers: []
