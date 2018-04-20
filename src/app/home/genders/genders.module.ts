@@ -6,6 +6,7 @@ import { GendersRoutingModule } from './genders-routing.module';
 
 import { ListViewComponent } from './list-view/list-view.component';
 import { GendersViewComponent } from './genders-view/genders-view.component';
+import { FormViewComponent } from './genders-form-view/form-view.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { GendersViewComponent } from './genders-view/genders-view.component';
   ],
   declarations: [
     ListViewComponent,
-    GendersViewComponent
+    GendersViewComponent,
+    FormViewComponent
   ],
   providers: [],
   exports: []

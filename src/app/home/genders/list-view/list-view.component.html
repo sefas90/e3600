@@ -1,3 +1,29 @@
-<div>
-  list gender
+<div class="col-xs-12 page-list">
+  <div class="action-buttons">
+    <div class="dropdown">
+      <button class="btn btn-primary" data-toggle="dropdown">
+        <a class="btn-primary" (click)="createGender()">
+          <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Nuevo
+        </a>
+      </button>
+    </div>
+  </div>
+  <div class="center table-content">
+    <table class="table table-striped list-search-result">
+      <thead class="header-sort">
+      <tr>
+        <th class="col-xs-8 text-align-left">Gender</th>
+        <th class="col-xs-2 text-align-left">Editar</th>
+        <th class="col-xs-2 text-align-left">Eliminar</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="text-align-left">1</td>
+        <td class="text-align-left">2</td>
+        <td class="text-align-left">3</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

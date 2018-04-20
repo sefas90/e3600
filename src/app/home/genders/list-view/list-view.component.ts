@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -8,14 +9,17 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 
 export class ListViewComponent implements OnInit {
+  genderForm: FormGroup;
   constructor(private router: Router) {
   }
 
   ngOnInit() {
-
+    this.genderForm = new FormGroup({
+      gender: new FormControl()
+    });
   }
 
-  createManuscript() {
-    this.router.navigate(['/genders/crud'], {skipLocationChange: true});
+  createGender() {
+    this.router.navigate(['/genders/create'], {skipLocationChange: true});
   }
 }
