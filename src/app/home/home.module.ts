@@ -13,6 +13,7 @@ import { BookstoresModule } from './bookstores/bookstores.module';
 import { ConciliationsModule } from './conciliations/conciliations.module';
 import { ConsignmentsModule} from './consignment/consignments.module';
 import { SalesModule } from './sales/sales.module';
+import { AuthorsModule } from './authors/authors.module';
 
 @NgModule({
   declarations: [
@@ -20,16 +21,17 @@ import { SalesModule } from './sales/sales.module';
     MainComponent
   ],
   imports: [
-    CommonModule,
-    HomeRoutingModule,
-    ManuscriptModule,
+    AuthorsModule,
     BooksModule,
-    GendersModule,
-    EditorsModule,
-    ReadersModule,
     BookstoresModule,
+    CommonModule,
     ConciliationsModule,
     ConsignmentsModule,
+    EditorsModule,
+    GendersModule,
+    HomeRoutingModule,
+    ManuscriptModule,
+    ReadersModule,
     SalesModule,
     ToastModule.forRoot()
   ],
