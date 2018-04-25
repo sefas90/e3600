@@ -18,7 +18,15 @@ export class ListViewComponent implements OnInit {
     this.authors = this.authorService.loadAuthors();
   }
 
-  createManuscript() {
-    this.router.navigate(['/authors/crud'], {skipLocationChange: true});
+  createAuthor() {
+    this.router.navigate(['/authors/page', {id: 0}], {skipLocationChange: true});
+  }
+
+  editAuthor(id) {
+    this.router.navigate(['/authors/page', {id: id}], {skipLocationChange: true});
+  }
+
+  deleteAuthor(id) {
+    console.log(id);
   }
 }

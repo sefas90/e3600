@@ -12,22 +12,38 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class AuthorService {
 
-  private thirdToEditcached: any;
-
   constructor() { }
 
   loadAuthors() {
     const url = 'api/v1/authors';
     return [{
+      id: 1,
       name: 'pietro',
       lastName: 'Sanjines Angelaccio'
     },
     {
+      id: 2,
       name: 'pietro2',
       lastName: 'Sanjines Angelaccio2'
     }];
   }
 
+  getAuthor() {
+    return {
+      id: 1,
+      name: 'pietro',
+      lastName: 'Sanjines Angelaccio'
+    };
+  }
+
+  createAuthor() {
+
+  }
+
   saveAuthor(data: any) {
+  }
+
+  deleteAuthor() {
+
   }
 }

@@ -375,6 +375,10 @@ section
   background: #ff4200;
 }
 
+.nav-link a:hover{
+  background: #ff4200;
+}
+
 /*********************************
 3.3 Hamburger Menu
 *********************************/

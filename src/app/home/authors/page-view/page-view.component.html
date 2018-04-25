@@ -1,19 +1,19 @@
 <div class="main-content">
-  <form #manuscriptForm="ngForm">
-    <button class="btn btn-primary" (click)="saveForm(manuscriptForm.valid)">Guardar</button>
+  <form #authorForm="ngForm" novalidate>
+    <button class="btn btn-primary" (click)="saveForm(authorForm.valid)">Guardar</button>
     <div class="form-control">
-      
+
       <div class="form-group row">
         <label for="nombre" class="col-2 col-form-label">Nombre</label>
         <div class="col-10">
-          <input class="form-control" type="text" id="nombre">
+          <input class="form-control" type="text" [(ngModel)]="author.name" id="nombre" name="name">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="apellidos" class="col-2 col-form-label">Apellidos</label>
         <div class="col-10">
-          <input class="form-control" type="text" id="apellidos">
+          <input class="form-control" type="text" [(ngModel)]="author.lastName" id="apellidos" name="lastName">
         </div>
       </div>
 
