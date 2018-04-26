@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { GenderService } from '../gender.service';
 
 @Component({
   selector: 'app-list-view',
@@ -10,16 +11,23 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 export class ListViewComponent implements OnInit {
   genderForm: FormGroup;
-  constructor(private router: Router) {
+  public genders: any;
+  constructor(private router: Router,
+              private genderService: GenderService) {
   }
 
   ngOnInit() {
+    this.genders = this.genderService.loadGenders();
     this.genderForm = new FormGroup({
       gender: new FormControl()
     });
   }
 
   createGender() {
-    this.router.navigate(['/genders/create'], {skipLocationChange: true});
+    this.router.navigate(['/genders/page', {id: 0}], {skipLocationChange: true});
+  }
+
+  editGender(id) {
+    this.router.navigate(['/genders/page', {id: id}], {skipLocationChange: true});
   }
 }

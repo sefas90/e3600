@@ -5,6 +5,7 @@ import { ListViewComponent } from './list-view/list-view.component';
 export const routes: Routes = [
   {path: '', component: ListViewComponent},
   {path: 'list', component: ListViewComponent},
+
 ];
 
 @NgModule({

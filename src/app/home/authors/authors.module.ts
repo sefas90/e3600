@@ -18,9 +18,9 @@ import { AuthorService } from './author.service';
     AuthorsRoutingModule
   ],
   declarations: [
-    PageViewComponent,
+    AuthorsViewComponent,
     ListViewComponent,
-    AuthorsViewComponent
+    PageViewComponent,
   ],
   providers: [
     AuthorService

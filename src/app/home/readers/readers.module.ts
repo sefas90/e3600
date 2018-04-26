@@ -6,6 +6,7 @@ import { ReadersRoutingModule } from './readers-routing.module';
 
 import { ListViewComponent } from './list-view/list-view.component';
 import { ReadersViewComponent } from './readers-view/readers-view.component';
+import { ReaderService } from './reader.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,9 @@ import { ReadersViewComponent } from './readers-view/readers-view.component';
     ListViewComponent,
     ReadersViewComponent
   ],
-  providers: [],
+  providers: [
+    ReaderService
+  ],
   exports: []
 })
 

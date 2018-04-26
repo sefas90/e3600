@@ -4,9 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { GendersRoutingModule } from './genders-routing.module';
 
+import { PageViewComponent } from './page-view/page-view.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { GendersViewComponent } from './genders-view/genders-view.component';
-import { FormViewComponent } from './genders-form-view/form-view.component';
+import { GenderService } from './gender.service';
 
 @NgModule({
   imports: [
@@ -19,9 +20,11 @@ import { FormViewComponent } from './genders-form-view/form-view.component';
   declarations: [
     ListViewComponent,
     GendersViewComponent,
-    FormViewComponent
+    PageViewComponent
   ],
-  providers: [],
+  providers: [
+    GenderService
+  ],
   exports: []
 })
 

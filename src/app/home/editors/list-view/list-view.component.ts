@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { EditorService } from '../editor.service';
 
 @Component({
   selector: 'app-list-view',
@@ -8,14 +9,24 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 
 export class ListViewComponent implements OnInit {
-  constructor(private router: Router) {
+  public editors: any;
+  constructor(private router: Router,
+              private editorService: EditorService) {
   }
 
   ngOnInit() {
-
+    this.editors = this.editorService.loadEditors();
   }
 
-  createManuscript() {
-    this.router.navigate(['/editores/crud'], {skipLocationChange: true});
+  createEditor() {
+    this.router.navigate(['/editors/page', {id: 0}], {skipLocationChange: true});
+  }
+
+  editEditor(id) {
+    this.router.navigate(['/editors/page', {id: id}], {skipLocationChange: true});
+  }
+
+  deleteEditor(id) {
+    console.log(id);
   }
 }

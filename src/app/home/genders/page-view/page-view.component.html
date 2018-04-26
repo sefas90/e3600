@@ -4,9 +4,9 @@
       <button class="btn btn-primary" type="submit" (click)="saveForm()">Guardar</button>
       <div class="form-control">
         <div class="form-group row">
-          <label for="genero" class="col-2 col-form-label">Titulo</label>
+          <label for="gender" class="col-2 col-form-label">Titulo</label>
           <div class="col-10">
-            <input class="form-control" type="text" placeholder="Genero" id="genero" required>
+            <input class="form-control" type="text" id="gender" name="gender" [(ngModel)]="gender.gender" required>
           </div>
         </div>
       </div>

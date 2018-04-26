@@ -12,16 +12,22 @@
     <table class="table table-striped list-search-result">
       <thead class="header-sort">
       <tr>
-        <th class="col-xs-8 text-align-left">Gender</th>
-        <th class="col-xs-2 text-align-left">Editar</th>
-        <th class="col-xs-2 text-align-left">Eliminar</th>
+        <th class="text-left">Gender</th>
+        <th class="text-left">Editar</th>
+        <th class="text-left">Eliminar</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td class="text-align-left">1</td>
-        <td class="text-align-left">2</td>
-        <td class="text-align-left">3</td>
+      <tr *ngFor="let gender of genders">
+        <td class="text-align-left">{{gender.gender}}</td>
+        <td class="text-left">
+          <button type="button" class="btn btn-default btn-sm" (click)="editGender(gender.id)">
+            <span class="glyphicon glyphicon-edit"></span> Edit
+          </button></td>
+        <td class="text-right">
+          <button type="button" class="btn btn-default btn-sm" (click)="deleteGender(gender.id)">
+            <span class="glyphicon glyphicon-edit"></span> delete
+          </button></td>
       </tr>
       </tbody>
     </table>

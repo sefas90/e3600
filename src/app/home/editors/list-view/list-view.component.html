@@ -1,3 +1,39 @@
-<div>
-  list editors
+<div class="col-xs-12 page-list">
+  <div class="action-buttons">
+    <div class="dropdown">
+      <button class="btn btn-primary" data-toggle="dropdown">
+        <a class="btn-primary" (click)="createEditor()">
+          <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Nuevo
+        </a>
+      </button>
+    </div>
+  </div>
+  <div class="center table-content">
+    <table class="table table-striped table-hover">
+      <thead class="header-sort">
+      <tr>
+        <th class="text-left">Nombre</th>
+        <th class="text-left">Telefono</th>
+        <th class="text-left">Direccion</th>
+        <th class="text-left">Editar</th>
+        <th class="text-left">Eliminar</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let editor of editors">
+        <td class="text-left">{{editor.name}}</td>
+        <td class="text-left">{{editor.phone}}</td>
+        <td class="text-left">{{editor.direction}}</td>
+        <td class="text-left">
+          <button type="button" class="btn btn-default btn-sm" (click)="editEditor(editor.id)">
+            <span class="glyphicon glyphicon-edit"></span> Edit
+          </button></td>
+        <td class="text-right">
+          <button type="button" class="btn btn-default btn-sm" (click)="deleteEditor(editor.id)">
+            <span class="glyphicon glyphicon-edit"></span> delete
+          </button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
