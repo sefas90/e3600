@@ -1,3 +1,41 @@
-<div>
-  list bookstores
+<div class="col-xs-12 page-list">
+  <div class="action-buttons">
+    <div class="dropdown">
+      <button class="btn btn-primary" data-toggle="dropdown">
+        <a class="btn-primary" (click)="createBookstore()">
+          <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Nuevo
+        </a>
+      </button>
+    </div>
+  </div>
+  <div class="center table-content">
+    <table class="table table-striped table-hover">
+      <thead class="header-sort">
+      <tr>
+        <th class="text-left">Nombre</th>
+        <th class="text-left">Telefono</th>
+        <th class="text-left">Direccion</th>
+        <th class="text-left">Ciudad</th>
+        <th class="text-left">Editar</th>
+        <th class="text-left">Eliminar</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let bookstore of bookstores">
+        <td class="text-left">{{bookstore.name}}</td>
+        <td class="text-left">{{bookstore.phone}}</td>
+        <td class="text-left">{{bookstore.direction}}</td>
+        <td class="text-left">{{bookstore.city}}</td>
+        <td class="text-left">
+          <button type="button" class="btn btn-default btn-sm" (click)="editBookstore(bookstore.id)">
+            <span class="glyphicon glyphicon-edit"></span> Edit
+          </button></td>
+        <td class="text-right">
+          <button type="button" class="btn btn-default btn-sm" (click)="deleteBookstore(bookstore.id)">
+            <span class="glyphicon glyphicon-edit"></span> delete
+          </button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

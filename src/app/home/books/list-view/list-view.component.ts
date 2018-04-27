@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { BooksService } from '../books.service';
 
 @Component({
   selector: 'app-list-view',
@@ -8,14 +9,24 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 
 export class ListViewComponent implements OnInit {
-  constructor(private router: Router) {
+  public books: any;
+  constructor(private router: Router,
+              private booksService: BooksService) {
   }
 
   ngOnInit() {
-
+    this.books = this.booksService.loadBooks();
   }
 
-  createManuscript() {
-    this.router.navigate(['/book/crud'], {skipLocationChange: true});
+  createBook() {
+    this.router.navigate(['/books/page', {id: 0}], {skipLocationChange: true});
+  }
+
+  editBook(id) {
+    this.router.navigate(['/books/page', {id: id}], {skipLocationChange: true});
+  }
+
+  deleteBook(id) {
+    console.log(id);
   }
 }

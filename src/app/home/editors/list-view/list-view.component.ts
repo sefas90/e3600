@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { EditorService } from '../editor.service';
+import { EditorService } from '../editors.service';
 
 @Component({
   selector: 'app-list-view',

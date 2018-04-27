@@ -1,20 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EditorService } from '../editors.service';
-import { Editor } from '../editor';
+import { BooksService } from '../books.service';
+import { Book } from '../book';
 
 @Component({
   selector: 'app-create-view',
-  templateUrl: './page-view.component.html',
-  styleUrls: ['./page-view.component.scss']
+  templateUrl: './page-view.component.html'
 })
 export class PageViewComponent implements OnInit {
 
   private id = this.route.snapshot.params['id'];
-  public editor: Editor;
+  public book: Book;
   constructor(private route: ActivatedRoute,
-              private authorService: EditorService) {
-    this.editor = new Editor (null, null, null, null);
+              private booksService: BooksService) {
+    this.book = new Book (
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    );
   }
 
   ngOnInit() {
@@ -30,14 +38,14 @@ export class PageViewComponent implements OnInit {
   }
 
   editView() {
-    this.editor = this.authorService.getEditor();
+    this.book = this.booksService.getBook();
   }
 
   public saveForm(formValid) {
     if (!formValid) {
       return;
     }
-    console.log(this.editor);
+    console.log(this.book);
     // this.spinner.show(true);
   }
 }

@@ -7,7 +7,7 @@ import { EditorsRoutingModule } from './editors-routing.module';
 import { PageViewComponent } from './page-view/page-view.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { EditorsViewComponent } from './editors-view/editors-view.component';
-import { EditorService } from './editor.service';
+import { EditorService } from './editors.service';
 
 @NgModule({
   imports: [

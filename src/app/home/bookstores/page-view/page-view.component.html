@@ -1,0 +1,36 @@
+<div class="main-content">
+  <form #bookstoreForm="ngForm" novalidate>
+    <button class="btn btn-primary" (click)="saveForm(bookstoreForm.valid)">Guardar</button>
+    <div class="form-control">
+
+      <div class="form-group row">
+        <label for="name" class="col-2 col-form-label">Nombre</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="bookstore.name" id="name" name="name">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="phone" class="col-2 col-form-label">Telefono</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="bookstore.phone" id="phone" name="phone">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="direction" class="col-2 col-form-label">Direccion</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="bookstore.direction" id="direction" name="direction">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="city" class="col-2 col-form-label">Ciudad</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="bookstore.city" id="city" name="city">
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>
