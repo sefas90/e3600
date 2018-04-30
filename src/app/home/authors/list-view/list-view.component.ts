@@ -15,7 +15,14 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authors = this.authorService.loadAuthors();
+    this.authorService.loadAuthors().subscribe(
+      result => {
+        this.authors = result;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
   createAuthor() {

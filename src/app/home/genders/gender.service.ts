@@ -40,7 +40,7 @@ export class GenderService {
   saveGender(data: any) {
   }
 
-  deleteGender() {
+  deleteGender(id) {
 
   }
 }

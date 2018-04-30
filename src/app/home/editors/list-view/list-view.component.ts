@@ -15,7 +15,14 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.editors = this.editorService.loadEditors();
+    this.editorService.loadEditors().subscribe(
+      result => {
+        this.editors = result;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
   createEditor() {
