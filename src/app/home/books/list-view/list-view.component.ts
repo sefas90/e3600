@@ -15,7 +15,14 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.books = this.booksService.loadBooks();
+    this.booksService.loadBooks().subscribe(
+      result => {
+        this.books = result;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
   createBook() {

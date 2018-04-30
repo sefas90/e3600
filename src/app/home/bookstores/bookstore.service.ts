@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/Rx';
@@ -12,24 +11,11 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class BookstoreService {
 
-  constructor() { }
+  constructor(public http: HttpClient) { }
 
-  loadBookstores() {
-    const url = 'api/v1/bookstores';
-    return [{
-      id: 1,
-      name: 'pietro',
-      phone: '73202027',
-      direction: '#1 street',
-      city: 'La Paz'
-    },
-      {
-        id: 2,
-        name: 'pietro2',
-        phone: '7320202722',
-        direction: '#1 street22',
-        city: 'Cocha'
-      }];
+  loadBookstores(): Observable<any> {
+    const url = 'http://e3600.test/api/v1/bookstore';
+    return this.http.get(url);
   }
 
   getBookstore() {

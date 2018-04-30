@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/Rx';
@@ -12,30 +11,11 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class BooksService {
 
-  constructor() { }
+  constructor(public http: HttpClient) { }
 
-  loadBooks() {
-    const url = 'api/v1/books';
-    return [{
-      id: 1,
-      title: 'tit1',
-      isbn: '123456',
-      stock: '2',
-      price: '50',
-      id_manuscript: '1',
-      id_gender: '1',
-      id_author: '1'
-    },
-      {
-        id: 2,
-        title: 'tit222',
-        isbn: '123456222',
-        stock: '222',
-        price: '5022',
-        id_manuscript: '2',
-        id_gender: '2',
-        id_author: '2'
-      }];
+  loadBooks(): Observable<any> {
+    const url = 'http://e3600.test/api/v1/book';
+    return this.http.get(url);
   }
 
   getBook() {
