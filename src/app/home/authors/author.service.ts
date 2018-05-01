@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Author } from './author';
 
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -20,19 +21,21 @@ export class AuthorService {
     return this.http.get(url);
   }
 
-  getAuthor() {
-    return {
-      id: 1,
-      name: 'pietro',
-      lastName: 'Sanjines Angelaccio'
-    };
+  getAuthor(id): Observable<any> {
+    const url = 'http://e3600.test/api/v1/author/' + id;
+    return this.http.get(url);
   }
 
-  createAuthor() {
-
+  createAuthor(data: any): Observable<any> {
+    const url = 'http://e3600.test/api/v1/author/';
+    console.log(data);
+    return this.http.post(url, data);
   }
 
-  saveAuthor(data: any) {
+  saveAuthor(data: any): Observable<any> {
+    const url = 'http://e3600.test/api/v1/author/';
+    console.log(data);
+    return this.http.post(url, data);
   }
 
   deleteAuthor() {

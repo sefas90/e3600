@@ -17,7 +17,14 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.genders = this.genderService.loadGenders();
+    this.genderService.loadGenders().subscribe(
+      result => {
+        this.genders = result;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
     this.genderForm = new FormGroup({
       gender: new FormControl()
     });
@@ -29,5 +36,8 @@ export class ListViewComponent implements OnInit {
 
   editGender(id) {
     this.router.navigate(['/genders/page', {id: id}], {skipLocationChange: true});
+  }
+
+  deleteGender(id) {
   }
 }

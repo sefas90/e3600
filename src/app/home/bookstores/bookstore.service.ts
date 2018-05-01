@@ -18,14 +18,9 @@ export class BookstoreService {
     return this.http.get(url);
   }
 
-  getBookstore() {
-    return {
-      id: 1,
-      name: 'pietro',
-      phone: '73202027',
-      direction: '#1 street',
-      city: 'La Paz'
-    };
+  getBookstore(id): Observable<any> {
+    const url = 'http://e3600.test/api/v1/bookstore/' + id;
+    return this.http.get(url);
   }
 
   createBookstore() {

@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { HttpModule } from '@angular/http';
     AppBootstrapModule,
     FormsModule,
     HttpClientModule,
-    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

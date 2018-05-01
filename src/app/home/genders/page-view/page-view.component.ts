@@ -21,7 +21,7 @@ export class PageViewComponent implements OnInit {
     if (this.id === '0') {
       this.createView();
     } else {
-      this.editView();
+      this.editView(this.id);
     }
   }
 
@@ -29,8 +29,15 @@ export class PageViewComponent implements OnInit {
 
   }
 
-  editView() {
-    this.gender = this.genderService.getGender();
+  editView(id) {
+    this.genderService.getGender(id).subscribe(
+      result => {
+        this.gender = result;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
   public saveForm(formValid) {

@@ -18,17 +18,9 @@ export class BooksService {
     return this.http.get(url);
   }
 
-  getBook() {
-    return {
-      id: 1,
-      title: 'tit1',
-      isbn: '123456',
-      stock: '2',
-      price: '50',
-      id_manuscript: '1',
-      id_gender: '1',
-      id_author: '1'
-    };
+  getBook(id): Observable<any> {
+    const url = 'http://e3600.test/api/v1/book' + id;
+    return this.http.get(url);
   }
 
   createBook() {

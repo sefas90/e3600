@@ -21,7 +21,7 @@ export class PageViewComponent implements OnInit {
     if (this.id === '0') {
       this.createView();
     } else {
-      this.editView();
+      this.editView(this.id);
     }
   }
 
@@ -29,15 +29,25 @@ export class PageViewComponent implements OnInit {
 
   }
 
-  editView() {
-    this.author = this.authorService.getAuthor();
+  editView(id) {
+    this.authorService.getAuthor(id).subscribe(
+      result => {
+        this.author = result;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
-  public saveForm(formValid) {
-    if (!formValid) {
-      return;
-    }
-    console.log(this.author);
-    // this.spinner.show(true);
+  public saveForm(value) {
+    this.authorService.createAuthor(value).subscribe(
+      result => {
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

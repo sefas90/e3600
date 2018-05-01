@@ -12,7 +12,7 @@ export class PageViewComponent implements OnInit {
   private id = this.route.snapshot.params['id'];
   public reader: Reader;
   constructor(private route: ActivatedRoute,
-              private authorService: ReaderService) {
+              private readerService: ReaderService) {
     this.reader = new Reader (null, null, null, null);
   }
 
@@ -20,7 +20,7 @@ export class PageViewComponent implements OnInit {
     if (this.id === '0') {
       this.createView();
     } else {
-      this.editView();
+      this.editView(this.id);
     }
   }
 
@@ -28,8 +28,15 @@ export class PageViewComponent implements OnInit {
 
   }
 
-  editView() {
-    this.reader = this.authorService.getReader();
+  editView(id) {
+    this.readerService.getReader(id).subscribe(
+      result => {
+        this.reader = result;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
   public saveForm(formValid) {

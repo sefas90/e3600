@@ -18,13 +18,9 @@ export class EditorService {
     return this.http.get(url);
   }
 
-  getEditor() {
-    return {
-      id: 1,
-      name: 'pietro',
-      phone: '73202027',
-      direction: '#1 street'
-    };
+  getEditor(id): Observable<any> {
+    const url = 'http://e3600.test/api/v1/editor/' + id;
+    return this.http.get(url);
   }
 
   createEditor() {

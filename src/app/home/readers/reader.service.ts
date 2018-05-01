@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/Rx';
@@ -12,31 +11,16 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class ReaderService {
 
-  constructor() { }
+  constructor(public http: HttpClient) { }
 
-  loadReaders() {
-    const url = 'api/v1/genders';
-    return [{
-      id: 1,
-      name: 'pietro',
-      phone: '73202027',
-      direction: '#1 street'
-    },
-    {
-      id: 2,
-      name: 'pietro2',
-      phone: '7320202722',
-      direction: '#1 street22'
-    }];
+  loadReaders(): Observable<any> {
+    const url = 'http://e3600.test/api/v1/reader';
+    return this.http.get(url);
   }
 
-  getReader() {
-    return {
-      id: 1,
-      name: 'pietro',
-      phone: '73202027',
-      direction: '#1 street'
-    };
+  getReader(id): Observable<any> {
+    const url = 'http://e3600.test/api/v1/reader/' + id;
+    return this.http.get(url);
   }
 
   createReader() {

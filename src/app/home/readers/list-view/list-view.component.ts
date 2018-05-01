@@ -15,7 +15,14 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.readers = this.readerService.loadReaders();
+    this.readerService.loadReaders().subscribe(
+      result => {
+        this.readers = result;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
   createReader() {

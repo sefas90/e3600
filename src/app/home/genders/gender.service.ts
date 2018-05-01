@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/Rx';
@@ -12,25 +11,16 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class GenderService {
 
-  constructor() { }
+  constructor(public http: HttpClient) { }
 
-  loadGenders() {
-    const url = 'api/v1/genders';
-    return [{
-      id: 1,
-      gender: 'poesia',
-    },
-    {
-      id: 2,
-      gender: 'narrativa',
-    }];
+  loadGenders(): Observable<any> {
+    const url = 'http://e3600.test/api/v1/gender';
+    return this.http.get(url);
   }
 
-  getGender() {
-    return {
-      id: 1,
-      gender: 'poesia'
-    };
+  getGender(id): Observable<any> {
+    const url = 'http://e3600.test/api/v1/gender/' + id;
+    return this.http.get(url);
   }
 
   createGender() {
