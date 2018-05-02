@@ -7,6 +7,7 @@ import { ManuscriptRoutingModule } from './manuscript-routing.module';
 import { CRUDComponent } from './crud-view/crud-view.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { ManuscriptViewComponent } from './manuscript-view/manuscript-view.component';
+import { RegisterViewComponent } from './register-view/register-view.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { ManuscriptViewComponent } from './manuscript-view/manuscript-view.compo
   declarations: [
     CRUDComponent,
     ListViewComponent,
-    ManuscriptViewComponent
+    ManuscriptViewComponent,
+    RegisterViewComponent
   ],
   providers: [],
   exports: []
