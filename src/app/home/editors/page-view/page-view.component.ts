@@ -9,18 +9,21 @@ import { Editor } from '../editor';
   styleUrls: ['./page-view.component.scss']
 })
 export class PageViewComponent implements OnInit {
-
   private id = this.route.snapshot.params['id'];
   public editor: Editor;
+  public button: string;
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private editorService: EditorService) {
     this.editor = new Editor (null, null, null, null);
   }
 
   ngOnInit() {
     if (this.id === '0') {
+      this.button = 'Crear';
       this.createView();
     } else {
+      this.button = 'Guardar';
       this.editView(this.id);
     }
   }
@@ -40,11 +43,25 @@ export class PageViewComponent implements OnInit {
     );
   }
 
-  public saveForm(formValid) {
-    if (!formValid) {
-      return;
+  saveForm(value) {
+    if (this.id === '0') {
+      this.editorService.createEditor(value).subscribe(
+        result => {
+          this.router.navigate(['/editors/list'], {skipLocationChange: true});
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.editorService.editEditor(value, this.id).subscribe(
+        result => {
+          this.router.navigate(['/editors/list'], {skipLocationChange: true});
+        },
+        error => {
+          console.log(error);
+        }
+      );
     }
-    console.log(this.editor);
-    // this.spinner.show(true);
   }
 }

@@ -34,6 +34,13 @@ export class ListViewComponent implements OnInit {
   }
 
   deleteEditor(id) {
-    console.log(id);
+    this.editorService.deleteEditor(id).subscribe(
+      result => {
+        this.router.navigate(['/editors/']);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
   }
 }

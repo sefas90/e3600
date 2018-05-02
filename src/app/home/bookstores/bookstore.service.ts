@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Bookstore } from './bookstore';
 
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -10,27 +11,26 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class BookstoreService {
-
+  private url = 'http://e3600.test/api/v1/bookstore/';
   constructor(public http: HttpClient) { }
 
   loadBookstores(): Observable<any> {
-    const url = 'http://e3600.test/api/v1/bookstore';
-    return this.http.get(url);
+    return this.http.get(this.url);
   }
 
   getBookstore(id): Observable<any> {
-    const url = 'http://e3600.test/api/v1/bookstore/' + id;
-    return this.http.get(url);
+    return this.http.get(this.url + id);
   }
 
-  createBookstore() {
-
+  createBookstore(data: Bookstore): Observable<any> {
+    return this.http.post(this.url, data);
   }
 
-  saveBookstore(data: any) {
+  editBookstore(data: Bookstore, id): Observable<any> {
+    return this.http.put(this.url + id, data);
   }
 
-  deleteBookstore() {
-
+  deleteBookstore(id): Observable<any> {
+    return this.http.delete(this.url + id);
   }
 }

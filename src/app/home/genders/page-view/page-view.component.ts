@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
 import { GenderService } from '../gender.service';
 import { Gender } from '../gender';
 
@@ -9,18 +8,21 @@ import { Gender } from '../gender';
   templateUrl: './page-view.component.html'
 })
 export class PageViewComponent implements OnInit {
-
   private id = this.route.snapshot.params['id'];
   public gender: Gender;
+  public button: string;
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private genderService: GenderService) {
     this.gender = new Gender(null, null);
   }
 
   ngOnInit() {
     if (this.id === '0') {
+      this.button = 'Crear';
       this.createView();
     } else {
+      this.button = 'Guardar';
       this.editView(this.id);
     }
   }
@@ -40,9 +42,25 @@ export class PageViewComponent implements OnInit {
     );
   }
 
-  public saveForm(formValid) {
-    if (!formValid) {
-      return;
+  saveForm(value) {
+    if (this.id === '0') {
+      this.genderService.createGender(value).subscribe(
+        result => {
+          this.router.navigate(['/genders/list'], {skipLocationChange: true});
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.genderService.editGender(value, this.id).subscribe(
+        result => {
+          this.router.navigate(['/genders/list'], {skipLocationChange: true});
+        },
+        error => {
+          console.log(error);
+        }
+      );
     }
   }
 }

@@ -34,6 +34,12 @@ export class ListViewComponent implements OnInit {
   }
 
   deleteReader(id) {
-    console.log(id);
+    this.readerService.deleteReader(id).subscribe(
+      result => {
+        this.router.navigate(['/readers/']);
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 }

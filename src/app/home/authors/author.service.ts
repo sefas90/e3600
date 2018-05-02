@@ -11,34 +11,27 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class AuthorService {
-
+  private url = 'http://e3600.test/api/v1/author/';
   constructor(public http: HttpClient) {
-
   }
 
   loadAuthors(): Observable<any> {
-    const url = 'http://e3600.test/api/v1/author';
-    return this.http.get(url);
+    return this.http.get(this.url);
   }
 
   getAuthor(id): Observable<any> {
-    const url = 'http://e3600.test/api/v1/author/' + id;
-    return this.http.get(url);
+    return this.http.get(this.url + id);
   }
 
-  createAuthor(data: any): Observable<any> {
-    const url = 'http://e3600.test/api/v1/author/';
-    console.log(data);
-    return this.http.post(url, data);
+  createAuthor(data: Author): Observable<any> {
+    return this.http.post(this.url, data);
   }
 
-  saveAuthor(data: any): Observable<any> {
-    const url = 'http://e3600.test/api/v1/author/';
-    console.log(data);
-    return this.http.post(url, data);
+  editAuthor(data: Author, id): Observable<any> {
+    return this.http.put(this.url + id, data);
   }
 
-  deleteAuthor() {
-
+  deleteAuthor(id): Observable<any> {
+    return this.http.delete(this.url + id);
   }
 }

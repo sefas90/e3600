@@ -34,6 +34,12 @@ export class ListViewComponent implements OnInit {
   }
 
   deleteAuthor(id) {
-    console.log(id);
+    this.authorService.deleteAuthor(id).subscribe(
+      result => {
+        this.router.navigate(['/authors/']);
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 }

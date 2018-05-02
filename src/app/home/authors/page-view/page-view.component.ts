@@ -9,18 +9,21 @@ import { Author } from '../author';
   styleUrls: ['./page-view.component.scss']
 })
 export class PageViewComponent implements OnInit {
-
   private id = this.route.snapshot.params['id'];
   public author: Author;
+  public button: string;
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private authorService: AuthorService) {
     this.author = new Author (null, null, null);
   }
 
   ngOnInit() {
     if (this.id === '0') {
+      this.button = 'Crear';
       this.createView();
     } else {
+      this.button = 'Guardar';
       this.editView(this.id);
     }
   }
@@ -40,14 +43,25 @@ export class PageViewComponent implements OnInit {
     );
   }
 
-  public saveForm(value) {
-    this.authorService.createAuthor(value).subscribe(
-      result => {
-        console.log(result);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+  saveForm(value) {
+    if (this.id === '0') {
+      this.authorService.createAuthor(value).subscribe(
+        result => {
+          this.router.navigate(['/authors/list'], {skipLocationChange: true});
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.authorService.editAuthor(value, this.id).subscribe(
+        result => {
+          this.router.navigate(['/authors/list'], {skipLocationChange: true});
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
 }

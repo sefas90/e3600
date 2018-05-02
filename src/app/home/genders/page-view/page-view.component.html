@@ -1,15 +1,16 @@
 <div class="main-content">
-  <form novalidate>
-    <fieldset>
-      <button class="btn btn-primary" type="submit" (click)="saveForm()">Guardar</button>
-      <div class="form-control">
-        <div class="form-group row">
-          <label for="gender" class="col-2 col-form-label">Titulo</label>
-          <div class="col-10">
-            <input class="form-control" type="text" id="gender" name="gender" [(ngModel)]="gender.gender" required>
-          </div>
+  <form #genderForm="ngForm" (ngSubmit)="saveForm(genderForm.value)" novalidate>
+    <a [routerLink]="['/genders']" class="btn btn-default"> volver </a>
+    <input type="submit" value="{{this.button}}" class="btn btn-primary">
+    <div class="form-control">
+
+      <div class="form-group row">
+        <label for="gender" class="col-2 col-form-label">Genero</label>
+        <div class="col-10">
+          <input class="form-control" type="text" id="gender" name="gender" [(ngModel)]="gender.gender" required>
         </div>
       </div>
-    </fieldset>
+
+    </div>
   </form>
 </div>

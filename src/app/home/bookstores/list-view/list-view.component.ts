@@ -34,6 +34,12 @@ export class ListViewComponent implements OnInit {
   }
 
   deleteBookstore(id) {
-    console.log(id);
+    this.bookstoreService.deleteBookstore(id).subscribe(
+      result => {
+        this.router.navigate(['/bookstores/']);
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 }

@@ -8,18 +8,21 @@ import { Bookstore } from '../bookstore';
   templateUrl: './page-view.component.html'
 })
 export class PageViewComponent implements OnInit {
-
   private id = this.route.snapshot.params['id'];
   public bookstore: Bookstore;
+  public button: string;
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private bookstoreService: BookstoreService) {
     this.bookstore = new Bookstore (null, null, null, null, null);
   }
 
   ngOnInit() {
     if (this.id === '0') {
+      this.button = 'Crear';
       this.createView();
     } else {
+      this.button = 'Guardar';
       this.editView(this.id);
     }
   }
@@ -39,11 +42,25 @@ export class PageViewComponent implements OnInit {
     );
   }
 
-  public saveForm(formValid) {
-    if (!formValid) {
-      return;
+  public saveForm(value) {
+    if (this.id === '0') {
+      this.bookstoreService.createBookstore(value).subscribe(
+        result => {
+          this.router.navigate(['/bookstores/list'], {skipLocationChange: true});
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.bookstoreService.editBookstore(value, this.id).subscribe(
+        result => {
+          this.router.navigate(['/bookstores/list'], {skipLocationChange: true});
+        },
+        error => {
+          console.log(error);
+        }
+      );
     }
-    console.log(this.bookstore);
-    // this.spinner.show(true);
   }
 }

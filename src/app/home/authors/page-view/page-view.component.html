@@ -1,20 +1,20 @@
 <div class="main-content">
   <form #authorForm="ngForm" (ngSubmit)="saveForm(authorForm.value)" novalidate>
     <a [routerLink]="['/authors']" class="btn btn-default"> volver </a>
-    <input type="submit" value="save" class="btn btn-primary">
+    <input type="submit" value="{{this.button}}" class="btn btn-primary">
     <div class="form-control">
 
       <div class="form-group row">
-        <label for="nombre" class="col-2 col-form-label">Nombre</label>
+        <label for="name" class="col-2 col-form-label">Nombre</label>
         <div class="col-10">
-          <input class="form-control" type="text" [(ngModel)]="author.name" id="nombre" name="name">
+          <input class="form-control" type="text" [(ngModel)]="author.name" id="name" name="name" required minlength="3" maxlength="20">
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="apellidos" class="col-2 col-form-label">Apellidos</label>
+        <label for="last_name" class="col-2 col-form-label">Apellidos</label>
         <div class="col-10">
-          <input class="form-control" type="text" [(ngModel)]="author.last_name" id="apellidos" name="lastName">
+          <input class="form-control" type="text" [(ngModel)]="author.last_name" id="last_name" name="last_name" required minlength="3" maxlength="30">
         </div>
       </div>
 
