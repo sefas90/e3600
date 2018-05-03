@@ -1,6 +1,29 @@
 <a [routerLink]="['/manuscripts']" class="btn btn-default"> volver </a>
-<div *ngIf="manuscript.stage === 0">
 
+<div *ngIf="manuscript.stage === 0" class="form-control">
+  <form #firstStageForm="ngForm" (submit)="registerForm(firstStageForm.value)" novalidate>
+    <div class="form-group row">
+      <label for="title" class="col-2 col-form-label">Titulo</label>
+      <div class="col-10">
+        <input class="form-control" type="text" [(ngModel)]="manuscript.title" id="title" name="title">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="author" class="col-2 col-form-label">Autor</label>
+      <div class="col-10">
+        <app-author-dropdown-component (authorId)="receiveAuthorId($event)" id="author"></app-author-dropdown-component>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="gender" class="col-2 col-form-label">Genero</label>
+      <div class="col-10">
+        <app-gender-dropdown-component (genderId)="receiveGenderId($event)" id="gender"></app-gender-dropdown-component>
+      </div>
+    </div>
+    <input type="submit" value="{{this.button}}" class="btn btn-primary">
+  </form>
 </div>
 
 <div *ngIf="manuscript.stage === 1">

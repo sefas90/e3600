@@ -8,6 +8,7 @@ import { CRUDComponent } from './crud-view/crud-view.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { ManuscriptViewComponent } from './manuscript-view/manuscript-view.component';
 import { RegisterViewComponent } from './register-view/register-view.component';
+import { ManuscriptService } from './manuscript.service';
 
 @NgModule({
   imports: [
@@ -23,7 +24,9 @@ import { RegisterViewComponent } from './register-view/register-view.component';
     ManuscriptViewComponent,
     RegisterViewComponent
   ],
-  providers: [],
+  providers: [
+    ManuscriptService
+  ],
   exports: []
 })
 

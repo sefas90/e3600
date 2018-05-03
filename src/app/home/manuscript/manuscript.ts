@@ -1,9 +1,9 @@
 export class Manuscript {
   constructor(
     public id: any,
-    public titulo: any,
-    public autor: any,
-    public genero: any,
+    public title: any,
+    public author: any,
+    public gender: any,
     public stage: any
   ) { }
 }

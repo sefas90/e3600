@@ -10,28 +10,72 @@ import 'rxjs/add/operator/share';
 import 'rxjs/add/observable/throw';
 
 @Injectable()
-export class AuthorService {
-  private url = 'http://e3600.test/api/v1/author/';
+export class ManuscriptService {
+  private url = 'http://e3600.test/api/v1/manuscript/';
   constructor(public http: HttpClient) {
   }
 
-  loadAuthors(): Observable<any> {
+  loadManuscripts(): Observable<any> {
     return this.http.get(this.url);
+    /*const ret = [
+      {
+        id: 1,
+        title: 'recibido',
+        author: 'autor',
+        gender: 'genero',
+        stage: 0
+      },
+      {
+        id: 2,
+        title: 'aprobado',
+        author: 'autor',
+        gender: 'genero',
+        stage: 1
+      },
+      {
+        id: 3,
+        title: 'rechazado',
+        author: 'autor',
+        gender: 'genero',
+        stage: 2
+      },
+      {
+        id: 4,
+        title: 'pendiente',
+        author: 'autor',
+        gender: 'genero',
+        stage: 3
+      },
+      {
+        id: 5,
+        title: 'esperando lector',
+        author: 'autor',
+        gender: 'genero',
+        stage: 4
+      },
+      {
+        id: 6,
+        title: 'esperando editor',
+        author: 'autor',
+        gender: 'genero',
+        stage: 5
+      },
+    ];*/
   }
 
-  getAuthor(id): Observable<any> {
+  getManuscript(id) {
     return this.http.get(this.url + id);
   }
 
-  createAuthor(data: Manuscript): Observable<any> {
+  createManuscript(data: Manuscript): Observable<any> {
     return this.http.post(this.url, data);
   }
 
-  editAuthor(data: Manuscript, id): Observable<any> {
+  editManuscript(data: Manuscript, id): Observable<any> {
     return this.http.put(this.url + id, data);
   }
 
-  deleteAuthor(id): Observable<any> {
+  deleteManuscript(id): Observable<any> {
     return this.http.delete(this.url + id);
   }
 }

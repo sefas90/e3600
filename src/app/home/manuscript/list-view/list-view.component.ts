@@ -15,7 +15,7 @@ export class ListViewComponent implements OnInit {
 
   }
 
-  createManuscript() {
-    this.router.navigate(['/manuscripts/register'], {skipLocationChange: true});
+  registerManuscript() {
+    this.router.navigate(['/manuscripts/register', {id: 0}], {skipLocationChange: true});
   }
 }

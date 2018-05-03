@@ -1,0 +1,8 @@
+<form #authorDropdown="ngForm">
+  <select class="form-control" name="author" (change)="sendId(authorDropdown.value)" [ngModel]="author">
+    <option value="" disabled>Elige un autor</option>
+    <option *ngFor="let aut of authors" [ngValue]="aut.id">
+      {{aut.last_name}} {{ aut.name }}
+    </option>
+  </select>
+</form>

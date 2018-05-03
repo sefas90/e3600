@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SelectAuthorDropdownComponent } from './author-dropdown/author-dropdown.component';
+import { SelectGenderDropdownComponent } from './gender-dropdown/gender-dropdown.component';
 
 @NgModule({
   imports: [
@@ -9,8 +11,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [ ],
+  declarations: [
+    SelectAuthorDropdownComponent,
+    SelectGenderDropdownComponent
+  ],
   providers: [ ],
-  exports: [ ]
+  exports: [
+    SelectAuthorDropdownComponent,
+    SelectGenderDropdownComponent
+  ]
 })
 export class SharedModule { }
