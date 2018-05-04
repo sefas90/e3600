@@ -15,19 +15,83 @@
         <th class="col-xs-2 text-align-left">Autor</th>
         <th class="col-xs-2 text-align-left">Genero</th>
         <th class="col-xs-2 text-align-left">Estado</th>
+        <th class="col-xs-1 text-align-left">Accion</th>
         <th class="col-xs-1 text-align-left">editar</th>
         <th class="col-xs-1 text-align-left">Eliminar</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td class="text-align-left">1</td>
-        <td class="text-align-left">2</td>
-        <td class="text-align-left">2</td>
-        <td class="text-align-left">3</td>
-        <td class="text-align-left">4</td>
-        <td class="text-align-left">4</td>
-        <td class="text-align-left">4</td>
+      <tr *ngFor="let manuscript of manusctipts">
+        <td class="text-align-left">{{manuscript.id}}</td>
+        <td class="text-align-left">{{manuscript.title}}</td>
+        <td class="text-align-left">{{manuscript.author}}</td>
+        <td class="text-align-left">{{manuscript.gender}}</td>
+        <td class="text-align-left">
+          <div *ngIf="manuscript.status === 0">
+            Recibido
+          </div>
+
+          <div *ngIf="manuscript.status === 1">
+            En el lector
+          </div>
+
+          <div *ngIf="manuscript.status === 2">
+            En el Editor
+          </div>
+
+          <div *ngIf="manuscript.status === 3">
+            Aprobado
+          </div>
+
+          <div *ngIf="manuscript.status === 4">
+            Rechazado
+          </div>
+        </td>
+        <td class="text-align-left">
+          <div *ngIf="manuscript.status === 0">
+            <button class="btn btn-primary">
+              <a (click)="sendToReader(manuscript.id)">
+                <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Enviar a lector
+              </a>
+            </button>
+          </div>
+
+          <div *ngIf="manuscript.status === 1">
+            <button class="btn btn-primary">
+              <a (click)="sendToEditor(manuscript.id)">
+                <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Enviar a editor
+              </a>
+            </button>
+          </div>
+
+          <div *ngIf="manuscript.status === 2">
+            <button class="btn btn-success">
+              <a (click)="approveManuscript(manuscript.id)">
+                <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Aprovar
+              </a>
+            </button>
+            /
+            <button class="btn btn-danger">
+              <a (click)="rejectManuscript(manuscript.id)">
+                <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Rechazar
+              </a>
+            </button>
+          </div>
+        </td>
+        <td class="text-align-left">
+          <button type="button" class="btn btn-default btn-sm">
+            <a (click)="editManuscript(manuscript.id)">
+              <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Editar
+            </a>
+          </button>
+        </td>
+        <td class="text-align-left">
+          <button type="button" class="btn btn-default btn-sm">
+          <a (click)="deleteManuscript(manuscript.id)">
+              <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Eliminar
+            </a>
+          </button>
+        </td>
       </tr>
       </tbody>
     </table>

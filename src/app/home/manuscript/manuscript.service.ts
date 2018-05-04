@@ -78,4 +78,20 @@ export class ManuscriptService {
   deleteManuscript(id): Observable<any> {
     return this.http.delete(this.url + id);
   }
+
+  sendToReader(id) {
+    return this.http.put(this.url, + id);
+  }
+
+  sendToEditor(id) {
+    return this.http.put(this.url, + id);
+  }
+
+  approveManuscript(id) {
+    return this.http.put(this.url, + id);
+  }
+
+  rejectManuscript(id) {
+    return this.http.put(this.url, + id);
+  }
 }
