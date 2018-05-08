@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SelectAuthorDropdownComponent } from './author-dropdown/author-dropdown.component';
 import { SelectGenderDropdownComponent } from './gender-dropdown/gender-dropdown.component';
+import { SelectReaderDropdownComponent } from './reader-dropdown/reader-dropdown.component';
+import { SelectEditorDropdownComponent } from './editor-dropdown/editor-dropdown.component';
 
 @NgModule({
   imports: [
@@ -13,12 +15,16 @@ import { SelectGenderDropdownComponent } from './gender-dropdown/gender-dropdown
   ],
   declarations: [
     SelectAuthorDropdownComponent,
-    SelectGenderDropdownComponent
+    SelectGenderDropdownComponent,
+    SelectReaderDropdownComponent,
+    SelectEditorDropdownComponent
   ],
   providers: [ ],
   exports: [
     SelectAuthorDropdownComponent,
-    SelectGenderDropdownComponent
+    SelectGenderDropdownComponent,
+    SelectReaderDropdownComponent,
+    SelectEditorDropdownComponent
   ]
 })
 export class SharedModule { }

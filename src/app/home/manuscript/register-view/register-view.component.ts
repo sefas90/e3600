@@ -9,14 +9,14 @@ import { ManuscriptService } from '../manuscript.service';
 })
 export class RegisterViewComponent implements OnInit {
   private id = this.route.snapshot.params['id'];
-  public manuscript: Manuscript;
+  public manuscript: any;
   public button: string;
   public authorId: any;
   public genderId: any;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private manuscriptService: ManuscriptService) {
-    this.manuscript = new Manuscript(null, null, null, null, null);
+    this.manuscript = new Manuscript(null, null, null, null, null, null, null, null);
   }
 
   ngOnInit() {
@@ -30,37 +30,30 @@ export class RegisterViewComponent implements OnInit {
   }
 
   createView() {
-    this.manuscript.stage = 0;
+    this.manuscript.id_status = 0;
   }
 
   editView(id) {
-    /*this.manuscriptService.getManuscript().subscribe(
+    this.manuscriptService.getManuscript(id).subscribe(
       result => {
         this.manuscript = result;
-        console.log(result);
+        console.log(this.manuscript);
       },
       error => {
         console.log(error);
       }
-    );*/
-
-    this.manuscript = {
-      id: 1,
-      title: 'recibido',
-      author: 'autor',
-      gender: 'genero',
-      stage: 0
-    };
+    );
   }
 
   registerForm(value) {
     value.id_author = this.authorId.author;
     value.id_gender = this.genderId.gender;
-    value.status = 0;
+    value.id_status = 1;
+    value.status = '';
     if (this.id === '0') {
       this.manuscriptService.createManuscript(value).subscribe(
         result => {
-          this.router.navigate(['/editors/list'], {skipLocationChange: true});
+          this.router.navigate(['/manuscripts/list'], {skipLocationChange: true});
         },
         error => {
           console.log(error);

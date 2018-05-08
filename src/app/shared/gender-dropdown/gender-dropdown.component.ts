@@ -6,28 +6,17 @@ import { GenderService } from '../../home/genders/gender.service';
   templateUrl: 'gender-dropdown.component.html'
 })
 
-export class SelectGenderDropdownComponent {
+export class SelectGenderDropdownComponent implements OnInit{
   public genders: any;
   public gender: any;
   @Output() genderId = new EventEmitter<any>();
   constructor(private genderService: GenderService) {
-    this.genders = [
-      {
-        id: 1,
-        gender: 'genero 1'
-      },
-      {
-        id: 2,
-        gender: 'genero 2'
-      },
-    ];
   }
 
   sendId(genderId) {
     this.genderId.emit(genderId);
   }
 
-  /*
   ngOnInit() {
     this.genderService.loadGenders().subscribe(
       result => {
@@ -37,5 +26,5 @@ export class SelectGenderDropdownComponent {
         console.log(error);
       }
     );
-  }*/
+  }
 }

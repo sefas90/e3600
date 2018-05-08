@@ -17,50 +17,6 @@ export class ManuscriptService {
 
   loadManuscripts(): Observable<any> {
     return this.http.get(this.url);
-    /*const ret = [
-      {
-        id: 1,
-        title: 'recibido',
-        author: 'autor',
-        gender: 'genero',
-        stage: 0
-      },
-      {
-        id: 2,
-        title: 'aprobado',
-        author: 'autor',
-        gender: 'genero',
-        stage: 1
-      },
-      {
-        id: 3,
-        title: 'rechazado',
-        author: 'autor',
-        gender: 'genero',
-        stage: 2
-      },
-      {
-        id: 4,
-        title: 'pendiente',
-        author: 'autor',
-        gender: 'genero',
-        stage: 3
-      },
-      {
-        id: 5,
-        title: 'esperando lector',
-        author: 'autor',
-        gender: 'genero',
-        stage: 4
-      },
-      {
-        id: 6,
-        title: 'esperando editor',
-        author: 'autor',
-        gender: 'genero',
-        stage: 5
-      },
-    ];*/
   }
 
   getManuscript(id) {
@@ -75,16 +31,22 @@ export class ManuscriptService {
     return this.http.put(this.url + id, data);
   }
 
+  updateManuscript(data, id) {
+    return this.http.put(this.url + id, data);
+  }
+
   deleteManuscript(id): Observable<any> {
     return this.http.delete(this.url + id);
   }
 
-  sendToReader(id) {
-    return this.http.put(this.url, + id);
+  sendToReader(data) {
+    const url = 'http://e3600.test/api/v1/manuscriptReader';
+    return this.http.post(url, data);
   }
 
-  sendToEditor(id) {
-    return this.http.put(this.url, + id);
+  sendToEditor(data) {
+    const url = 'http://e3600.test/api/v1/manuscriptEditor';
+    return this.http.post(url, data);
   }
 
   approveManuscript(id) {

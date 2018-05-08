@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ManuscriptService } from '../manuscript.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Manuscript } from '../manuscript';
+import { BooksService } from '../../books/books.service';
 
 @Component({
   selector: 'app-list-view',
@@ -10,58 +13,60 @@ import { ManuscriptService } from '../manuscript.service';
 
 export class ListViewComponent implements OnInit {
   public manusctipts: any;
+  public manuscript: Manuscript;
   public message: any;
+  public readerId: any;
+  public readerDate: any;
+  public editorId: any;
+  public editorDate: any;
+  public quantity: any;
+  public isbn: any;
+  public price: any;
   constructor(private router: Router,
-              private manuscriptService: ManuscriptService) {
+              private manuscriptService: ManuscriptService,
+              private booksService: BooksService,
+              private modalService: NgbModal) {
   }
 
   ngOnInit() {
-    this.manusctipts = [
-      {
-        id: 1,
-        title: 'Titulo 1',
-        gender: 'infantil 1',
-        status: 0,
-        author: 'pietro',
-        create_at: '05/04/2018'
-      },
-      {
-        id: 2,
-        title: 'Titulo 2',
-        gender: 'infantil 2',
-        status: 1,
-        author: 'pietro 2',
-        create_at: '05/04/2018'
-      },
-      {
-        id: 3,
-        title: 'Titulo 3',
-        gender: 'infantil 3',
-        status: 2,
-        author: 'pietro 3',
-        create_at: '05/04/2018'
-      },
-      {
-        id: 4,
-        title: 'Titulo 4',
-        gender: 'infantil 4',
-        status: 3,
-        author: 'pietro 4',
-        create_at: '05/04/2018'
-      }
-    ];
-    /*this.manuscriptService.loadManuscripts().subscribe(
+    this.manuscriptService.loadManuscripts().subscribe(
       result => {
         this.manusctipts = result;
       },
       error => {
         console.log(<any>error);
       }
-    );*/
+    );
   }
 
-  sendToReader(manuscriptId) {
-    this.manuscriptService.sendToReader(manuscriptId).subscribe(
+  openReaderModal(manuscript, modal) {
+    this.manuscript = manuscript;
+    this.modalService.open(modal);
+  }
+
+  openBookModal(manuscript, modal) {
+    this.manuscript = manuscript;
+    this.modalService.open(modal);
+  }
+
+  sendToReader() {
+    const data = this.manuscript;
+    data.id_status = 2;
+    this.manuscriptService.updateManuscript(data, this.manuscript.id).subscribe(
+      result => {
+        this.message = result;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    const manuscriptReader = {
+      id_manuscript: this.manuscript.id,
+      id_reader: this.readerId.reader,
+      date_end: this.readerDate
+    };
+    this.manuscriptService.sendToReader(manuscriptReader).subscribe(
       result => {
         this.message = result;
       },
@@ -71,8 +76,10 @@ export class ListViewComponent implements OnInit {
     );
   }
 
-  sendToEditor(manuscriptId) {
-    this.manuscriptService.sendToEditor(manuscriptId).subscribe(
+  receiveFromReader(manuscript) {
+    const data = manuscript;
+    data.id_status = 3;
+    this.manuscriptService.updateManuscript(data, manuscript.id).subscribe(
       result => {
         this.message = result;
       },
@@ -82,11 +89,84 @@ export class ListViewComponent implements OnInit {
     );
   }
 
-  approveManuscript(manuscriptId) {
-    this.manuscriptService.approveManuscript(manuscriptId).subscribe(
+  openEditorModal(manuscript, modal) {
+    this.manuscript = manuscript;
+    this.modalService.open(modal);
+  }
+
+  sendToEditor() {
+    const data = this.manuscript;
+    data.id_status = 4;
+    this.manuscriptService.updateManuscript(data, this.manuscript.id).subscribe(
       result => {
         this.message = result;
-        this.router.navigate(['/books/create', {id: manuscriptId}], {skipLocationChange: true});
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    const manuscriptEditor = {
+      id_manuscript: this.manuscript.id,
+      id_editor: this.editorId.editor,
+      date_end: this.editorDate
+    };
+    this.manuscriptService.sendToEditor(manuscriptEditor).subscribe(
+      result => {
+        this.message = result;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  receiveReaderId($event) {
+    this.readerId = $event;
+  }
+
+  receiveEditorId($event) {
+    this.editorId = $event;
+  }
+
+  receiveFromEditor(manuscript) {
+    const data = manuscript;
+    data.id_status = 5;
+    this.manuscriptService.updateManuscript(data, manuscript.id).subscribe(
+      result => {
+        this.message = result;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  approveManuscript() {
+    const data = this.manuscript;
+    data.id_status = 6;
+    this.manuscriptService.updateManuscript(data, this.manuscript.id).subscribe(
+      result => {
+        this.message = result;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    const book = {
+      id: null,
+      title: this.manuscript.title,
+      isbn: this.isbn,
+      stock: this.quantity,
+      price: this.price,
+      id_manuscript: this.manuscript.id,
+      id_gender: this.manuscript.id_gender,
+      id_author: this.manuscript.id_author
+    };
+    this.booksService.createBook(book).subscribe(
+      result => {
+        this.message = result;
       },
       error => {
         console.log(error);
@@ -110,7 +190,7 @@ export class ListViewComponent implements OnInit {
   }
 
   editManuscript(manuscriptId) {
-    this.router.navigate(['/manuscripts/page', {id: manuscriptId}], {skipLocationChange: true});
+    this.router.navigate(['/manuscripts/register', {id: manuscriptId}], {skipLocationChange: true});
   }
 
   deleteManuscript(manuscriptId) {
