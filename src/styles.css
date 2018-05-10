@@ -213,12 +213,31 @@ section
   padding-left: 45px;
   padding-right: 45px;
 }
+.element_button {
+  margin-right: 18px;
+  border-radius: 10px;
+}
+.border_button {
+  background: transparent;
+  border: solid 2px #ff4200;
+}
 .button {
-  width: 187px;
+  width: 120px;
   height: 66px;
   background: #ff4200;
+  color: #ffffff;
   overflow: hidden;
+  font-weight: bold;
 }
+.button2 {
+  width: 120px;
+  height: 66px;
+  background: #ffffff;
+  color: #ff4200;
+  overflow: hidden;
+  font-weight: bold;
+}
+
 .button a {
   display: block;
   width: 100%;

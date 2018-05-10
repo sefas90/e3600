@@ -1,5 +1,15 @@
 <div class="main-content">
   <form #authorForm="ngForm" (ngSubmit)="saveForm(authorForm.value)" novalidate>
+    <div class="button element_button">
+      <a class="d-flex justify-content-center">
+        discover
+      </a>
+    </div>
+    <div class="button2 border_button element_button">
+      <a [routerLink]="['/authors']" class="d-flex justify-content-center">
+        Volver
+      </a>
+    </div>
     <a [routerLink]="['/authors']" class="btn btn-default"> volver </a>
     <input type="submit" value="{{this.button}}" class="btn btn-primary">
     <div class="form-control">
