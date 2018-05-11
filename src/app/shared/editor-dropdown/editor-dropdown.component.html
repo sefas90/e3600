@@ -1,5 +1,5 @@
 <form #editorDropdown="ngForm">
-  <select class="form-control" name="editor" (change)="sendId(editorDropdown.value)" [ngModel]="editor">
+  <select class="input_field form_subject" name="editor" (change)="sendId(editorDropdown.value)" [ngModel]="editor">
     <option value="" disabled>Elige un editor</option>
     <option *ngFor="let edi of editors" [ngValue]="edi.id">
       {{edi.name}}

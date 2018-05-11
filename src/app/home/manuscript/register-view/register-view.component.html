@@ -1,28 +1,39 @@
-<a [routerLink]="['/manuscripts']" class="btn btn-default"> volver </a>
-
-<div class="form-control">
-  <form #firstStageForm="ngForm" (submit)="registerForm(firstStageForm.value)" novalidate>
-    <div class="form-group row">
-      <label for="title" class="col-2 col-form-label">Titulo</label>
-      <div class="col-10">
-        <input class="form-control" type="text" [(ngModel)]="manuscript.title" id="title" name="title">
+<div class="main-content">
+  <form #manuscriptForm="ngForm" (ngSubmit)="registerForm(manuscript.value)" novalidate>
+    <div class="action-buttons row">
+      <div class="button border_button element_button">
+        <a [routerLink]="['/manuscripts']" class="d-flex justify-content-center">
+          Volver
+        </a>
       </div>
     </div>
-
-    <div class="form-group row">
-      <label for="author" class="col-2 col-form-label">Autor</label>
-      <div class="col-10">
-        {{manuscript.author}}
-        <app-author-dropdown-component (authorId)="receiveAuthorId($event)" id="author" (selectedAuthor)="manuscript.id_author" ></app-author-dropdown-component>
+    <div class="form-control">
+      <div class="form-group row">
+        <label for="title" class="col-2 col-form-label">Titulo</label>
+        <div class="col-10">
+          <input class="input_field form_subject" type="text" [(ngModel)]="manuscript.title" id="title" name="title">
+        </div>
       </div>
-    </div>
 
-    <div class="form-group row">
-      <label for="gender" class="col-2 col-form-label">Genero</label>
-      <div class="col-10">
-        <app-gender-dropdown-component (genderId)="receiveGenderId($event)" id="gender" ></app-gender-dropdown-component>
+      <div class="form-group row">
+        <label for="author" class="col-2 col-form-label">Autor</label>
+        <div class="col-10">
+          {{manuscript.author}}
+          <app-author-dropdown-component (authorId)="receiveAuthorId($event)" id="author" (selectedAuthor)="manuscript.id_author" ></app-author-dropdown-component>
+        </div>
       </div>
+
+      <div class="form-group row">
+        <label for="gender" class="col-2 col-form-label">Genero</label>
+        <div class="col-10">
+          <app-gender-dropdown-component (genderId)="receiveGenderId($event)" id="gender" ></app-gender-dropdown-component>
+        </div>
+      </div>
+
+      <div class="text-right">
+        <button type="submit" class="submit_btn trans_300">{{this.button}}</button>
+      </div>
+
     </div>
-    <input type="submit" value="{{this.button}}" class="btn btn-primary">
   </form>
 </div>

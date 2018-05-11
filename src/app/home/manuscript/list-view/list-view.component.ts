@@ -29,6 +29,29 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.manusctipts = [
+      {
+        id: 1,
+        title: 'title one',
+        author: 'author one',
+        id_author: '1',
+        gender: 'gender one',
+        id_gender: '1',
+        id_status: 2,
+        status: 'asd'
+      },
+      {
+        id: 2,
+        title: 'title two',
+        author: 'author two',
+        id_author: '2',
+        gender: 'gender two',
+        id_gender: '1',
+        id_status: 1,
+        status: 'asd'
+      }
+    ];
+    /*
     this.manuscriptService.loadManuscripts().subscribe(
       result => {
         this.manusctipts = result;
@@ -36,17 +59,11 @@ export class ListViewComponent implements OnInit {
       error => {
         console.log(<any>error);
       }
-    );
+    );*/
   }
 
-  openReaderModal(manuscript, modal) {
+  openModal(manuscript) {
     this.manuscript = manuscript;
-    this.modalService.open(modal);
-  }
-
-  openBookModal(manuscript, modal) {
-    this.manuscript = manuscript;
-    this.modalService.open(modal);
   }
 
   sendToReader() {
@@ -87,11 +104,6 @@ export class ListViewComponent implements OnInit {
         console.log(error);
       }
     );
-  }
-
-  openEditorModal(manuscript, modal) {
-    this.manuscript = manuscript;
-    this.modalService.open(modal);
   }
 
   sendToEditor() {
@@ -193,8 +205,8 @@ export class ListViewComponent implements OnInit {
     this.router.navigate(['/manuscripts/register', {id: manuscriptId}], {skipLocationChange: true});
   }
 
-  deleteManuscript(manuscriptId) {
-    this.manuscriptService.deleteManuscript(manuscriptId).subscribe(
+  deleteManuscript() {
+    this.manuscriptService.deleteManuscript(this.manuscript.id).subscribe(
       result => {
         this.router.navigate(['/manuscripts/']);
       }, error => {

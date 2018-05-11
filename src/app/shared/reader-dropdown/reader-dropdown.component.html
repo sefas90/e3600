@@ -1,5 +1,5 @@
 <form #readerDropdown="ngForm">
-  <select class="form-control" name="reader" (change)="sendId(readerDropdown.value)" [ngModel]="reader">
+  <select class="input_field form_subject" name="reader" (change)="sendId(readerDropdown.value)" [ngModel]="reader">
     <option value="" disabled>Elige un lector</option>
     <option *ngFor="let rea of readers" [ngValue]="rea.id">
       {{rea.name}}

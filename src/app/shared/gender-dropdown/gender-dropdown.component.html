@@ -1,5 +1,5 @@
 <form #genderDropdown="ngForm">
-  <select class="form-control" name="gender" (change)="sendId(genderDropdown.value)" [ngModel]="gender">
+  <select class="input_field form_subject" name="gender" (change)="sendId(genderDropdown.value)" [ngModel]="gender">
     <option value="" disabled>Elige un genero</option>
     <option *ngFor="let gen of genders" [ngValue]="gen.id">
       {{gen.gender}}
