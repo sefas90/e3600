@@ -4,8 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { SalesRoutingModule } from './sales-routing.module';
 
+import { PageViewComponent } from './page-view/page-view.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { SalesViewComponent } from './sales-view/sales-view.component';
+import { SaleService } from './sale.service';
 
 @NgModule({
   imports: [
@@ -17,9 +19,12 @@ import { SalesViewComponent } from './sales-view/sales-view.component';
   ],
   declarations: [
     ListViewComponent,
-    SalesViewComponent
+    SalesViewComponent,
+    PageViewComponent
   ],
-  providers: [],
+  providers: [
+    SaleService
+  ],
   exports: []
 })
 

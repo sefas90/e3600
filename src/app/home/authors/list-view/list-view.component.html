@@ -24,13 +24,39 @@
           <button type="button" class="btn btn-default btn-sm" (click)="editAuthor(author.id)">
             <span class="glyphicon glyphicon-edit"></span> Edit
           </button></td>
-        <td class="text-right">
-          <button type="button" class="btn btn-default btn-sm" (click)="deleteAuthor(author.id)">
-            <span class="glyphicon glyphicon-edit"></span> delete
-          </button></td>
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
+            <a (click)="openModal(author)">
+              X
+            </a>
+          </button>
+        </td>
       </tr>
       </tbody>
     </table>
   </div>
 </div>
 
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="deleteModalLabel">Eliminar manuscrito</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Estas seguro de eliminar el autor {{this.author.name}} {{this.author.last_name}}
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="trans_300 button border_button_black" data-dismiss="modal">Cerrar</button>
+        <div class="button element_button button_red" data-dismiss="modal">
+          <a (click)="deleteAuthor()" class="d-flex justify-content-center">
+            Eliminar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

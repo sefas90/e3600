@@ -1,3 +1,32 @@
-<div>
-  list sales
+<div class="col-lg-12 page-list">
+  <div class="action-buttons">
+    <div class="button element_button">
+      <a (click)="createSale()" class="d-flex justify-content-center">
+        Nuevo
+      </a>
+    </div>
+  </div>
+  <div class="center table-content">
+    <table class="table table-striped table-hover">
+      <thead class="header-sort">
+      <tr>
+        <th>No.</th>
+        <th>Cliente</th>
+        <th>Libro</th>
+        <th>Cantidad</th>
+        <th>Descuento</th>
+        <th>Precio</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let sale of sales">
+        <td class="text-left"></td>
+        <td class="text-left"></td>
+        <td class="text-left"></td>
+        <td class="text-left"></td>
+        <td class="text-left"></td>
+        <td class="text-left"></td>
+      </tbody>
+    </table>
+  </div>
 </div>

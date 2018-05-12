@@ -37,7 +37,6 @@ export class RegisterViewComponent implements OnInit {
     this.manuscriptService.getManuscript(id).subscribe(
       result => {
         this.manuscript = result;
-        console.log(this.manuscript);
       },
       error => {
         console.log(error);
@@ -52,6 +51,15 @@ export class RegisterViewComponent implements OnInit {
     value.status = '';
     if (this.id === '0') {
       this.manuscriptService.createManuscript(value).subscribe(
+        result => {
+          this.router.navigate(['/manuscripts/list'], {skipLocationChange: true});
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.manuscriptService.editManuscript(value, this.id).subscribe(
         result => {
           this.router.navigate(['/manuscripts/list'], {skipLocationChange: true});
         },

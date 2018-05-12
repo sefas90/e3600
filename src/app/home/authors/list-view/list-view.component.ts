@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthorService } from '../author.service';
+import {Author} from '../author';
 
 @Component({
   selector: 'app-list-view',
@@ -10,8 +11,10 @@ import { AuthorService } from '../author.service';
 
 export class ListViewComponent implements OnInit {
   public authors: any;
+  public author: Author;
   constructor(private router: Router,
               private authorService: AuthorService) {
+    this.author = new Author (null, null, null);
   }
 
   ngOnInit() {
@@ -33,8 +36,12 @@ export class ListViewComponent implements OnInit {
     this.router.navigate(['/authors/page', {id: id}], {skipLocationChange: true});
   }
 
-  deleteAuthor(id) {
-    this.authorService.deleteAuthor(id).subscribe(
+  openModal(author) {
+    this.author = author;
+  }
+
+  deleteAuthor() {
+    this.authorService.deleteAuthor(this.author.id).subscribe(
       result => {
         this.router.navigate(['/authors/']);
       }, error => {

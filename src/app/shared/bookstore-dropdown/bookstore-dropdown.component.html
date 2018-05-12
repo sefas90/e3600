@@ -1,0 +1,8 @@
+<form #bookstoreDropdown="ngForm">
+  <select class="input_field form_subject" name="bookstore" (change)="sendId(bookstoreDropdown.value)" [ngModel]="bookstore">
+    <option value="" disabled>Elige una libreria</option>
+    <option *ngFor="let bookst of bookstores" [ngValue]="bookst.id">
+      {{bookst.name}}
+    </option>
+  </select>
+</form>

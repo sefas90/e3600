@@ -21,7 +21,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let manuscript of manusctipts">
+      <tr *ngFor="let manuscript of manuscripts">
         <th class="text-align-left" scope="row">{{manuscript.id}}</th>
         <td class="text-align-left">{{manuscript.title}}</td>
         <td class="text-align-left">{{manuscript.author}}</td>
@@ -177,7 +177,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" class="trans_300 button border_button_black" data-dismiss="modal">Cerrar</button>
-        <div class="button element_button button_red">
+        <div class="button element_button button_red" data-dismiss="modal">
           <a (click)="deleteManuscript()" class="d-flex justify-content-center">
             Eliminar
           </a>
@@ -214,7 +214,7 @@
 
       <div class="modal-footer">
         <button type="submit" class="trans_300 button border_button_black" data-dismiss="modal">Cerrar</button>
-        <div class="button element_button">
+        <div class="button element_button" data-dismiss="modal">
           <a (click)="sendToReader()" class="d-flex justify-content-center">
             Enviar
           </a>

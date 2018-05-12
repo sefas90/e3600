@@ -1,34 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthorService } from '../author.service';
-import { Author } from '../author';
+import { SaleService } from '../sale.service';
+import { Sale } from '../sale';
 
 @Component({
   selector: 'app-create-view',
-  templateUrl: './page-view.component.html',
-  styleUrls: ['./page-view.component.scss']
+  templateUrl: './page-view.component.html'
 })
 export class PageViewComponent implements OnInit {
   private id = this.route.snapshot.params['id'];
-  public author: Author;
+  public sale: Sale;
   public button: string;
-  authorForm: FormGroup;
-  name: FormControl;
-  last_name: FormControl;
+  public fieldArray: Array<any> = [];
+  private newAttribute: any = {};
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private authorService: AuthorService) {
-    this.author = new Author (null, null, null);
+              private saleService: SaleService) {
+    this.sale = new Sale (null, null, null, null, null, null, null);
+    this.sale.date = new Date().toLocaleDateString();
   }
 
   ngOnInit() {
-    this.name = new FormControl('', Validators.required);
-    this.last_name = new FormControl('', Validators.required);
-    this.authorForm = new FormGroup({
-      name: this.name,
-      last_name: this.last_name
-    });
     if (this.id === '0') {
       this.button = 'Crear';
       this.createView();
@@ -39,13 +32,14 @@ export class PageViewComponent implements OnInit {
   }
 
   createView() {
-
+    this.sale.date = new Date().toISOString().slice(0, 10);
+    this.addField();
   }
 
   editView(id) {
-    this.authorService.getAuthor(id).subscribe(
+    this.saleService.getSale(id).subscribe(
       result => {
-        this.author = result;
+        this.sale = result;
       },
       error => {
         console.log(<any>error);
@@ -53,20 +47,29 @@ export class PageViewComponent implements OnInit {
     );
   }
 
+  addField() {
+    this.fieldArray.push(this.newAttribute);
+    this.newAttribute = {};
+  }
+
+  removeField(index) {
+    this.fieldArray.splice(index, 1);
+  }
+
   saveForm(value) {
     if (this.id === '0') {
-      this.authorService.createAuthor(value).subscribe(
+      this.saleService.createSale(value).subscribe(
         result => {
-          this.router.navigate(['/authors/list'], {skipLocationChange: true});
+          this.router.navigate(['/saless/list'], {skipLocationChange: true});
         },
         error => {
           console.log(error);
         }
       );
     } else {
-      this.authorService.editAuthor(value, this.id).subscribe(
+      this.saleService.editSale(value, this.id).subscribe(
         result => {
-          this.router.navigate(['/authors/list'], {skipLocationChange: true});
+          this.router.navigate(['/saless/list'], {skipLocationChange: true});
         },
         error => {
           console.log(error);

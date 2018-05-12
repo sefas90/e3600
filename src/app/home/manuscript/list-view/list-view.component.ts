@@ -12,7 +12,7 @@ import { BooksService } from '../../books/books.service';
 })
 
 export class ListViewComponent implements OnInit {
-  public manusctipts: any;
+  public manuscripts: any;
   public manuscript: Manuscript;
   public message: any;
   public readerId: any;
@@ -26,40 +26,18 @@ export class ListViewComponent implements OnInit {
               private manuscriptService: ManuscriptService,
               private booksService: BooksService,
               private modalService: NgbModal) {
+    this.manuscript = new Manuscript(null, null, null, null, null, null, null, null);
   }
 
   ngOnInit() {
-    this.manusctipts = [
-      {
-        id: 1,
-        title: 'title one',
-        author: 'author one',
-        id_author: '1',
-        gender: 'gender one',
-        id_gender: '1',
-        id_status: 2,
-        status: 'asd'
-      },
-      {
-        id: 2,
-        title: 'title two',
-        author: 'author two',
-        id_author: '2',
-        gender: 'gender two',
-        id_gender: '1',
-        id_status: 1,
-        status: 'asd'
-      }
-    ];
-    /*
     this.manuscriptService.loadManuscripts().subscribe(
       result => {
-        this.manusctipts = result;
+        this.manuscripts = result;
       },
       error => {
         console.log(<any>error);
       }
-    );*/
+    );
   }
 
   openModal(manuscript) {

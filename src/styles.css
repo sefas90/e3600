@@ -136,6 +136,9 @@ h6::selection
   font-weight: 500;
   color: #777777 !important;
 }
+.pointer{
+  cursor: pointer;
+}
 .form-control
 {
   color: #db5246;

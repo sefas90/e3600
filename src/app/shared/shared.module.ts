@@ -6,6 +6,8 @@ import { SelectAuthorDropdownComponent } from './author-dropdown/author-dropdown
 import { SelectGenderDropdownComponent } from './gender-dropdown/gender-dropdown.component';
 import { SelectReaderDropdownComponent } from './reader-dropdown/reader-dropdown.component';
 import { SelectEditorDropdownComponent } from './editor-dropdown/editor-dropdown.component';
+import { SelectBookstoreDropdownComponent } from './bookstore-dropdown/bookstore-dropdown.component';
+import { SelectBookDropdownComponent } from './book-dropdown/book-dropdown.component';
 
 @NgModule({
   imports: [
@@ -17,14 +19,18 @@ import { SelectEditorDropdownComponent } from './editor-dropdown/editor-dropdown
     SelectAuthorDropdownComponent,
     SelectGenderDropdownComponent,
     SelectReaderDropdownComponent,
-    SelectEditorDropdownComponent
+    SelectEditorDropdownComponent,
+    SelectBookstoreDropdownComponent,
+    SelectBookDropdownComponent
   ],
   providers: [ ],
   exports: [
     SelectAuthorDropdownComponent,
     SelectGenderDropdownComponent,
     SelectReaderDropdownComponent,
-    SelectEditorDropdownComponent
+    SelectEditorDropdownComponent,
+    SelectBookstoreDropdownComponent,
+    SelectBookDropdownComponent
   ]
 })
 export class SharedModule { }

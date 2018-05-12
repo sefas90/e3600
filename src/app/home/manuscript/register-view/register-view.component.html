@@ -1,5 +1,5 @@
 <div class="main-content">
-  <form #manuscriptForm="ngForm" (ngSubmit)="registerForm(manuscript.value)" novalidate>
+  <form #manuscriptForm="ngForm" (ngSubmit)="registerForm(manuscriptForm.value)" novalidate>
     <div class="action-buttons row">
       <div class="button border_button element_button">
         <a [routerLink]="['/manuscripts']" class="d-flex justify-content-center">
@@ -19,7 +19,7 @@
         <label for="author" class="col-2 col-form-label">Autor</label>
         <div class="col-10">
           {{manuscript.author}}
-          <app-author-dropdown-component (authorId)="receiveAuthorId($event)" id="author" (selectedAuthor)="manuscript.id_author" ></app-author-dropdown-component>
+          <app-author-dropdown-component (authorId)="receiveAuthorId($event)" id="author" ></app-author-dropdown-component>
         </div>
       </div>
 
