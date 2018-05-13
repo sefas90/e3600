@@ -41,22 +41,34 @@
         </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let field of fieldArray; index as i">
-            <td class="text-left">
-              <app-book-dropdown-component></app-book-dropdown-component>
-            </td>
-            <td class="text-left">
-              <input class="input_field form_subject" type="text" [(ngModel)]="sale.price" id="price" name="price">
-            </td>
-            <td class="text-left">
-              <input class="input_field form_subject" type="text" [(ngModel)]="sale.quantity" id="quantity" name="quantity">
-            </td>
-            <td>
-              <a (click)="addField()" class="pointer"> + </a>
-               / {{i}} /
-              <a (click)="removeField()" class="pointer"> X </a>
-            </td>
-          </tr>
+        <tr>
+          <td class="text-left">
+            <app-book-dropdown-component></app-book-dropdown-component>
+          </td>
+          <td class="text-left">
+            <input class="input_field form_subject" type="number" min="0" [(ngModel)]="newAttribute.price" name="newPrice">
+          </td>
+          <td class="text-left">
+            <input class="input_field form_subject" type="number" [(ngModel)]="newAttribute.quantity" name="newQuantity">
+          </td>
+          <td>
+            <a (click)="addField()" class="pointer"> + </a>
+          </td>
+        </tr>
+        <tr *ngFor="let field of fieldArray; index as i">
+          <td class="text-left">
+            <app-book-dropdown-component></app-book-dropdown-component>
+          </td>
+          <td class="text-left">
+            <input class="input_field form_subject" type="number" min="0" [(ngModel)]="field.price" name="{{field.price}}">
+          </td>
+          <td class="text-left">
+            <input class="input_field form_subject" type="number" [(ngModel)]="field.quantity" name="{{field.quantity}}">
+          </td>
+          <td>
+            <a (click)="removeField()" class="pointer"> X </a>
+          </td>
+        </tr>
         </tbody>
       </table>
 

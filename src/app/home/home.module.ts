@@ -14,11 +14,13 @@ import { ConciliationsModule } from './conciliations/conciliations.module';
 import { ConsignmentsModule} from './consignment/consignments.module';
 import { SalesModule } from './sales/sales.module';
 import { AuthorsModule } from './authors/authors.module';
+import { NavbarComponent } from './navbar.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    MainComponent
+    MainComponent,
+    NavbarComponent
   ],
   imports: [
     AuthorsModule,

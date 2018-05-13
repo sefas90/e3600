@@ -13,7 +13,7 @@ export class PageViewComponent implements OnInit {
   public sale: Sale;
   public button: string;
   public fieldArray: Array<any> = [];
-  private newAttribute: any = {};
+  public newAttribute: any = {};
   constructor(private route: ActivatedRoute,
               private router: Router,
               private saleService: SaleService) {
@@ -33,7 +33,6 @@ export class PageViewComponent implements OnInit {
 
   createView() {
     this.sale.date = new Date().toISOString().slice(0, 10);
-    this.addField();
   }
 
   editView(id) {

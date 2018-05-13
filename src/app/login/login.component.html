@@ -1,0 +1,21 @@
+<div class="main-content">
+  <div class="form-control col-md-4">
+    <h1>login</h1>
+    <form #loginForm="ngForm" (ngSubmit)="doLogin(loginForm.value)" novalidate>
+      <div class="form-group">
+        <input class="input_field form_subject" type="text"
+               [(ngModel)]="user.username" name="username" placeholder="Usuario">
+      </div>
+
+      <div class="form-group">
+        <input class="input_field form_subject" type="password"
+               [(ngModel)]="user.password" name="password" placeholder="Contraseña">
+      </div>
+
+      <div class="text-right">
+        <button type="submit" class="submit_btn trans_300">Login</button>
+      </div>
+
+    </form>
+  </div>
+</div>

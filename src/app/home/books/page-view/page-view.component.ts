@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BooksService } from '../books.service';
 import { Book } from '../book';
-import {NULL_EXPR} from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: 'app-create-view',
