@@ -14,8 +14,8 @@ export class SelectBookDropdownComponent implements OnInit {
   constructor(private booksService: BooksService) {
   }
 
-  sendId(bookId) {
-    this.bookId.emit(bookId);
+  sendId(book) {
+    this.bookId.emit(book);
   }
 
   ngOnInit() {

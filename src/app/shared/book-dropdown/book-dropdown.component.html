@@ -2,7 +2,7 @@
   <select class="input_field form_subject" name="book"
           (change)="sendId(bookDropdown.value)" [ngModel]="book" [value]="this.selectedBook">
     <option value="" disabled>Elige un libro</option>
-    <option *ngFor="let boo of books" [ngValue]="boo.id">
+    <option *ngFor="let boo of books" [ngValue]="boo">
       {{boo.title}}
     </option>
   </select>

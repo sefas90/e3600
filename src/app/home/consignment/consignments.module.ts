@@ -4,8 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { ConsignmentsRoutingModule } from './consignments-routing.module';
 
+import { PageViewComponent } from './page-view/page-view.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { ConsignmentsViewComponent } from './consignments-view/consignments-view.component';
+import { ConsignmentService } from './consignment.service';
 
 @NgModule({
   imports: [
@@ -17,9 +19,12 @@ import { ConsignmentsViewComponent } from './consignments-view/consignments-view
   ],
   declarations: [
     ListViewComponent,
-    ConsignmentsViewComponent
+    ConsignmentsViewComponent,
+    PageViewComponent
   ],
-  providers: [],
+  providers: [
+    ConsignmentService
+  ],
   exports: []
 })
 

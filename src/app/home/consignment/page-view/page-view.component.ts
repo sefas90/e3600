@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SaleService } from '../sale.service';
-import { Sale } from '../sale';
+import { ConsignmentService } from '../consignment.service';
+import { Consignment } from '../consignment';
 
 @Component({
   selector: 'app-create-view',
@@ -10,7 +10,7 @@ import { Sale } from '../sale';
 })
 export class PageViewComponent implements OnInit {
   private id = this.route.snapshot.params['id'];
-  public sale: Sale;
+  public consignment: Consignment;
   public button: string;
   public fieldArray: Array<any> = [];
   public newAttribute: any = {};
@@ -19,9 +19,9 @@ export class PageViewComponent implements OnInit {
   public bookstoreId: any;
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private saleService: SaleService) {
-    this.sale = new Sale (null, null, null, null, null, null, null);
-    this.sale.date = new Date().toLocaleDateString();
+              private consignmentService: ConsignmentService) {
+    this.consignment = new Consignment (null, null, null, null, null, null, null);
+    this.consignment.date = new Date().toLocaleDateString();
   }
 
   ngOnInit() {
@@ -35,13 +35,13 @@ export class PageViewComponent implements OnInit {
   }
 
   createView() {
-    this.sale.date = new Date().toISOString().slice(0, 10);
+    this.consignment.date = new Date().toISOString().slice(0, 10);
   }
 
   editView(id) {
-    this.saleService.getSale(id).subscribe(
+    this.consignmentService.getConsignment(id).subscribe(
       result => {
-        this.sale = result;
+        this.consignment = result;
       },
       error => {
         console.log(<any>error);
@@ -59,13 +59,13 @@ export class PageViewComponent implements OnInit {
     this.fieldArray.splice(index, 1);
   }
 
-  reciveBookId($event) {
+  receiveBookId($event) {
     this.bookId = $event.book.id;
     this.bookPrice = $event.book.price;
     this.newAttribute.price = this.bookPrice;
   }
 
-  receveBookstoreId($event) {
+  receiveBookstoreId($event) {
     this.bookstoreId = $event;
   }
 
@@ -75,18 +75,18 @@ export class PageViewComponent implements OnInit {
     value.bookstoreId = this.bookstoreId.bookstore;
     value.data = this.fieldArray;
     if (this.id === '0') {
-      this.saleService.createSale(value).subscribe(
+      this.consignmentService.createConsignment(value).subscribe(
         result => {
-          this.router.navigate(['/sales/list'], {skipLocationChange: true});
+          this.router.navigate(['/consignments/list'], {skipLocationChange: true});
         },
         error => {
           console.log(error);
         }
       );
     } else {
-      this.saleService.editSale(value, this.id).subscribe(
+      this.consignmentService.editConsignment(value, this.id).subscribe(
         result => {
-          this.router.navigate(['/sales/list'], {skipLocationChange: true});
+          this.router.navigate(['/consignments/list'], {skipLocationChange: true});
         },
         error => {
           console.log(error);
