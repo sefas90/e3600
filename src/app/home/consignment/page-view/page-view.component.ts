@@ -74,6 +74,7 @@ export class PageViewComponent implements OnInit {
     delete (value.newQuantity);
     value.bookstoreId = this.bookstoreId.bookstore;
     value.data = this.fieldArray;
+    console.log(value);
     if (this.id === '0') {
       this.consignmentService.createConsignment(value).subscribe(
         result => {

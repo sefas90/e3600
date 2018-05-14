@@ -19,8 +19,8 @@ export class SaleService {
     return this.http.get(this.url);
   }
 
-  getSale(id): Observable<any> {
-    return this.http.get(this.url + id);
+  getSale(code): Observable<any> {
+    return this.http.get(this.url + code);
   }
 
   createSale(data: Sale): Observable<any> {

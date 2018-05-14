@@ -1,0 +1,50 @@
+<div class="main-content">
+  <div class="action-buttons row">
+    <div class="button border_button element_button">
+      <a [routerLink]="['/consignments']" class="d-flex justify-content-center">
+        Volver
+      </a>
+    </div>
+  </div>
+  <div class="form-control">
+
+    <div class="form-group row">
+      <div class="col">
+        <label for="code" class="col-4 col-form-label">No de Venta</label>
+        <div class="col-8">
+          <input class="input_field form_subject" type="number" [(ngModel)]="consignment.code" id="code" name="code" readonly>
+        </div>
+      </div>
+      <div class="col">
+        <label for="date" class="col-2 col-form-label">Fecha</label>
+        <div class="col-10">
+          <input class="input_field form_subject" type="date" [(ngModel)]="consignment.date" id="date" name="date" readonly>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Libreria</label>
+      <div class="col-10">
+        <input class="input_field form_subject" type="text" [(ngModel)]="consignment.name" readonly>
+      </div>
+    </div>
+
+    <table class="table table-striped table-hover">
+      <thead class="header-sort">
+      <tr>
+        <th>Libro</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let dat of data">
+        <td class="text-left">{{dat.title}}</td>
+        <td class="text-left">{{dat.price}}</td>
+        <td class="text-left">{{dat.quantity}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

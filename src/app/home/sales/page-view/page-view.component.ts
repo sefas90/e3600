@@ -59,13 +59,13 @@ export class PageViewComponent implements OnInit {
     this.fieldArray.splice(index, 1);
   }
 
-  reciveBookId($event) {
+  receiveBookId($event) {
     this.bookId = $event.book.id;
     this.bookPrice = $event.book.price;
     this.newAttribute.price = this.bookPrice;
   }
 
-  receveBookstoreId($event) {
+  receiveBookstoreId($event) {
     this.bookstoreId = $event;
   }
 

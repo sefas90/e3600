@@ -13,6 +13,7 @@
         <th>No.</th>
         <th>Cliente</th>
         <th>Fecha</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -20,6 +21,11 @@
         <td class="text-left">{{sale.code}}</td>
         <td class="text-left">{{sale.name}}</td>
         <td class="text-left">{{sale.date}}</td>
+        <td class="text-left">
+          <button type="button" class="btn btn-default btn-sm" (click)="viewSale(sale.code)">
+            <span class="glyphicon glyphicon-edit"></span> Ver
+          </button>
+        </td>
       </tbody>
     </table>
   </div>

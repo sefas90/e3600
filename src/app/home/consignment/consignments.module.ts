@@ -7,6 +7,7 @@ import { ConsignmentsRoutingModule } from './consignments-routing.module';
 import { PageViewComponent } from './page-view/page-view.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { ConsignmentsViewComponent } from './consignments-view/consignments-view.component';
+import { WatchViewComponent } from './watch-consignment/watch-view.component';
 import { ConsignmentService } from './consignment.service';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ConsignmentService } from './consignment.service';
   declarations: [
     ListViewComponent,
     ConsignmentsViewComponent,
-    PageViewComponent
+    PageViewComponent,
+    WatchViewComponent
   ],
   providers: [
     ConsignmentService

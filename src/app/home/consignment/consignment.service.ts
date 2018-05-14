@@ -11,16 +11,16 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class ConsignmentService {
-  private url = 'http://e3600.test/api/v1/sales/';
+  private url = 'http://e3600.test/api/v1/consignment/';
   constructor(public http: HttpClient) {
   }
 
-  loadConsignment(): Observable<any> {
+  loadConsignments(): Observable<any> {
     return this.http.get(this.url);
   }
 
-  getConsignment(id): Observable<any> {
-    return this.http.get(this.url + id);
+  getConsignment(code): Observable<any> {
+    return this.http.get(this.url + code);
   }
 
   createConsignment(data: Consignment): Observable<any> {
