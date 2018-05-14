@@ -22,6 +22,7 @@ export class SelectBookDropdownComponent implements OnInit {
     this.booksService.loadBooks().subscribe(
       result => {
         this.books = result;
+
       },
       error => {
         console.log(error);

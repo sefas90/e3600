@@ -14,6 +14,8 @@ export class PageViewComponent implements OnInit {
   public button: string;
   public fieldArray: Array<any> = [];
   public newAttribute: any = {};
+  public bookId: any;
+  public bookstoreId: <any>;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private saleService: SaleService) {
@@ -47,6 +49,7 @@ export class PageViewComponent implements OnInit {
   }
 
   addField() {
+    this.newAttribute.bookId = this.bookId.book;
     this.fieldArray.push(this.newAttribute);
     this.newAttribute = {};
   }
@@ -55,11 +58,23 @@ export class PageViewComponent implements OnInit {
     this.fieldArray.splice(index, 1);
   }
 
+  reciveBookId($event) {
+    this.bookId = $event;
+  }
+
+  receveBookstoreId($event) {
+    this.bookstoreId = $event;
+  }
+
   saveForm(value) {
+    delete (value.newPrice);
+    delete (value.newQuantity);
+    value.bookstoreId = this.bookstoreId.bookstore;
+    value.data = this.fieldArray;
     if (this.id === '0') {
       this.saleService.createSale(value).subscribe(
         result => {
-          this.router.navigate(['/saless/list'], {skipLocationChange: true});
+          // this.router.navigate(['/sales/list'], {skipLocationChange: true});
         },
         error => {
           console.log(error);
@@ -68,7 +83,7 @@ export class PageViewComponent implements OnInit {
     } else {
       this.saleService.editSale(value, this.id).subscribe(
         result => {
-          this.router.navigate(['/saless/list'], {skipLocationChange: true});
+          this.router.navigate(['/sales/list'], {skipLocationChange: true});
         },
         error => {
           console.log(error);

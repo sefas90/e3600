@@ -1,5 +1,5 @@
 <div class="main-content">
-  <form #saleForm (ngSubmit)="saveForm(saleForm.value)" novalidate>
+  <form #saleForm="ngForm" (ngSubmit)="saveForm(saleForm.value)" novalidate>
     <div class="action-buttons row">
       <div class="button border_button element_button">
         <a [routerLink]="['/sales']" class="d-flex justify-content-center">
@@ -13,7 +13,7 @@
         <div class="col">
           <label for="code" class="col-4 col-form-label">No de Venta</label>
           <div class="col-8">
-            <input class="input_field form_subject" type="text" [(ngModel)]="sale.code" id="code" name="code" readonly>
+            <input class="input_field form_subject" type="number" [(ngModel)]="sale.code" id="code" name="code">
           </div>
         </div>
         <div class="col">
@@ -27,7 +27,7 @@
       <div class="form-group row">
         <label class="col-2 col-form-label">Libreria</label>
         <div class="col-10">
-          <app-bookstore-dropdown-component></app-bookstore-dropdown-component>
+          <app-bookstore-dropdown-component (bookstoreId)="receveBookstoreId($event)"></app-bookstore-dropdown-component>
         </div>
       </div>
 
@@ -43,7 +43,7 @@
         <tbody>
         <tr>
           <td class="text-left">
-            <app-book-dropdown-component></app-book-dropdown-component>
+            <app-book-dropdown-component (bookId)="reciveBookId($event)"></app-book-dropdown-component>
           </td>
           <td class="text-left">
             <input class="input_field form_subject" type="number" min="0" [(ngModel)]="newAttribute.price" name="newPrice">
@@ -57,13 +57,13 @@
         </tr>
         <tr *ngFor="let field of fieldArray; index as i">
           <td class="text-left">
-            <app-book-dropdown-component></app-book-dropdown-component>
+            <app-book-dropdown-component [selectedBook]="field.bookId" ></app-book-dropdown-component>
           </td>
           <td class="text-left">
-            <input class="input_field form_subject" type="number" min="0" [(ngModel)]="field.price" name="{{field.price}}">
+            <input class="input_field form_subject" type="number" min="0" [(ngModel)]="field.price" name="{{field.price}}" readonly>
           </td>
           <td class="text-left">
-            <input class="input_field form_subject" type="number" [(ngModel)]="field.quantity" name="{{field.quantity}}">
+            <input class="input_field form_subject" type="number" [(ngModel)]="field.quantity" name="{{field.quantity}}" readonly>
           </td>
           <td>
             <a (click)="removeField()" class="pointer"> X </a>

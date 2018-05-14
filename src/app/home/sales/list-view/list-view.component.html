@@ -12,20 +12,12 @@
       <tr>
         <th>No.</th>
         <th>Cliente</th>
-        <th>Libro</th>
-        <th>Cantidad</th>
-        <th>Descuento</th>
-        <th>Precio</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let sale of sales">
-        <td class="text-left"></td>
-        <td class="text-left"></td>
-        <td class="text-left"></td>
-        <td class="text-left"></td>
-        <td class="text-left"></td>
-        <td class="text-left"></td>
+        <td class="text-left">{{sale.code}}</td>
+        <td class="text-left">{{sale.name}}</td>
       </tbody>
     </table>
   </div>

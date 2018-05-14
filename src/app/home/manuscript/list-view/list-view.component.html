@@ -46,7 +46,7 @@
 
           <div *ngIf="manuscript.id_status === 3">
             <button class="btn btn-primary">
-              <a (click)="openModal(manuscript, editorModal)">
+              <a (click)="openModal(manuscript)" data-toggle="modal" data-target="#editorModal">
                 <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Enviar a editor
               </a>
             </button>
@@ -62,7 +62,7 @@
 
           <div *ngIf="manuscript.id_status === 5">
             <button class="btn btn-primary">
-              <a (click)="openModal(manuscript, bookModal)">
+              <a (click)="openModal(manuscript)" data-toggle="modal" data-target="#bookModal">
                 <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Aprobar
               </a>
             </button>
@@ -94,74 +94,6 @@
     </table>
   </div>
 </div>
-
-<ng-template #editorModal>
-  <div class="modal-header">
-    <h4>Enviar a editor</h4>
-  </div>
-  <div class="modal-body">
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Editor</label>
-      <div class="col-10">
-        <app-editor-dropdown-component (editorId)="receiveEditorId($event)" id="editor" ></app-editor-dropdown-component>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Fecha de retorno</label>
-      <div class="col-10">
-        <input type="date" class="form-control" name="date_end_editor" id="date_end_editor" [(ngModel)]="editorDate">
-      </div>
-    </div>
-
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-default btn-sm">
-      <a (click)="sendToEditor()">
-        <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Enviar
-      </a>
-    </button>
-
-  </div>
-</ng-template>
-
-
-<ng-template #bookModal>
-  <div class="modal-header">
-    <h4>Crear Libro</h4>
-  </div>
-
-  <div class="modal-body">
-    <div class="form-group row">
-      <label class="col-2 col-form-label">ISBN</label>
-      <div class="col-10">
-        <input type="text" class="form-control" name="isbn" id="isbn" [(ngModel)]="isbn">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Cantidad Producida</label>
-      <div class="col-10">
-        <input type="number" class="form-control" name="quantity" id="quantity" [(ngModel)]="quantity">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Precio</label>
-      <div class="col-10">
-        <input type="number" class="form-control" name="price" id="price" [(ngModel)]="price">
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-default btn-sm">
-      <a (click)="approveManuscript()">
-        <span class="glyphicon glyphicon-plus icon-inside-btn"></span> Crear
-      </a>
-    </button>
-  </div>
-</ng-template>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -216,6 +148,87 @@
         <button type="submit" class="trans_300 button border_button_black" data-dismiss="modal">Cerrar</button>
         <div class="button element_button" data-dismiss="modal">
           <a (click)="sendToReader()" class="d-flex justify-content-center">
+            Enviar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editorModal" tabindex="-2" role="dialog" aria-labelledby="editorModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="editorModalLabel">Enviar al editor</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Lector</label>
+          <div class="col-10">
+            <app-editor-dropdown-component (editorId)="receiveEditorId($event)" id="editor" ></app-editor-dropdown-component>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Fecha de retorno</label>
+          <div class="col-10">
+            <input type="date" class="form-control" name="date_end_editor" id="date_end_editor" [(ngModel)]="editorDate">
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="trans_300 button border_button_black">data-dismiss="modal">Cerrar</button>
+        <div class="button element_button" data-dismiss="modal">
+          <a (click)="sendToEditor()" class="d-flex justify-content-center">
+            Enviar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="bookModal" tabindex="-2" role="dialog" aria-labelledby="bookModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="bookModalLabel">Crear libro</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <label class="col-2 col-form-label">ISBN</label>
+          <div class="col-10">
+            <input type="text" class="form-control" name="isbn" id="isbn" [(ngModel)]="isbn">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Cantidad Producida</label>
+          <div class="col-10">
+            <input type="number" class="form-control" name="quantity" id="quantity" [(ngModel)]="quantity">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Precio</label>
+          <div class="col-10">
+            <input type="number" class="form-control" name="price" id="price" [(ngModel)]="price">
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="trans_300 button border_button_black">data-dismiss="modal">Cerrar</button>
+        <div class="button element_button" data-dismiss="modal">
+          <a (click)="approveManuscript()" class="d-flex justify-content-center">
             Enviar
           </a>
         </div>

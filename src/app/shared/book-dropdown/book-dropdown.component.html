@@ -1,5 +1,6 @@
 <form #bookDropdown="ngForm">
-  <select class="input_field form_subject" name="book" (change)="sendId(bookDropdown.value)" [ngModel]="book">
+  <select class="input_field form_subject" name="book"
+          (change)="sendId(bookDropdown.value)" [ngModel]="book" [value]="this.selectedBook">
     <option value="" disabled>Elige un libro</option>
     <option *ngFor="let boo of books" [ngValue]="boo.id">
       {{boo.title}}
