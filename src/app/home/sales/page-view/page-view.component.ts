@@ -15,7 +15,7 @@ export class PageViewComponent implements OnInit {
   public fieldArray: Array<any> = [];
   public newAttribute: any = {};
   public bookId: any;
-  public bookstoreId: <any>;
+  public bookstoreId: any;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private saleService: SaleService) {

@@ -340,6 +340,11 @@ section
   background: #dc3545 !important;
 }
 
+.center {
+  margin: auto;
+  width: 400px;
+}
+
 /*********************************
 7.2 Elements - Progress Bars
 *********************************/
