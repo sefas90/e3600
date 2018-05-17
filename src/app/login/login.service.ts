@@ -8,16 +8,16 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class LoginService {
-  private url = 'http://e3600.test/api/v1/auth/';
+  private _url = '/auth/';
   config: any;
   constructor(private http: HttpClient,
               private configService: ConfigService) {
     this.config = configService.config;
-    console.log(this.config);
   }
 
   doLogin(data): Observable<any> {
-    return this.http.post(this.url, data);
+    const url = this.config.endpoint + this._url;
+    return this.http.post(url, data);
   }
 
 }

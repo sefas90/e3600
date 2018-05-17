@@ -1,5 +1,5 @@
 {
-  "endpoint": "https://io.bise.mojix.io/services/api",
+  "endpoint": "http://e3600.test/api/v1",
   "siteKey": "",
   "httpTimeout": "90000",
   "animationDuration": 3000
