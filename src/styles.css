@@ -399,6 +399,15 @@ section
 3.1 Logo
 *********************************/
 
+.logo_background{
+  height: 124px;
+  width: 350px;
+  display: block;
+  background-position: center !important;
+  overflow: hidden;
+  background-image: url('./fonts/Logo-3600.png');
+  object-fit: contain;
+}
 .logo_container
 {
   flex-basis: 50%;

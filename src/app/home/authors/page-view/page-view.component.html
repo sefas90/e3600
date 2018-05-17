@@ -1,5 +1,5 @@
 <div class="main-content">
-  <form [formGroup]="authorForm" (ngSubmit)="saveForm(authorForm.value)" novalidate>
+  <form #authorForm="ngForm" (ngSubmit)="saveForm(authorForm.value)" novalidate>
     <div class="action-buttons row">
       <div class="button border_button element_button">
         <a [routerLink]="['/authors']" class="d-flex justify-content-center">

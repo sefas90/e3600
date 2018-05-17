@@ -13,9 +13,6 @@ export class PageViewComponent implements OnInit {
   private id = this.route.snapshot.params['id'];
   public author: Author;
   public button: string;
-  authorForm: FormGroup;
-  name: FormControl;
-  last_name: FormControl;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private authorService: AuthorService) {
@@ -23,12 +20,6 @@ export class PageViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.name = new FormControl('', Validators.required);
-    this.last_name = new FormControl('', Validators.required);
-    this.authorForm = new FormGroup({
-      name: this.name,
-      last_name: this.last_name
-    });
     if (this.id === '0') {
       this.button = 'Crear';
       this.createView();

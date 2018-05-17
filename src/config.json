@@ -1,0 +1,6 @@
+{
+  "endpoint": "https://io.bise.mojix.io/services/api",
+  "siteKey": "",
+  "httpTimeout": "90000",
+  "animationDuration": 3000
+}
