@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 import { HomeComponent } from './home.component';
 import { MainComponent } from './main/main.component';
 import { ManuscriptViewComponent } from './manuscript/manuscript-view/manuscript-view.component';
@@ -38,7 +39,8 @@ export const routes: Routes = [
       {path: 'home', component: MainComponent},
       {path: '**', redirectTo: '/home'},
       {path: '', pathMatch: 'full', redirectTo: '/home'}
-    ]
+    ],
+    canActivate: [AuthGuard]
   }
 ];
 

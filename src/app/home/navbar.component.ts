@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LogoutService } from '../shared/services/logout.service';
+import { InformationService } from '../login/information.service';
+// import { PermissionsService } from '../shared/services/permissions.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  currentUser = this.informationService.getAttributeFromData('user');
+  constructor(private logoutService: LogoutService,
+              private informationService: InformationService) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.logoutService.logout();
+    // this.permissionsService.cleanData();
   }
 
 }

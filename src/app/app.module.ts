@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfigService } from './config.service';
+import { AuthGuard } from './guards/auth.guard';
 
 export function initConfig(config: ConfigService) {
   return () => config.load();
@@ -30,6 +31,7 @@ export function initConfig(config: ConfigService) {
     NgbModule.forRoot()
   ],
   providers: [
+    AuthGuard,
     ConfigService,
     {
       provide: APP_INITIALIZER,
