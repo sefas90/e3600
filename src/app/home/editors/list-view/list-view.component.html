@@ -6,32 +6,61 @@
       </a>
     </div>
   </div>
-  <div class="center table-content">
+  <div class="table-content">
     <table class="table table-striped table-hover">
       <thead class="header-sort">
       <tr>
         <th class="text-left">Nombre</th>
         <th class="text-left">Telefono</th>
         <th class="text-left">Direccion</th>
-        <th class="text-left">Editar</th>
-        <th class="text-left">Eliminar</th>
+        <th class="text-right">Editar</th>
+        <th class="text-right">Eliminar</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let editor of editors">
+      <tr *ngFor="let editor of editors" >
         <td class="text-left">{{editor.name}}</td>
         <td class="text-left">{{editor.phone}}</td>
         <td class="text-left">{{editor.direction}}</td>
-        <td class="text-left">
-          <button type="button" class="btn btn-default btn-sm" (click)="editEditor(editor.id)">
-            <span class="glyphicon glyphicon-edit"></span> Edit
-          </button></td>
         <td class="text-right">
-          <button type="button" class="btn btn-default btn-sm" (click)="deleteEditor(editor.id)">
-            <span class="glyphicon glyphicon-edit"></span> delete
-          </button></td>
+          <button type="button" class="btn btn-default btn-sm" (click)="editEditor(editor.id)">
+            <span class="glyphicon glyphicon-edit"></span> Editar
+          </button>
+        </td>
+        <td class="text-right">
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
+            <a (click)="openModal(editor)">
+              X
+            </a>
+          </button>
+        </td>
       </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="deleteModalLabel">Eliminar Editor</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Estas seguro de eliminar el editor {{this.editor.name}}
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="trans_300 button border_button_black" data-dismiss="modal">Cerrar</button>
+        <div class="button element_button button_red" data-dismiss="modal">
+          <a (click)="deleteEditor()" class="d-flex justify-content-center">
+            Eliminar
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

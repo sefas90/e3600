@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthorService } from '../author.service';
-import {Author} from '../author';
+import { Author } from '../author';
 
 @Component({
   selector: 'app-list-view',

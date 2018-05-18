@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ReaderService } from '../reader.service';
+import { Reader } from '../reader';
 
 @Component({
   selector: 'app-list-view',
@@ -10,8 +11,10 @@ import { ReaderService } from '../reader.service';
 
 export class ListViewComponent implements OnInit {
   public readers: any;
+  public reader: Reader;
   constructor(private router: Router,
               private readerService: ReaderService) {
+    this.reader = new Reader(null, null, null, null);
   }
 
   ngOnInit() {
@@ -33,8 +36,12 @@ export class ListViewComponent implements OnInit {
     this.router.navigate(['/readers/page', {id: id}], {skipLocationChange: true});
   }
 
-  deleteReader(id) {
-    this.readerService.deleteReader(id).subscribe(
+  openModal(reader) {
+    this.reader = reader;
+  }
+
+  deleteReader() {
+    this.readerService.deleteReader(this.reader.id).subscribe(
       result => {
         this.router.navigate(['/readers/']);
       }, error => {

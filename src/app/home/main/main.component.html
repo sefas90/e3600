@@ -1,3 +1,62 @@
-<div class="home-page">
-  dashboard
+<div class="elements_section">
+  <div class="elements_title">
+    <h3>Manuscritos en progreso</h3>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="elements_progress_bars">
+
+            <div class="pbar_container">
+              <ul class="progress_bar_container col_12 clearfix">
+                <li class="pb_item" *ngFor="let manuscript of manuscripts">
+                  {{manuscript.title}} de {{manuscript.author}}
+                  <div *ngIf="manuscript.id_status === 1" id="skill_1_pbar" class="skill_bars" data-perc="0.15"><svg viewBox="0 0 100 0.5" preserveAspectRatio="none" style="display: block; width: 100%; height: 100%;"><path d="M 0,0.25 L 100,0.25" stroke="#f0f0f0" stroke-width="1" fill-opacity="0"></path><path d="M 0,0.25 L 100,0.25" stroke="#ff4200" stroke-width="0.5" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 80;"></path></svg><div class="progressbar-text" style="font-family: &quot;Open Sans&quot;; letter-spacing: 0.3em; text-align: right; font-size: 11px; width: 48px; color: rgb(28, 28, 28); position: absolute; left: calc(15% - 48px); top: 17px; padding: 0px; margin: 0px;">15 %</div></div>
+                  <div *ngIf="manuscript.id_status === 2" id="skill_2_pbar" class="skill_bars" data-perc="0.30"><svg viewBox="0 0 100 0.5" preserveAspectRatio="none" style="display: block; width: 100%; height: 100%;"><path d="M 0,0.25 L 100,0.25" stroke="#f0f0f0" stroke-width="1" fill-opacity="0"></path><path d="M 0,0.25 L 100,0.25" stroke="#ff4200" stroke-width="0.5" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 65;"></path></svg><div class="progressbar-text" style="font-family: &quot;Open Sans&quot;; letter-spacing: 0.3em; text-align: right; font-size: 11px; width: 48px; color: rgb(28, 28, 28); position: absolute; left: calc(30% - 48px); top: 17px; padding: 0px; margin: 0px;">30 %</div></div>
+                  <div *ngIf="manuscript.id_status === 3" id="skill_3_pbar" class="skill_bars" data-perc="0.50"><svg viewBox="0 0 100 0.5" preserveAspectRatio="none" style="display: block; width: 100%; height: 100%;"><path d="M 0,0.25 L 100,0.25" stroke="#f0f0f0" stroke-width="1" fill-opacity="0"></path><path d="M 0,0.25 L 100,0.25" stroke="#ff4200" stroke-width="0.5" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 50;"></path></svg><div class="progressbar-text" style="font-family: &quot;Open Sans&quot;; letter-spacing: 0.3em; text-align: right; font-size: 11px; width: 48px; color: rgb(28, 28, 28); position: absolute; left: calc(50% - 48px); top: 17px; padding: 0px; margin: 0px;">50 %</div></div>
+                  <div *ngIf="manuscript.id_status === 4" id="skill_4_pbar" class="skill_bars" data-perc="0.65"><svg viewBox="0 0 100 0.5" preserveAspectRatio="none" style="display: block; width: 100%; height: 100%;"><path d="M 0,0.25 L 100,0.25" stroke="#f0f0f0" stroke-width="1" fill-opacity="0"></path><path d="M 0,0.25 L 100,0.25" stroke="#ff4200" stroke-width="0.5" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 30;"></path></svg><div class="progressbar-text" style="font-family: &quot;Open Sans&quot;; letter-spacing: 0.3em; text-align: right; font-size: 11px; width: 48px; color: rgb(28, 28, 28); position: absolute; left: calc(65% - 48px); top: 17px; padding: 0px; margin: 0px;">65 %</div></div>
+                  <div *ngIf="manuscript.id_status === 5" id="skill_5_pbar" class="skill_bars" data-perc="0.85"><svg viewBox="0 0 100 0.5" preserveAspectRatio="none" style="display: block; width: 100%; height: 100%;"><path d="M 0,0.25 L 100,0.25" stroke="#f0f0f0" stroke-width="1" fill-opacity="0"></path><path d="M 0,0.25 L 100,0.25" stroke="#ff4200" stroke-width="0.5" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 15;"></path></svg><div class="progressbar-text" style="font-family: &quot;Open Sans&quot;; letter-spacing: 0.3em; text-align: right; font-size: 11px; width: 48px; color: rgb(28, 28, 28); position: absolute; left: calc(80% - 48px); top: 17px; padding: 0px; margin: 0px;">80 %</div></div>
+                  <h5>.</h5>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-6">
+          Libros con bajo stock
+          <div class="elements_accordions">
+
+            <div class="accordion_container">
+
+              <div class="accordion d-flex flex-row align-items-center"> Phasellus vestibulum, quam tincidunt venen.</div>
+              <div class="accordion_panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+              </div>
+
+            </div>
+
+            <div class="accordion_container">
+
+              <div class="accordion d-flex flex-row align-items-center"> Phasellus vestibulum, quam tincidunt venen.</div>
+              <div class="accordion_panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+              </div>
+
+            </div>
+
+            <div class="accordion_container">
+
+              <div class="accordion d-flex flex-row align-items-center"> Phasellus vestibulum, quam tincidunt venen.</div>
+              <div class="accordion_panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+    </div>
+  </div>
 </div>

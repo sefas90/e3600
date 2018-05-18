@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { BookstoreService } from '../bookstore.service';
+import { Bookstore } from '../bookstore';
 
 @Component({
   selector: 'app-list-view',
@@ -10,8 +11,10 @@ import { BookstoreService } from '../bookstore.service';
 
 export class ListViewComponent implements OnInit {
   public bookstores: any;
+  public bookstore: Bookstore;
   constructor(private router: Router,
               private bookstoreService: BookstoreService) {
+    this.bookstore = new Bookstore(null, null, null, null, null);
   }
 
   ngOnInit() {
@@ -33,8 +36,12 @@ export class ListViewComponent implements OnInit {
     this.router.navigate(['/bookstores/page', {id: id}], {skipLocationChange: true});
   }
 
-  deleteBookstore(id) {
-    this.bookstoreService.deleteBookstore(id).subscribe(
+  openModal(bookstore) {
+    this.bookstore = bookstore;
+  }
+
+  deleteBookstore() {
+    this.bookstoreService.deleteBookstore(this.bookstore.id).subscribe(
       result => {
         this.router.navigate(['/bookstores/']);
       }, error => {

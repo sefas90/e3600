@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { EditorService } from '../editors.service';
+import { Editor } from '../editor';
 
 @Component({
   selector: 'app-list-view',
@@ -10,8 +11,10 @@ import { EditorService } from '../editors.service';
 
 export class ListViewComponent implements OnInit {
   public editors: any;
+  public editor: Editor;
   constructor(private router: Router,
               private editorService: EditorService) {
+    this.editor = new Editor (null, null, null, null);
   }
 
   ngOnInit() {
@@ -33,8 +36,12 @@ export class ListViewComponent implements OnInit {
     this.router.navigate(['/editors/page', {id: id}], {skipLocationChange: true});
   }
 
-  deleteEditor(id) {
-    this.editorService.deleteEditor(id).subscribe(
+  openModal(editor) {
+    this.editor = editor;
+  }
+
+  deleteEditor() {
+    this.editorService.deleteEditor(this.editor.id).subscribe(
       result => {
         this.router.navigate(['/editors/']);
       }, error => {

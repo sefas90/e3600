@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GenderService } from '../gender.service';
+import { Gender } from '../gender';
 
 @Component({
   selector: 'app-list-view',
@@ -10,8 +11,10 @@ import { GenderService } from '../gender.service';
 
 export class ListViewComponent implements OnInit {
   public genders: any;
+  public gender: Gender;
   constructor(private router: Router,
               private genderService: GenderService) {
+    this.gender = new Gender (null, null);
   }
 
   ngOnInit() {
@@ -33,8 +36,12 @@ export class ListViewComponent implements OnInit {
     this.router.navigate(['/genders/page', {id: id}], {skipLocationChange: true});
   }
 
-  deleteGender(id) {
-    this.genderService.deleteGender(id).subscribe(
+  openModal(gender) {
+    this.gender = gender;
+  }
+
+  deleteGender() {
+    this.genderService.deleteGender(this.gender.id).subscribe(
       result => {
         this.router.navigate(['/genders/']);
       }, error => {
