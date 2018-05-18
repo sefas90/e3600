@@ -22,6 +22,10 @@ export class BookstoreService {
     return this.http.get(this.url + id);
   }
 
+  viewBookstore(id): Observable<any> {
+    return this.http.get('http://e3600.test/api/v1/viewBookstore/' + id);
+  }
+
   createBookstore(data: Bookstore): Observable<any> {
     return this.http.post(this.url, data);
   }

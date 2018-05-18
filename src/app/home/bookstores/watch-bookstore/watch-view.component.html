@@ -1,0 +1,27 @@
+<div class="col-xs-12 page-list">
+  <div class="action-buttons">
+    <div class="button border_button element_button">
+      <a [routerLink]="['/bookstores']" class="d-flex justify-content-center">
+        Volver
+      </a>
+    </div>
+  </div>
+  <div class="table-content">
+    <table class="table table-striped table-hover">
+      <thead class="header-sort">
+      <tr>
+        <th class="text-left">Stock</th>
+        <th class="text-left">Titulo</th>
+        <th class="text-left">Genero</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let bookstore of bookstores">
+        <td class="text-left">{{bookstore.stock}}</td>
+        <td class="text-left">{{bookstore.title}}</td>
+        <td class="text-left">{{bookstore.gender}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

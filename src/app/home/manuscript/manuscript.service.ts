@@ -20,7 +20,7 @@ export class ManuscriptService {
   }
 
   loadUnfinishedManuscripts(): Observable<any> {
-    return this.http.get(this.url + 'unfinished');
+    return this.http.get('http://e3600.test/api/v1/unfinished');
   }
 
   getManuscript(id) {

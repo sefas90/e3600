@@ -36,6 +36,10 @@ export class ListViewComponent implements OnInit {
     this.router.navigate(['/bookstores/page', {id: id}], {skipLocationChange: true});
   }
 
+  viewBookstore(id) {
+    this.router.navigate(['/bookstores/view', {id: id}], {skipLocationChange: true});
+  }
+
   openModal(bookstore) {
     this.bookstore = bookstore;
   }

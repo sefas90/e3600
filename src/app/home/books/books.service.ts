@@ -18,6 +18,10 @@ export class BooksService {
     return this.http.get(this.url);
   }
 
+  lowStockBooks(): Observable<any> {
+    return this.http.get('http://e3600.test/api/v1/lowBooks');
+  }
+
   getBook(id): Observable<any> {
     return this.http.get(this.url + id);
   }

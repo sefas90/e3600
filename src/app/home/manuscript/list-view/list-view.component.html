@@ -83,7 +83,7 @@
           </div>
         </td>
         <td class="text-align-left">
-          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
+          <button *ngIf="manuscript.id_status === 1" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
             <a (click)="openModal(manuscript)">
               X
             </a>

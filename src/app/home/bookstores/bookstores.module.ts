@@ -6,6 +6,7 @@ import { BookstoresRoutingModule } from './bookstores-routing.module';
 
 import { PageViewComponent } from './page-view/page-view.component';
 import { ListViewComponent } from './list-view/list-view.component';
+import { WatchViewComponent } from './watch-bookstore/watch-view.component'
 import { BookstoresViewComponent } from './bookstores-view/bookstores-view.component';
 import { BookstoreService } from './bookstore.service';
 
@@ -20,7 +21,8 @@ import { BookstoreService } from './bookstore.service';
   declarations: [
     BookstoresViewComponent,
     ListViewComponent,
-    PageViewComponent
+    PageViewComponent,
+    WatchViewComponent
   ],
   providers: [
     BookstoreService

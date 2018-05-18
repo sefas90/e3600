@@ -16,8 +16,8 @@
         <th class="text-left">ISBN</th>
         <th class="text-left">Stock</th>
         <th class="text-left">Precio</th>
-        <th class="text-left">Editar</th>
-        <th class="text-left">Eliminar</th>
+        <th class="text-right">Editar</th>
+        <!--<th class="text-right">Eliminar</th>-->
       </tr>
       </thead>
       <tbody>
@@ -28,14 +28,14 @@
         <td class="text-left">{{book.isbn}}</td>
         <td class="text-left">{{book.stock}}</td>
         <td class="text-left">{{book.price}}</td>
-        <td class="text-left">
+        <td class="text-right">
           <button type="button" class="btn btn-default btn-sm" (click)="editBook(book.id)">
             <span class="glyphicon glyphicon-edit"></span> Edit
           </button></td>
-        <td class="text-right">
+        <!--<td class="text-right">
           <button type="button" class="btn btn-default btn-sm" (click)="deleteBook(book.id)">
             <span class="glyphicon glyphicon-edit"></span> delete
-          </button></td>
+          </button></td>-->
       </tr>
       </tbody>
     </table>

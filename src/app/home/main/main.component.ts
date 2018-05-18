@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ManuscriptService } from '../manuscript/manuscript.service';
+import { BooksService } from '../books/books.service';
 
 @Component({
   selector: 'app-main',
@@ -7,12 +8,23 @@ import { ManuscriptService } from '../manuscript/manuscript.service';
 })
 export class MainComponent implements OnInit {
   public manuscripts: any;
-  constructor(private manuscriptService: ManuscriptService) { }
+  public books: any;
+  constructor(private manuscriptService: ManuscriptService,
+              private booksService: BooksService) { }
 
   ngOnInit() {
     this.manuscriptService.loadUnfinishedManuscripts().subscribe(
       result => {
         this.manuscripts = result;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+
+    this.booksService.lowStockBooks().subscribe(
+      result => {
+        this.books = result;
       },
       error => {
         console.log(<any>error);

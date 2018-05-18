@@ -1,11 +1,12 @@
 <div class="elements_section">
   <div class="elements_title">
-    <h3>Manuscritos en progreso</h3>
+    <h3>Tablero</h3>
   </div>
   <div class="row">
     <div class="col-lg-12">
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 bar">
+          Manuscritos en progreso
           <div class="elements_progress_bars">
 
             <div class="pbar_container">
@@ -27,34 +28,9 @@
         <div class="col-lg-6">
           Libros con bajo stock
           <div class="elements_accordions">
-
-            <div class="accordion_container">
-
-              <div class="accordion d-flex flex-row align-items-center"> Phasellus vestibulum, quam tincidunt venen.</div>
-              <div class="accordion_panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
-              </div>
-
+            <div class="accordion_container" *ngFor="let book of books">
+              <div class="accordion d-flex flex-row align-items-center">Stock:{{book.stock}} - del libro: {{book.title}}</div>
             </div>
-
-            <div class="accordion_container">
-
-              <div class="accordion d-flex flex-row align-items-center"> Phasellus vestibulum, quam tincidunt venen.</div>
-              <div class="accordion_panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
-              </div>
-
-            </div>
-
-            <div class="accordion_container">
-
-              <div class="accordion d-flex flex-row align-items-center"> Phasellus vestibulum, quam tincidunt venen.</div>
-              <div class="accordion_panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
-              </div>
-
-            </div>
-
           </div>
         </div>
     </div>
