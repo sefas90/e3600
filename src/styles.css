@@ -407,6 +407,7 @@ section
   width: 350px;
   display: block;
   background-position: center !important;
+  background-repeat: no-repeat;
   overflow: hidden;
   background-image: url('./fonts/Logo-3600.png');
   object-fit: contain;

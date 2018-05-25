@@ -46,7 +46,7 @@
             <app-book-dropdown-component (bookId)="receiveBookId($event)"></app-book-dropdown-component>
           </td>
           <td class="text-left">
-            <input class="input_field form_subject" type="number" min="0" [(ngModel)]="newAttribute.price" name="newPrice">
+            <input class="input_field form_subject" type="number" min="0" [(ngModel)]="newAttribute.price" name="newPrice" readonly>
           </td>
           <td class="text-left">
             <input class="input_field form_subject" type="number" [(ngModel)]="newAttribute.quantity" name="newQuantity">
