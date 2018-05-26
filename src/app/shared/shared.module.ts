@@ -10,6 +10,7 @@ import { SelectReaderDropdownComponent } from './reader-dropdown/reader-dropdown
 import { SelectEditorDropdownComponent } from './editor-dropdown/editor-dropdown.component';
 import { SelectBookstoreDropdownComponent } from './bookstore-dropdown/bookstore-dropdown.component';
 import { SelectBookDropdownComponent } from './book-dropdown/book-dropdown.component';
+import { SelectRoleDropdownComponent } from './role-dropdown/role-dropdown.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { SelectBookDropdownComponent } from './book-dropdown/book-dropdown.compo
     SelectReaderDropdownComponent,
     SelectEditorDropdownComponent,
     SelectBookstoreDropdownComponent,
-    SelectBookDropdownComponent
+    SelectBookDropdownComponent,
+    SelectRoleDropdownComponent
   ],
   providers: [
     HttpClientService,
@@ -35,7 +37,8 @@ import { SelectBookDropdownComponent } from './book-dropdown/book-dropdown.compo
     SelectReaderDropdownComponent,
     SelectEditorDropdownComponent,
     SelectBookstoreDropdownComponent,
-    SelectBookDropdownComponent
+    SelectBookDropdownComponent,
+    SelectRoleDropdownComponent
   ]
 })
 export class SharedModule { }

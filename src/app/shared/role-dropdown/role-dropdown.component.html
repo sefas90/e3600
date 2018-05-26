@@ -1,0 +1,8 @@
+<form #roleDropdown="ngForm">
+  <select class="input_field form_subject" name="role" (change)="sendId(roleDropdown.value)" [ngModel]="role">
+    <option value="" disabled>Elige un rol</option>
+    <option *ngFor="let rol of roles" [ngValue]="rol.id">
+      {{rol.role}}
+    </option>
+  </select>
+</form>

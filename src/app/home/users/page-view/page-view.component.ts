@@ -15,12 +15,13 @@ export class PageViewComponent implements OnInit {
   private id = this.route.snapshot.params['id'];
   public user: User;
   public button: string;
+  public roleId: any;
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
               private userService: UserService) {
-    this.user = new User (null, null, null, null);
+    this.user = new User (null, null, null, null, null);
     this.passwordFormGroup = this.formBuilder.group({
       password: ['', Validators.required],
       repeatPassword: ['', Validators.required]
@@ -30,6 +31,7 @@ export class PageViewComponent implements OnInit {
     this.registrationFormGroup = this.formBuilder.group({
       username: ['', Validators.required],
       name: ['', Validators.required],
+      role: ['', Validators.required],
       passwordFormGroup: this.passwordFormGroup
     });
   }
@@ -59,11 +61,16 @@ export class PageViewComponent implements OnInit {
     );
   }
 
+  receiveRole($event) {
+    this.roleId = $event.role;
+  }
+
   saveForm(value) {
     const data = {
-      name: value.data,
+      name: value.name,
       username: value.username,
-      password: value.passwordFormGroup.password
+      password: value.passwordFormGroup.password,
+      id_role: this.roleId
     };
     if (this.id === '0') {
       this.userService.createUser(data).subscribe(

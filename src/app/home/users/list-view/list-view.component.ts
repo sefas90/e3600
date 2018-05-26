@@ -13,7 +13,7 @@ export class ListViewComponent implements OnInit {
   public user: User;
   constructor(private router: Router,
               private userService: UserService) {
-    this.user = new User (null, null, null, null);
+    this.user = new User (null, null, null, null, null);
   }
 
   ngOnInit() {

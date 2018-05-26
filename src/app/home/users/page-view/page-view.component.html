@@ -11,7 +11,7 @@
   <form [formGroup]="registrationFormGroup" (ngSubmit)="saveForm(registrationFormGroup.value)">
     <div class="form-control">
       <div class="form-group">
-        <label for="name">Nombre
+        <label for="name">Nombre*
           <div class="valid-form" *ngIf="registrationFormGroup.controls.name.errors?.required && registrationFormGroup.controls.name.touched">
             <strong> Nombre es requerido</strong>
           </div>
@@ -20,7 +20,7 @@
       </div>
 
       <div class="form-group">
-        <label for="usernamme">Usuario
+        <label for="usernamme">Usuario*
           <div class="valid-form" *ngIf="registrationFormGroup.controls.username.errors?.required && registrationFormGroup.controls.username.touched">
             <strong> Usuario es requerido</strong>
           </div>
@@ -28,9 +28,20 @@
         <input class="input_field form_subject" id="usernamme" type="text" name="username" formControlName="username"/>
       </div>
 
+      <div class="form-group">
+        <label for="role">Rol*
+          <div class="valid-form" *ngIf="registrationFormGroup.controls.role.errors?.required && registrationFormGroup.controls.role.touched">
+            <strong> Rol es requerido</strong>
+          </div>
+        </label>
+        <input class="input_field form_subject" id="role" type="hidden" name="role" formControlName="role" (ngModel)="roleId"/>
+        <app-role-dropdown-component (roleId)="receiveRole($event)"></app-role-dropdown-component>
+      </div>
+
+
       <div [formGroup]="passwordFormGroup">
         <div class="form-group">
-          <label for="password">Password
+          <label for="password">Password*
             <div class="valid-form" *ngIf="passwordFormGroup.controls.password.errors?.required && passwordFormGroup.controls.password.touched">
               <strong> Contraseña requerida</strong>
             </div>
@@ -39,9 +50,9 @@
         </div>
 
         <div class="form-group">
-          <label for="repeatPassword">Confirmar contraseña
+          <label for="repeatPassword">Confirmar contraseña*
             <div class="valid-form" *ngIf="passwordFormGroup.controls.repeatPassword.errors?.required && passwordFormGroup.controls.repeatPassword.touched">
-              <strong>Confirmar la contraseña es requerido</strong>
+              <strong>Confirmar la contraseña es requerida</strong>
             </div>
             <div class="valid-form" *ngIf="passwordFormGroup.errors?.doesMatchPassword">
               <strong>Las contraseñas no coinciden</strong>
@@ -49,6 +60,7 @@
           </label>
           <input class="input_field form_subject" id="repeatPassword" type="password" name="repeatPassword" formControlName="repeatPassword">
         </div>
+
 
       </div>
       <div class="form-group">
