@@ -11,6 +11,7 @@ export class PageViewComponent implements OnInit {
   private id = this.route.snapshot.params['id'];
   public gender: Gender;
   public button: string;
+  public stage: string;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private genderService: GenderService) {
@@ -20,9 +21,11 @@ export class PageViewComponent implements OnInit {
   ngOnInit() {
     if (this.id === '0') {
       this.button = 'Crear';
+      this.stage = 'Registrar nuevo';
       this.createView();
     } else {
       this.button = 'Guardar';
+      this.stage = 'Editar';
       this.editView(this.id);
     }
   }

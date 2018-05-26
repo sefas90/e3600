@@ -12,6 +12,7 @@ export class PageViewComponent implements OnInit {
   private id = this.route.snapshot.params['id'];
   public editor: Editor;
   public button: string;
+  public stage: string;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private editorService: EditorService) {
@@ -21,9 +22,11 @@ export class PageViewComponent implements OnInit {
   ngOnInit() {
     if (this.id === '0') {
       this.button = 'Crear';
+      this.stage = 'Registrar nuevo';
       this.createView();
     } else {
       this.button = 'Guardar';
+      this.stage = 'Editar';
       this.editView(this.id);
     }
   }

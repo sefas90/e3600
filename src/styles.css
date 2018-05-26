@@ -1542,6 +1542,12 @@ section
   float: right;
 }
 
+/* validations */
+
+.valid-form{
+  color: red;
+}
+
 /* elements according */
 .elements_accordions
 {

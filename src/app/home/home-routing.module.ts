@@ -13,6 +13,7 @@ import { ConciliationsViewComponent } from './conciliations/conciliations-view/c
 import { ConsignmentsViewComponent } from './consignment/consignments-view/consignments-view.component';
 import { SalesViewComponent } from './sales/sales-view/sales-view.component';
 import { AuthorsViewComponent } from './authors/authors-view/authors-view.component';
+import { UsersViewComponent } from './users/users-view/users-view.component';
 import { routes as manuscriptRoutes } from './manuscript/manuscript-routing.module';
 import { routes as bookRoutes } from './books/book-routing.module';
 import { routes as genderRoutes } from './genders/genders-routing.module';
@@ -23,23 +24,25 @@ import { routes as conciliationsRoutes } from './conciliations/conciliations-rou
 import { routes as consignmentsRoutes} from './consignment/consignments-routing.module';
 import { routes as salesRoutes } from './sales/sales-routing.module';
 import { routes as authorsRoutes } from './authors/authors-routing.module';
+import { routes as usersRoutes } from './users/users-routing.module';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent, children: [
-      {path: 'manuscripts', component: ManuscriptViewComponent, children: manuscriptRoutes},
-      {path: 'books', component: BooksViewComponent, children: bookRoutes},
-      {path: 'bookstores', component: BookstoresViewComponent, children: bookstoresRoutes},
-      {path: 'conciliations', component: ConciliationsViewComponent, children: conciliationsRoutes},
-      {path: 'consignments', component: ConsignmentsViewComponent, children: consignmentsRoutes},
-      {path: 'editors', component: EditorsViewComponent, children: editorsRoutes},
-      {path: 'genders', component: GendersViewComponent, children: genderRoutes},
-      {path: 'readers', component: ReadersViewComponent, children: readersRoutes},
-      {path: 'authors', component: AuthorsViewComponent, children: authorsRoutes},
-      {path: 'sales', component: SalesViewComponent, children: salesRoutes},
-      {path: 'home', component: MainComponent},
-      {path: '**', redirectTo: '/home'},
-      {path: '', pathMatch: 'full', redirectTo: '/home'}
-    ],
+    {path: 'manuscripts', component: ManuscriptViewComponent, children: manuscriptRoutes},
+    {path: 'books', component: BooksViewComponent, children: bookRoutes},
+    {path: 'bookstores', component: BookstoresViewComponent, children: bookstoresRoutes},
+    {path: 'conciliations', component: ConciliationsViewComponent, children: conciliationsRoutes},
+    {path: 'consignments', component: ConsignmentsViewComponent, children: consignmentsRoutes},
+    {path: 'editors', component: EditorsViewComponent, children: editorsRoutes},
+    {path: 'genders', component: GendersViewComponent, children: genderRoutes},
+    {path: 'readers', component: ReadersViewComponent, children: readersRoutes},
+    {path: 'authors', component: AuthorsViewComponent, children: authorsRoutes},
+    {path: 'sales', component: SalesViewComponent, children: salesRoutes},
+    {path: 'users', component: UsersViewComponent, children: usersRoutes},
+    {path: 'home', component: MainComponent},
+    {path: '**', redirectTo: '/home'},
+    {path: '', pathMatch: 'full', redirectTo: '/home'}
+  ],
     canActivate: [AuthGuard]
   }
 ];

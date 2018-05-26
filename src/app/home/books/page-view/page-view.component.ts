@@ -13,6 +13,7 @@ export class PageViewComponent implements OnInit {
   public button: string;
   public genderId: any;
   public authorId: any;
+  public stage: string;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private booksService: BooksService) {
@@ -22,9 +23,11 @@ export class PageViewComponent implements OnInit {
   ngOnInit() {
     if (this.id === '0') {
       this.button = 'Crear';
+      this.stage = 'Registrar nuevo';
       this.createView();
     } else {
       this.button = 'Guardar';
+      this.stage = 'Editar';
       this.editView(this.id);
     }
   }
