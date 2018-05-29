@@ -7,6 +7,7 @@ import { RolesRoutingModule } from './roles-routing.module';
 import { PageViewComponent } from './page-view/page-view.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { RolesViewComponent } from './roles-view/roles-view.component';
+import { RolePermissionsComponent } from './role-permissions/role-permissions.component';
 import { RoleService } from './roles.service';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { RoleService } from './roles.service';
     RolesViewComponent,
     ListViewComponent,
     PageViewComponent,
+    RolePermissionsComponent
   ],
   providers: [
     RoleService

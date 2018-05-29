@@ -28,15 +28,11 @@ export class ListViewComponent implements OnInit {
   }
 
   createRole() {
-    this.router.navigate(['/roles/page', {id: 0}], {skipLocationChange: true});
+    this.router.navigate(['/roles/page'], {skipLocationChange: true});
   }
 
-  editRole(id) {
-    this.router.navigate(['/roles/page', {id: id}], {skipLocationChange: true});
-  }
-
-  viewRole(code) {
-    this.router.navigate(['roles/watch', {code: code}], {skipLocationChange: true});
+  permissionsRole(id) {
+    this.router.navigate(['/roles/permissions', {id: id}], {skipLocationChange: true});
   }
 
   openModal(role) {

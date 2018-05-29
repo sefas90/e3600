@@ -31,7 +31,6 @@ export class PageViewComponent implements OnInit {
     this.registrationFormGroup = this.formBuilder.group({
       username: ['', Validators.required],
       name: ['', Validators.required],
-      role: ['', Validators.required],
       passwordFormGroup: this.passwordFormGroup
     });
   }

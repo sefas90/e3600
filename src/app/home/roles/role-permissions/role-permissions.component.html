@@ -1,0 +1,38 @@
+<div class="main-content">
+  <form #roleForm="ngForm" (ngSubmit)="saveForm(roleForm.value)" novalidate>
+    <div class="action-buttons row">
+      <div class="button border_button element_button">
+        <a [routerLink]="['/roles']" class="d-flex justify-content-center">
+          Volver
+        </a>
+      </div>
+      <h2>{{this.stage}} rol</h2>
+    </div>
+    <div class="form-control">
+
+      <div class="form-group row">
+        <div class="col-md-4">
+          <label for="role" class="col-2 col-form-label">Rol</label>
+          <input class="input_field form_subject" type="text" [(ngModel)]="role.role" id="role" name="role">
+        </div>
+        <div class="col-md-4">
+          <label for="description" class="col-2 col-form-label">Descripcion</label>
+          <input class="input_field form_subject" type="text" [(ngModel)]="role.description" id="description" name="description">
+        </div>
+      </div>
+      <div class="form-check-inline">
+        Resources
+      </div>
+      <div class="form-group row">
+        <div class="col-md-12">
+          asd
+        </div>
+      </div>
+
+      <div class="text-right">
+        <button type="submit" class="submit_btn trans_300">{{this.button}}</button>
+      </div>
+
+    </div>
+  </form>
+</div>

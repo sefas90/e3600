@@ -30,11 +30,8 @@
 
       <div class="form-group">
         <label for="role">Rol*
-          <div class="valid-form" *ngIf="registrationFormGroup.controls.role.errors?.required && registrationFormGroup.controls.role.touched">
-            <strong> Rol es requerido</strong>
-          </div>
         </label>
-        <input class="input_field form_subject" id="role" type="hidden" name="role" formControlName="role" (ngModel)="roleId"/>
+        <input class="input_field form_subject" id="role" type="hidden" name="role"/>
         <app-role-dropdown-component (roleId)="receiveRole($event)"></app-role-dropdown-component>
       </div>
 
