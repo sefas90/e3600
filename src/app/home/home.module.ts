@@ -16,6 +16,7 @@ import { SalesModule } from './sales/sales.module';
 import { AuthorsModule } from './authors/authors.module';
 import { UsersModule } from './users/user.module';
 import { RolesModule } from  './roles/roles.module';
+import { ResourcesModule } from  './resources/resource.module';
 import { NavbarComponent } from './navbar.component';
 
 @NgModule({
@@ -39,6 +40,7 @@ import { NavbarComponent } from './navbar.component';
     SalesModule,
     UsersModule,
     RolesModule,
+    ResourcesModule,
     ToastModule.forRoot()
   ],
   providers: []

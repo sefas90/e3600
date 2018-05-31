@@ -1,0 +1,20 @@
+<div class="col-lg-12 page-list">
+  <div class="action-buttons">
+  </div>
+  <div class="table-content">
+    <div class="collapse show" id="collapseExample">
+      <ul *ngFor="let resource of resources" style="list-style-type:disc">
+        <li [id]="resource.id">
+          {{resource.name}}
+          <div *ngIf="resource.children.length > 0">
+            <ul *ngFor="let child of resource.children" style="margin-left: 15px; list-style-type:circle">
+              <li>
+                {{child.name}}
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

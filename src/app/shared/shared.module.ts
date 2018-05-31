@@ -11,6 +11,7 @@ import { SelectEditorDropdownComponent } from './editor-dropdown/editor-dropdown
 import { SelectBookstoreDropdownComponent } from './bookstore-dropdown/bookstore-dropdown.component';
 import { SelectBookDropdownComponent } from './book-dropdown/book-dropdown.component';
 import { SelectRoleDropdownComponent } from './role-dropdown/role-dropdown.component';
+import { TreeViewComponent } from './directives/tree-view.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { SelectRoleDropdownComponent } from './role-dropdown/role-dropdown.compo
     SelectEditorDropdownComponent,
     SelectBookstoreDropdownComponent,
     SelectBookDropdownComponent,
-    SelectRoleDropdownComponent
+    SelectRoleDropdownComponent,
+    TreeViewComponent
   ],
   providers: [
     HttpClientService,
@@ -38,7 +40,8 @@ import { SelectRoleDropdownComponent } from './role-dropdown/role-dropdown.compo
     SelectEditorDropdownComponent,
     SelectBookstoreDropdownComponent,
     SelectBookDropdownComponent,
-    SelectRoleDropdownComponent
+    SelectRoleDropdownComponent,
+    TreeViewComponent
   ]
 })
 export class SharedModule { }

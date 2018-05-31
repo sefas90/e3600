@@ -23,6 +23,10 @@ export class RoleService {
     return this.http.get(this.url + id);
   }
 
+  getRolePermissions(id): Observable<any> {
+    return this.http.get('http://e3600.test/api/v1/rolePermissions/' + id);
+  }
+
   createRole(data: Role): Observable<any> {
     return this.http.post(this.url, data);
   }

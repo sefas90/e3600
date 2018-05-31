@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RoleService } from '../roles.service';
+import { Role } from '../role';
 
 @Component({
   selector: 'app-role-permissions-view',
@@ -9,11 +10,20 @@ import { RoleService } from '../roles.service';
 })
 export class RolePermissionsComponent implements OnInit {
   private id = this.route.snapshot.params['id'];
-  public role: any;
+  public role: Role;
+  public rolePermissions: any;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private roleService: RoleService) {
-
+    this.role = new Role (null, null, null);
+    this.roleService.getRolePermissions(this.id).subscribe(
+      result => {
+        this.rolePermissions = result;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit() {

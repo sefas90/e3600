@@ -15,6 +15,7 @@ import { SalesViewComponent } from './sales/sales-view/sales-view.component';
 import { AuthorsViewComponent } from './authors/authors-view/authors-view.component';
 import { UsersViewComponent } from './users/users-view/users-view.component';
 import { RolesViewComponent } from './roles/roles-view/roles-view.component';
+import { ResourcesViewComponent } from './resources/resource-view/resource-view.component';
 import { routes as manuscriptRoutes } from './manuscript/manuscript-routing.module';
 import { routes as bookRoutes } from './books/book-routing.module';
 import { routes as genderRoutes } from './genders/genders-routing.module';
@@ -27,6 +28,7 @@ import { routes as salesRoutes } from './sales/sales-routing.module';
 import { routes as authorsRoutes } from './authors/authors-routing.module';
 import { routes as usersRoutes } from './users/users-routing.module';
 import { routes as rolesRoutes } from './roles/roles-routing.module';
+import { routes as resourcesRoutes } from './resources/resource-routing.module';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent, children: [
@@ -42,6 +44,7 @@ export const routes: Routes = [
     {path: 'sales', component: SalesViewComponent, children: salesRoutes},
     {path: 'users', component: UsersViewComponent, children: usersRoutes},
     {path: 'roles', component: RolesViewComponent, children: rolesRoutes},
+    {path: 'resources', component: ResourcesViewComponent, children: resourcesRoutes},
     {path: 'home', component: MainComponent},
     {path: '**', redirectTo: '/home'},
     {path: '', pathMatch: 'full', redirectTo: '/home'}
