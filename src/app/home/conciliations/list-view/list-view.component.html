@@ -1,3 +1,32 @@
-<div>
-  list conciliations
+<div class="col-lg-12 page-list">
+  <div class="action-buttons">
+    <div class="button element_button">
+      <a (click)="createConciliation()" class="d-flex justify-content-center">
+        Nuevo
+      </a>
+    </div>
+  </div>
+  <div class="table-content">
+    <table class="table table-striped table-hover">
+      <thead class="header-sort">
+      <tr>
+        <th>No.</th>
+        <th>Cliente</th>
+        <th>Fecha</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let conciliation of conciliations">
+        <td class="text-left">{{conciliation.code}}</td>
+        <td class="text-left">{{conciliation.name}}</td>
+        <td class="text-left">{{conciliation.date}}</td>
+        <td class="text-left">
+          <button type="button" class="btn btn-default btn-sm" (click)="viewConciliation(conciliation.code)">
+            <span class="glyphicon glyphicon-edit"></span> Ver
+          </button>
+        </td>
+      </tbody>
+    </table>
+  </div>
 </div>

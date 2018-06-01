@@ -1,8 +1,8 @@
 <div class="main-content">
-  <form #consignmentForm="ngForm" (ngSubmit)="saveForm(consignmentForm.value)" novalidate>
+  <form #conciliationForm="ngForm" (ngSubmit)="saveForm(conciliationForm.value)" novalidate>
     <div class="action-buttons row">
       <div class="button border_button element_button">
-        <a [routerLink]="['/consignments']" class="d-flex justify-content-center">
+        <a [routerLink]="['/conciliations']" class="d-flex justify-content-center">
           Volver
         </a>
       </div>
@@ -11,15 +11,15 @@
 
       <div class="form-group row">
         <div class="col">
-          <label for="code" class="col-4 col-form-label">No de Consignacion</label>
+          <label for="code" class="col-4 col-form-label">No de Conciliacion</label>
           <div class="col-8">
-            <input class="input_field form_subject" type="number" [(ngModel)]="consignment.code" id="code" name="code">
+            <input class="input_field form_subject" type="number" [(ngModel)]="conciliation.code" id="code" name="code">
           </div>
         </div>
         <div class="col">
           <label for="date" class="col-2 col-form-label">Fecha</label>
           <div class="col-10">
-            <input class="input_field form_subject" type="date" [(ngModel)]="consignment.date" id="date" name="date">
+            <input class="input_field form_subject" type="date" [(ngModel)]="conciliation.date" id="date" name="date">
           </div>
         </div>
       </div>

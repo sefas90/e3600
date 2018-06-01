@@ -1,3 +1,11 @@
-/**
- * Created by pietro on 31/05/2018.
- */
+export class Conciliation {
+  constructor(
+    public id: any,
+    public code: any,
+    public date: any,
+    public id_book: any,
+    public id_bookstore: any,
+    public price: any,
+    public quantity: any
+  ) { }
+}
