@@ -6,6 +6,7 @@ import { ReadersRoutingModule } from './readers-routing.module';
 
 import { PageViewComponent} from './page-view/page-view.component';
 import { ListViewComponent } from './list-view/list-view.component';
+import { WatchViewComponent } from './watch-reader/watch-view.component';
 import { ReadersViewComponent } from './readers-view/readers-view.component';
 import { ReaderService } from './reader.service';
 
@@ -20,7 +21,8 @@ import { ReaderService } from './reader.service';
   declarations: [
     ListViewComponent,
     PageViewComponent,
-    ReadersViewComponent
+    ReadersViewComponent,
+    WatchViewComponent
   ],
   providers: [
     ReaderService

@@ -38,13 +38,14 @@ export class RolePermissionsComponent implements OnInit {
   }
 
   saveForm(value) {
-    this.roleService.createRole(value).subscribe(
+    console.log(value);
+    /*this.roleService.createRole(value).subscribe(
       result => {
-        this.router.navigate(['/roles/page', {role: result.data.id}], {skipLocationChange: true});
+        // this.router.navigate(['/roles/page'], {skipLocationChange: true});
       },
       error => {
         console.log(error);
       }
-    );
+    );*/
   }
 }

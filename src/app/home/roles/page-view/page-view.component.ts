@@ -31,7 +31,7 @@ export class PageViewComponent implements OnInit {
   saveForm(value) {
     this.roleService.createRole(value).subscribe(
       result => {
-        this.router.navigate(['/roles/permissions', {role: result.data.id}], {skipLocationChange: true});
+        this.router.navigate(['/roles/permissions', {id: result.data.id}], {skipLocationChange: true});
       },
       error => {
         console.log(error);

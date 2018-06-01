@@ -36,6 +36,10 @@ export class ListViewComponent implements OnInit {
     this.router.navigate(['/editors/page', {id: id}], {skipLocationChange: true});
   }
 
+  viewEditor(id) {
+    this.router.navigate(['/editors/view', {id: id}], {skipLocationChange: true});
+  }
+
   openModal(editor) {
     this.editor = editor;
   }

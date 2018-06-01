@@ -27,9 +27,9 @@
         <div class="col-md-12">
           <div class="table-content">
             <div class="collapse show" id="collapseExample">
-              <ul *ngFor="let resource of rolePermissions" style="list-style-type:disc">
+              <ul *ngFor="let resource of rolePermissions; let i = index" style="list-style-type:disc">
                 <li [id]="resource.id">
-                  {{resource.name}} <input type="checkbox"  [checked]="resource.pexecute">
+                  {{resource.name}} <input type="checkbox" [checked]="resource.pexecute" [(ngModel)]="rolePermissions[i].pexecute" [name]="resource.id" [id]="resource.id">
                   <div *ngIf="resource.children.length > 0">
                     <ul *ngFor="let child of resource.children" style="margin-left: 15px; list-style-type:circle">
                       <li>
@@ -41,22 +41,22 @@
                         </span>
                         <span class="text-right body-description">
                           <label class="ui-checkbox checkbox-options">
-                            <input [checked]="child.pread" name="checkbox2" type="checkbox" data-ng-model="item.permissionDelete" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" aria-invalid="false">
+                            <input [checked]="child.pread" type="checkbox" [id]="child.id" [name]="child.id" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" aria-invalid="false">
                           </label>
                         </span>
                         <span class="text-right body-description">
                           <label class="ui-checkbox checkbox-options">
-                            <input [checked]="child.pwrite" name="checkbox3" type="checkbox" data-ng-model="item.permissionCreate" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" aria-invalid="false">
+                            <input [checked]="child.pwrite" type="checkbox" [id]="child.id" [name]="child.id" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" aria-invalid="false">
                           </label>
                         </span>
                         <span class="text-right body-description">
                           <label class="ui-checkbox checkbox-options">
-                            <input [checked]="child.pcreate" name="checkbox4" type="checkbox" data-ng-model="item.permissionWrite" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" aria-invalid="false">
+                            <input [checked]="child.pcreate" type="checkbox" [id]="child.id" [name]="child.id" data-ng-model="item.permissionWrite" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" aria-invalid="false">
                           </label>
                         </span>
                         <span class="text-right body-description">
                           <label class="ui-checkbox checkbox-options">
-                            <input [checked]="child.pdelete" name="checkbox5" type="checkbox" data-ng-model="item.permissionRead" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" aria-invalid="false">
+                            <input [checked]="child.pdelete" type="checkbox" [id]="child.id" [name]="child.id" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" aria-invalid="false">
                           </label>
                         </span>
                       </li>

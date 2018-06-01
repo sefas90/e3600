@@ -22,6 +22,10 @@ export class ReaderService {
     return this.http.get(this.url + id);
   }
 
+  viewReader(id): Observable<any> {
+    return this.http.get('http://e3600.test/api/v1/viewReader/' + id);
+  }
+
   createReader(data: Reader): Observable<any> {
     return this.http.post(this.url, data);
   }

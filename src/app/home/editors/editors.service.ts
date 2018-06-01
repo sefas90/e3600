@@ -22,6 +22,10 @@ export class EditorService {
     return this.http.get(this.url + id);
   }
 
+  viewEditor(id): Observable<any> {
+    return this.http.get('http://e3600.test/api/v1/viewEditor/' + id);
+  }
+
   createEditor(data: Editor): Observable<any> {
     return this.http.post(this.url, data);
   }
