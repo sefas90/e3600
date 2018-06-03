@@ -30,6 +30,10 @@ export class BooksService {
     return this.http.post(this.url, data);
   }
 
+  warehouseBook(data): Observable<any> {
+    return this.http.post('http://e3600.test/api/v1/warehouses/', data);
+  }
+
   editBook(data: Book, id): Observable<any> {
     return this.http.put(this.url + id, data);
   }

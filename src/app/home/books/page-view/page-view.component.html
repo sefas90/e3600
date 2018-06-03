@@ -25,16 +25,9 @@
       </div>
 
       <div class="form-group row">
-        <label for="stock" class="col-2 col-form-label">Stock</label>
-        <div class="col-10">
-          <input class="input_field form_subject" type="text" [(ngModel)]="book.stock" id="stock" name="stock" required minlength="3" maxlength="30">
-        </div>
-      </div>
-
-      <div class="form-group row">
         <label for="price" class="col-2 col-form-label">Precio</label>
         <div class="col-10">
-          <input class="input_field form_subject" type="number" [(ngModel)]="book.price" id="price" name="price" required minlength="3" maxlength="30">
+          <input class="input_field form_subject" type="number" [(ngModel)]="book.price" id="price" name="price" required minlength="3" maxlength="30" readonly>
         </div>
       </div>
 
@@ -47,7 +40,7 @@
 
       <div class="form-group row">
         <label for="isbn" class="col-2 col-form-label">Genero</label>
-        <div class="col-10">
+        <div class="col-10">ng serve
           <app-author-dropdown-component (authorId)="receiveAuthorId($event)" id="author"></app-author-dropdown-component>
         </div>
       </div>

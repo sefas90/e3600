@@ -54,7 +54,7 @@ export class PageViewComponent implements OnInit {
           this.router.navigate(['/authors/list'], {skipLocationChange: true});
         },
         error => {
-          console.log(error);
+          alert(error.error.message);
         }
       );
     } else {

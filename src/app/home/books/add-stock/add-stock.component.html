@@ -1,0 +1,67 @@
+<div class="main-content">
+  <form #bookForm="ngForm" (ngSubmit)="saveForm(bookForm.value)" novalidate>
+    <div class="action-buttons row">
+      <div class="button border_button element_button">
+        <a [routerLink]="['/books']" class="d-flex justify-content-center">
+          Volver
+        </a>
+      </div>
+    </div>
+    <div class="form-control">
+
+      <div class="form-group row">
+        <div class="col">
+          <label for="code" class="col-4 col-form-label">No</label>
+          <div class="col-8">
+            <input class="input_field form_subject" type="number" [(ngModel)]="code" id="code" name="code">
+          </div>
+        </div>
+        <div class="col">
+          <label for="date" class="col-2 col-form-label">Fecha</label>
+          <div class="col-10">
+            <input class="input_field form_subject" type="date" [(ngModel)]="date" id="date" name="date" readonly>
+          </div>
+        </div>
+      </div>
+
+      <table class="table table-striped table-hover">
+        <thead class="header-sort">
+        <tr>
+          <th>Libro</th>
+          <th>Cantidad</th>
+          <th>Añadir/Eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="text-left">
+            <app-book-dropdown-component (bookId)="receiveBookId($event)"></app-book-dropdown-component>
+          </td>
+          <td class="text-left">
+            <input class="input_field form_subject" type="number" [(ngModel)]="newAttribute.quantity" name="newQuantity">
+          </td>
+          <td>
+            <a (click)="addField()" class="pointer"> + </a>
+          </td>
+        </tr>
+        <tr *ngFor="let field of fieldArray; index as i">
+          <td class="text-left">
+            <app-book-dropdown-component [selectedBook]="field.bookId" ></app-book-dropdown-component>
+          </td>
+          <td class="text-left">
+            <input class="input_field form_subject" type="number" [(ngModel)]="field.quantity" name="{{field.quantity}}" readonly>
+          </td>
+          <td>
+            <a (click)="removeField()" class="pointer"> X </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="text-right">
+        <button type="submit" class="submit_btn trans_300">{{this.button}}</button>
+      </div>
+
+    </div>
+  </form>
+</div>

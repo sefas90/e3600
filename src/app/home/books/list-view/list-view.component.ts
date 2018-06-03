@@ -33,6 +33,10 @@ export class ListViewComponent implements OnInit {
     this.router.navigate(['/books/page', {id: id}], {skipLocationChange: true});
   }
 
+  addToStock() {
+    this.router.navigate(['/books/stock'], {skipLocationChange: true});
+  }
+
   deleteBook(id) {
     this.booksService.deleteBook(id).subscribe(
       result => {

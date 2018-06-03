@@ -7,6 +7,7 @@ import { BooksRoutingModule } from './book-routing.module';
 import { PageViewComponent } from './page-view/page-view.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { BooksViewComponent } from './books-view/books-view.component';
+import { AddStockComponent } from './add-stock/add-stock.component';
 import { BooksService } from './books.service';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { BooksService } from './books.service';
   declarations: [
     BooksViewComponent,
     ListViewComponent,
-    PageViewComponent
+    PageViewComponent,
+    AddStockComponent
   ],
   providers: [
     BooksService
