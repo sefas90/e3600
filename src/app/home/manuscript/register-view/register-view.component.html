@@ -16,9 +16,6 @@
           <div class="valid-form" *ngIf="manuscriptFormGroup.controls.title.errors?.minlength">
             <strong> Minimo 4 caracteres </strong>
           </div>
-          <div class="valid-form" *ngIf="manuscriptFormGroup.controls.title.errors?.pattern">
-            <strong> Caracteres no permitidos </strong>
-          </div>
         </label>
         <div class="col-10">
           <input class="input_field form_subject" type="text" [(ngModel)]="manuscript.title" id="title" formControlName="title">
@@ -28,15 +25,14 @@
       <div class="form-group row">
         <label for="author" class="col-2 col-form-label">Autor</label>
         <div class="col-10">
-          {{manuscriptFormGroup.controls.author.errors?.required}}
-          <app-author-dropdown-component (authorId)="receiveAuthorId($event)" id="author" formControlName="author" ></app-author-dropdown-component>
+          <app-author-dropdown-component (authorId)="receiveAuthorId($event)" id="author" ></app-author-dropdown-component>
         </div>
       </div>
 
       <div class="form-group row">
         <label for="gender" class="col-2 col-form-label">Genero</label>
         <div class="col-10">
-          <app-gender-dropdown-component (genderId)="receiveGenderId($event)" id="gender" formControlName="gender" ></app-gender-dropdown-component>
+          <app-gender-dropdown-component (genderId)="receiveGenderId($event)" id="gender"></app-gender-dropdown-component>
         </div>
       </div>
 

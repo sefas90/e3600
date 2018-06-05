@@ -25,15 +25,14 @@ export class RegisterViewComponent implements OnInit {
     this.manuscriptFormGroup = new FormGroup({
       title: new FormControl('', [
         Validators.required,
-        Validators.minLength(4),
-        Validators.pattern('^[a-zA-Z \-\']+')
-      ]),
+        Validators.minLength(4)
+      ])/*,
       author: new FormControl('', [
         Validators.required
       ]),
       gender: new FormControl('', [
         Validators.required
-      ])
+      ])*/
     });
     if (this.id === '0') {
       this.button = 'Crear';
