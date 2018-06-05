@@ -1,31 +1,53 @@
 <div class="main-content">
-  <form #authorForm="ngForm" (ngSubmit)="saveForm(authorForm.value)" novalidate>
-    <div class="action-buttons row">
-      <div class="button border_button element_button">
-        <a [routerLink]="['/authors']" class="d-flex justify-content-center">
-          Volver
-        </a>
-      </div>
-      <h2>{{this.stage}} autor</h2>
+  <div class="action-buttons row">
+    <div class="button border_button element_button">
+      <a [routerLink]="['/authors']" class="d-flex justify-content-center">
+        Volver
+      </a>
     </div>
-    <div class="form-control">
+    <h2>{{this.stage}} autor</h2>
+  </div>
 
+  <form [formGroup]="authorFormGroup" (ngSubmit)="saveForm(authorFormGroup.value)" novalidate>
+    <div class="form-control">
       <div class="form-group row">
-        <label for="name" class="col-2 col-form-label">Nombre</label>
+        <label for="name" class="col-12 col-form-label">Nombre*
+          <div class="valid-form" *ngIf="authorFormGroup.controls.name.errors?.required && authorFormGroup.controls.name.touched">
+            <strong> Nombre es requerido</strong>
+          </div>
+          <div class="valid-form" *ngIf="authorFormGroup.controls.name.errors?.minlength">
+            <strong> Minimo 4 caracteres </strong>
+          </div>
+          <div class="valid-form" *ngIf="authorFormGroup.controls.name.errors?.pattern">
+            <strong> Caracteres no permitidos </strong>
+          </div>
+        </label>
         <div class="col-10">
-          <input class="input_field form_subject" type="text" [(ngModel)]="author.name" id="name" name="name" required minlength="3" maxlength="20">
+          <input class="input_field form_subject" type="text" [(ngModel)]="author.name" id="name" formControlName="name">
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="last_name" class="col-2 col-form-label">Apellidos</label>
+        <label for="last_name" class="col-12 col-form-label">Apellidos*
+          <div class="valid-form" *ngIf="authorFormGroup.controls.last_name.errors?.required && authorFormGroup.controls.last_name.touched">
+            <strong> Apellido(s) requerido(s)</strong>
+          </div>
+          <div class="valid-form" *ngIf="authorFormGroup.controls.last_name.errors?.minlength">
+            <strong> Minimo 4 caracteres </strong>
+          </div>
+          <div class="valid-form" *ngIf="authorFormGroup.controls.name.errors?.pattern">
+            <strong> Caracteres no permitidos </strong>
+          </div>
+        </label>
         <div class="col-10">
-          <input class="input_field form_subject" type="text" [(ngModel)]="author.last_name" id="last_name" name="last_name" required minlength="3" maxlength="30">
+          <input class="input_field form_subject" type="text" [(ngModel)]="author.last_name" id="last_name" formControlName="last_name" >
         </div>
       </div>
 
       <div class="text-right">
-        <button type="submit" class="submit_btn trans_300">{{this.button}}</button>
+        <button type="submit" class="trans_300" [ngClass]="{'button border_button_black': authorFormGroup.invalid, 'submit_btn':authorFormGroup.valid}"
+                [disabled]="!authorFormGroup.valid">{{this.button}}
+        </button>
       </div>
 
     </div>

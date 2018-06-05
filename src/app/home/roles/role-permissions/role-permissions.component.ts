@@ -9,6 +9,7 @@ import { Role } from '../role';
   templateUrl: './role-permissions.component.html'
 })
 export class RolePermissionsComponent implements OnInit {
+  roleFormGroup: FormGroup;
   private id = this.route.snapshot.params['id'];
   public role: Role;
   public rolePermissions: any;
@@ -27,6 +28,13 @@ export class RolePermissionsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.roleFormGroup = new FormGroup({
+      role: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4)
+      ]),
+      description: new FormControl('', [])
+    });
     this.roleService.getRole(this.id).subscribe(
       result => {
         this.role = result;

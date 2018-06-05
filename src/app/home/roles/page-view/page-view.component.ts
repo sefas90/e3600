@@ -9,6 +9,7 @@ import { Role } from '../role';
   templateUrl: './page-view.component.html'
 })
 export class PageViewComponent implements OnInit {
+  roleFormGroup: FormGroup;
   public role: Role;
   public button: string;
   public stage: string;
@@ -19,6 +20,13 @@ export class PageViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.roleFormGroup = new FormGroup({
+      role: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4)
+      ]),
+      description: new FormControl('', [])
+    });
     this.button = 'Crear';
     this.stage = 'Registrar nuevo';
     this.createView();

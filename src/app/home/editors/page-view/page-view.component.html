@@ -1,40 +1,64 @@
 <div class="main-content">
-  <form #editorForm="ngForm" (ngSubmit)="saveForm(editorForm.value)" novalidate>
-    <div class="action-buttons row">
-      <div class="button border_button element_button">
-        <a [routerLink]="['/editors']" class="d-flex justify-content-center">
-          Volver
-        </a>
-      </div>
-      <h2>{{this.stage}} editor</h2>
+  <div class="action-buttons row">
+    <div class="button border_button element_button">
+      <a [routerLink]="['/editors']" class="d-flex justify-content-center">
+        Volver
+      </a>
     </div>
-    <div class="form-control">
-
+    <h2>{{this.stage}} editor</h2>
+  </div>
+  <div class="form-control">
+    <form [formGroup]="editorsFormGroup" (ngSubmit)="saveForm(editorsFormGroup.value)" novalidate>
       <div class="form-group row">
-        <label for="name" class="col-2 col-form-label">Nombre</label>
+        <label for="name" class="col-12 col-form-label">Nombre*
+          <div class="valid-form" *ngIf="editorsFormGroup.controls.name.errors?.required && editorsFormGroup.controls.name.touched">
+            <strong> Nombre es requerido</strong>
+          </div>
+          <div class="valid-form" *ngIf="editorsFormGroup.controls.name.errors?.minlength">
+            <strong> Minimo 4 caracteres </strong>
+          </div>
+          <div class="valid-form" *ngIf="editorsFormGroup.controls.name.errors?.pattern">
+            <strong> Caracteres no permitidos </strong>
+          </div>
+        </label>
         <div class="col-10">
-          <input class="input_field form_subject" type="text" [(ngModel)]="editor.name" id="name" name="name">
+          <input class="input_field form_subject" type="text" [(ngModel)]="editor.name" id="name" formControlName="name">
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="phone" class="col-2 col-form-label">Telefono</label>
+        <label for="phone" class="col-12 col-form-label">Telefono*
+          <div class="valid-form" *ngIf="editorsFormGroup.controls.phone.errors?.required && editorsFormGroup.controls.phone.touched">
+            <strong> El telefono requerido</strong>
+          </div>
+          <div class="valid-form" *ngIf="editorsFormGroup.controls.phone.errors?.minlength">
+            <strong> Minimo 7 numeros </strong>
+          </div>
+          <div class="valid-form" *ngIf="editorsFormGroup.controls.phone.errors?.pattern">
+            <strong> Caracteres no permitidos </strong>
+          </div>
+        </label>
         <div class="col-10">
-          <input class="input_field form_subject" type="number" [(ngModel)]="editor.phone" id="phone" name="phone">
+          <input class="input_field form_subject" type="number" [(ngModel)]="editor.phone" id="phone" formControlName="phone">
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="direction" class="col-2 col-form-label">Direccion</label>
+        <label for="direction" class="col-12 col-form-label">Direccion*
+          <div class="valid-form" *ngIf="editorsFormGroup.controls.direction.errors?.required && editorsFormGroup.controls.direction.touched">
+            <strong> La direccion es requerida</strong>
+          </div>
+        </label>
         <div class="col-10">
-          <input class="input_field form_subject" type="text" [(ngModel)]="editor.direction" id="direction" name="direction">
+          <input class="input_field form_subject" type="text" [(ngModel)]="editor.direction" id="direction" formControlName="direction">
         </div>
       </div>
 
       <div class="text-right">
-        <button type="submit" class="submit_btn trans_300">{{this.button}}</button>
+        <button type="submit" class="trans_300" [ngClass]="{'button border_button_black': editorsFormGroup.invalid, 'submit_btn':editorsFormGroup.valid}"
+          [disabled]="!editorsFormGroup.valid">{{this.button}}
+        </button>
       </div>
-
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

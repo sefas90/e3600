@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { RegistrationValidator } from './registration-validator';
 import { UserService } from '../user.service';
 import { User } from '../user';
-import { RegistrationValidator } from './registration-validator';
 
 @Component({
   selector: 'app-create-view',

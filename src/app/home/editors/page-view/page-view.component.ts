@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { EditorService } from '../editors.service';
 import { Editor } from '../editor';
 
@@ -9,17 +10,33 @@ import { Editor } from '../editor';
   styleUrls: ['./page-view.component.scss']
 })
 export class PageViewComponent implements OnInit {
+  editorsFormGroup: FormGroup;
   private id = this.route.snapshot.params['id'];
   public editor: Editor;
   public button: string;
   public stage: string;
-  constructor(private route: ActivatedRoute,
+  constructor(private formBuilder: FormBuilder,
+              private route: ActivatedRoute,
               private router: Router,
               private editorService: EditorService) {
     this.editor = new Editor (null, null, null, null);
   }
 
   ngOnInit() {
+    this.editorsFormGroup = new FormGroup({
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.pattern('^[a-zA-Z \-\']+')
+      ]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^(0|[1-9][0-9]*)')
+      ]),
+      direction: new FormControl('', [
+        Validators.required
+      ])
+    });
     if (this.id === '0') {
       this.button = 'Crear';
       this.stage = 'Registrar nuevo';

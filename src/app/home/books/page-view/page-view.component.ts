@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { BooksService } from '../books.service';
 import { Book } from '../book';
 
@@ -8,6 +9,7 @@ import { Book } from '../book';
   templateUrl: './page-view.component.html'
 })
 export class PageViewComponent implements OnInit {
+  bookFormGroup: FormGroup;
   private id = this.route.snapshot.params['id'];
   public book: Book;
   public button: string;
@@ -33,10 +35,41 @@ export class PageViewComponent implements OnInit {
   }
 
   createView() {
-
+    this.bookFormGroup = new FormGroup({
+      title: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4)
+      ]),
+      isbn: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^(0|[1-9][0-9]*)')
+      ]),
+      price: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^(0|[1-9][0-9]*)')
+      ]),
+      stock: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^(0|[1-9][0-9]*)')
+      ])
+    });
   }
 
   editView(id) {
+    this.bookFormGroup = new FormGroup({
+      title: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4)
+      ]),
+      isbn: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^(0|[1-9][0-9]*)')
+      ]),
+      price: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^(0|[1-9][0-9]*)')
+      ])
+    });
     this.booksService.getBook(id).subscribe(
       result => {
         this.book = result;

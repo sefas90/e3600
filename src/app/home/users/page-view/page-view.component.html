@@ -10,8 +10,8 @@
 
   <form [formGroup]="registrationFormGroup" (ngSubmit)="saveForm(registrationFormGroup.value)">
     <div class="form-control">
-      <div class="form-group">
-        <label for="name">Nombre*
+      <div class="form-group row">
+        <label for="name" class="col-12 col-form-label">Nombre*
           <div class="valid-form" *ngIf="registrationFormGroup.controls.name.errors?.required && registrationFormGroup.controls.name.touched">
             <strong> Nombre es requerido</strong>
           </div>
@@ -61,7 +61,8 @@
 
       </div>
       <div class="form-group">
-        <button class="submit_btn trans_300" type="submit" [disabled]="!registrationFormGroup.valid">Register</button>
+        <button class="submit_btn trans_300" type="submit" [ngClass]="{'button border_button_black': registrationFormGroup.invalid, 'submit_btn':registrationFormGroup.valid}"
+                [disabled]="!registrationFormGroup.valid">Register</button>
       </div>
     </div>
   </form>

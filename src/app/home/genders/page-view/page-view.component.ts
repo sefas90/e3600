@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { GenderService } from '../gender.service';
 import { Gender } from '../gender';
 
@@ -8,6 +9,7 @@ import { Gender } from '../gender';
   templateUrl: './page-view.component.html'
 })
 export class PageViewComponent implements OnInit {
+  genderFormGroup: FormGroup;
   private id = this.route.snapshot.params['id'];
   public gender: Gender;
   public button: string;
@@ -19,6 +21,13 @@ export class PageViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.genderFormGroup = new FormGroup({
+      gender: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.pattern('[a-zA-Z][a-zA-Z]+')
+      ])
+    });
     if (this.id === '0') {
       this.button = 'Crear';
       this.stage = 'Registrar nuevo';

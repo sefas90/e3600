@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Manuscript } from '../manuscript';
 import { ManuscriptService } from '../manuscript.service';
 
@@ -8,6 +9,7 @@ import { ManuscriptService } from '../manuscript.service';
   templateUrl: './register-view.component.html'
 })
 export class RegisterViewComponent implements OnInit {
+  manuscriptFormGroup: FormControl;
   private id = this.route.snapshot.params['id'];
   public manuscript: any;
   public button: string;
@@ -20,6 +22,19 @@ export class RegisterViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.manuscriptFormGroup = new FormGroup({
+      title: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.pattern('^[a-zA-Z \-\']+')
+      ]),
+      author: new FormControl('', [
+        Validators.required
+      ]),
+      gender: new FormControl('', [
+        Validators.required
+      ])
+    });
     if (this.id === '0') {
       this.button = 'Crear';
       this.createView();

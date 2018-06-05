@@ -1,5 +1,5 @@
 <div class="main-content">
-  <form #roleForm="ngForm" (ngSubmit)="saveForm(roleForm.value)" novalidate>
+  <form [formGroup]="roleFormGroup" (ngSubmit)="saveForm(roleFormGroup.value)" novalidate>
     <div class="action-buttons row">
       <div class="button border_button element_button">
         <a [routerLink]="['/roles']" class="d-flex justify-content-center">
@@ -12,12 +12,19 @@
 
       <div class="form-group row">
         <div class="col-md-4">
-          <label for="role" class="col-2 col-form-label">Rol</label>
-          <input class="input_field form_subject" type="text" [(ngModel)]="role.role" id="role" name="role">
+          <label for="role" class="col-12 col-form-label">Rol*
+            <div class="valid-form" *ngIf="roleFormGroup.controls.role.errors?.required && roleFormGroup.controls.role.touched">
+              <strong> Nombre es requerido</strong>
+            </div>
+            <div class="valid-form" *ngIf="roleFormGroup.controls.role.errors?.minlength">
+              <strong> Minimo 4 caracteres </strong>
+            </div>
+          </label>
+          <input class="input_field form_subject" type="text" [(ngModel)]="role.role" id="role" formControlName="role">
         </div>
         <div class="col-md-4">
-          <label for="description" class="col-2 col-form-label">Descripcion</label>
-          <input class="input_field form_subject" type="text" [(ngModel)]="role.description" id="description" name="description">
+          <label for="description" class="col-12 col-form-label">Descripcion</label>
+          <input class="input_field form_subject" type="text" [(ngModel)]="role.description" id="description" formControlName="description">
         </div>
       </div>
       <div class="form-check-inline">

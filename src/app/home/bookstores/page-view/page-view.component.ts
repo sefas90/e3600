@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { BookstoreService } from '../bookstore.service';
 import { Bookstore } from '../bookstore';
 
@@ -8,6 +9,7 @@ import { Bookstore } from '../bookstore';
   templateUrl: './page-view.component.html'
 })
 export class PageViewComponent implements OnInit {
+  bookstoreFormGroup: FormGroup;
   private id = this.route.snapshot.params['id'];
   public bookstore: Bookstore;
   public button: string;
@@ -19,6 +21,23 @@ export class PageViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.bookstoreFormGroup = new FormGroup({
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.pattern('^[a-zA-Z \-\']+')
+      ]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^(0|[1-9][0-9]*)')
+      ]),
+      direction: new FormControl('', [
+        Validators.required
+      ]),
+      city: new FormControl('', [
+        Validators.required
+      ])
+    });
     if (this.id === '0') {
       this.button = 'Crear';
       this.stage = 'Registrar nueva';
