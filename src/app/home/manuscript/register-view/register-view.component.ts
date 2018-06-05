@@ -9,7 +9,7 @@ import { ManuscriptService } from '../manuscript.service';
   templateUrl: './register-view.component.html'
 })
 export class RegisterViewComponent implements OnInit {
-  manuscriptFormGroup: FormControl;
+  manuscriptFormGroup: FormGroup;
   private id = this.route.snapshot.params['id'];
   public manuscript: any;
   public button: string;
