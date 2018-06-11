@@ -1,6 +1,6 @@
 <div class="col-lg-12 page-list">
   <div class="action-buttons">
-    <div class="button element_button">
+    <div class="button element_button" *ngIf="this.permissions.pcreate">
       <a (click)="createRole()" class="d-flex justify-content-center">
         Nuevo
       </a>
@@ -20,12 +20,12 @@
       <tr *ngFor="let role of roles">
         <td class="text-left">{{role.role}}</td>
         <td class="text-left">{{role.description}}</td>
-        <td class="text-left">
+        <td class="text-left" *ngIf="this.permissions.pread">
           <button type="button" class="btn btn-default btn-sm" (click)="permissionsRole(role.id)">
             <span class="glyphicon glyphicon-edit"></span> Ver
           </button>
         </td>
-        <td class="text-right">
+        <td class="text-right" *ngIf="this.permissions.pdelete && role.id !== 1">
           <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
             <a (click)="openModal(role)">
               X
@@ -37,7 +37,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="false">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="false" *ngIf="this.permissions.pdelete && role.id !== 1">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
