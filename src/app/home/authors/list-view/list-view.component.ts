@@ -14,7 +14,7 @@ import { CONSTANTS } from '../../../core/constants';
 export class ListViewComponent implements OnInit {
   public authors: any;
   public author: Author;
-  private permissions: any = {
+  public permissions: any = {
     pcreate: 0,
     pread: 0,
     pwrite: 0,
@@ -30,14 +30,6 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authorService.loadAuthors().subscribe(
-      result => {
-        this.authors = result;
-      },
-      error => {
-        console.log(<any>error);
-      }
-    );
     const data = {
       module: this.CONSTANTS.MODULES.AUTHORS,
       role: this.user.id_role
@@ -45,10 +37,17 @@ export class ListViewComponent implements OnInit {
     this.informationService.getPermissions(data).subscribe(
       response => {
         this.permissions = response;
-        console.log(this.permissions);
       },
       error => {
         console.log(error);
+      }
+    );
+    this.authorService.loadAuthors().subscribe(
+      result => {
+        this.authors = result;
+      },
+      error => {
+        console.log(<any>error);
       }
     );
   }

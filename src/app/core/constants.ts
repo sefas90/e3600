@@ -1,5 +1,19 @@
 export const CONSTANTS = {
   MODULES: {
-    AUTHORS: 6
+    MANAGEMENT: 2,
+    SALES: 3,
+    BOOKS: 4,
+    MANUSCRIPTS: 5,
+    AUTHORS: 6,
+    EDITORS: 7,
+    GENDER: 8,
+    READERS: 9,
+    BOOKSTORES: 10,
+    ROLES: 11,
+    RESOURCES: 12,
+    USERS: 13,
+    CONSIGNMENTS: 14,
+    CONCILIATIONS: 15,
+    DIRECT_SALES: 16
   }
 };

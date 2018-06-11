@@ -23,7 +23,6 @@ export class RolePermissionsComponent implements OnInit, OnChanges {
     this.roleService.getRolePermissions(this.id).subscribe(
       result => {
         this.rolePermissions = result;
-        console.log(this.rolePermissions);
       },
       error => {
         console.log(error);
@@ -50,9 +49,9 @@ export class RolePermissionsComponent implements OnInit, OnChanges {
   }
 
   saveForm(value) {
-    /*this.roleService.createRole(value).subscribe(
+    /*this.roleService.updateRole(value).subscribe(
       result => {
-        // this.router.navigate(['/roles/page'], {skipLocationChange: true});
+        this.router.navigate(['/roles/page'], {skipLocationChange: true});
       },
       error => {
         console.log(error);
@@ -66,7 +65,6 @@ export class RolePermissionsComponent implements OnInit, OnChanges {
 
   update(checkbox, id, permission) {
     checkbox = !checkbox ? 1 : 0;
-    console.log(checkbox);
     const data = {
       id: id,
       permission: permission,

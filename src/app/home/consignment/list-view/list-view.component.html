@@ -1,6 +1,6 @@
 <div class="col-lg-12 page-list">
   <div class="action-buttons">
-    <div class="button element_button">
+    <div class="button element_button" *ngIf="this.permissions.pcreate">
       <a (click)="createConsignment()" class="d-flex justify-content-center">
         Nuevo
       </a>
@@ -13,7 +13,7 @@
         <th>No.</th>
         <th>Cliente</th>
         <th>Fecha</th>
-        <th></th>
+        <th *ngIf="this.permissions.pread"></th>
       </tr>
       </thead>
       <tbody>
@@ -21,7 +21,7 @@
         <td class="text-left">{{consignment.code}}</td>
         <td class="text-left">{{consignment.name}}</td>
         <td class="text-left">{{consignment.date}}</td>
-        <td class="text-left">
+        <td class="text-left" *ngIf="this.permissions.pread">
           <button type="button" class="btn btn-default btn-sm" (click)="viewConsignment(consignment.code)">
             <span class="glyphicon glyphicon-edit"></span> Ver
           </button>

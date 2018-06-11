@@ -1,6 +1,6 @@
 <div class="col-xs-12 page-list">
   <div class="action-buttons">
-    <div class="button element_button">
+    <div class="button element_button" *ngIf="this.permissions.pcreate">
       <a (click)="createEditor()" class="d-flex justify-content-center">
         Nuevo
       </a>
@@ -13,9 +13,9 @@
         <th class="text-left">Nombre</th>
         <th class="text-left">Telefono</th>
         <th class="text-left">Direccion</th>
-        <th class="text-right"></th>
-        <th class="text-right"></th>
-        <th class="text-right"></th>
+        <th class="text-right" *ngIf="this.permissions.pread"></th>
+        <th class="text-right" *ngIf="this.permissions.pwrite"></th>
+        <th class="text-right" *ngIf="this.permissions.pdelete"></th>
       </tr>
       </thead>
       <tbody>
@@ -23,17 +23,17 @@
         <td class="text-left">{{editor.name}}</td>
         <td class="text-left">{{editor.phone}}</td>
         <td class="text-left">{{editor.direction}}</td>
-        <td class="text-right">
-          <button type="button" class="btn btn-default btn-sm" (click)="editEditor(editor.id)">
-            <span class="glyphicon glyphicon-edit"></span> Editar
-          </button>
-        </td>
-        <td class="text-right">
+        <td class="text-right"  *ngIf="this.permissions.pread">
           <button type="button" class="btn btn-default btn-sm" (click)="viewEditor(editor.id)">
             <span class="glyphicon glyphicon-edit"></span> Ver
           </button>
         </td>
-        <td class="text-right">
+        <td class="text-right" *ngIf="this.permissions.pwrite">
+          <button type="button" class="btn btn-default btn-sm" (click)="editEditor(editor.id)">
+            <span class="glyphicon glyphicon-edit"></span> Editar
+          </button>
+        </td>
+        <td class="text-right" *ngIf="this.permissions.pdelete">
           <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
             <a (click)="openModal(editor)">
               X
@@ -47,7 +47,7 @@
 </div>
 
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="false">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="false" *ngIf="this.permissions.pdelete">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

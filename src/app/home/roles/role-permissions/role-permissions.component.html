@@ -41,16 +41,47 @@
           <div class="collapse show" id="collapseExample">
             <ul *ngFor="let resource of rolePermissions; let i = index" style="list-style-type:disc">
               <li [id]="resource.id">
-                {{resource.name}} - {{resource.id}}
+                {{resource.name}} - {{resource.url.length}}
                 <span class="fa-pull-right body-description">
                     <label class="ui-checkbox checkbox-options">
                       <input [checked]="resource.pexecute" (click)="update(resource.pexecute, rolePermissions[i].id, 'pexecute')" type="checkbox">
                     </label>
                   </span>
+                <div *ngIf="resource.url.length > 0">
+                  <ul style="margin-left: 15px; list-style-type:circle">
+                    <li>
+                      <span class="text-right body-description">
+                          <label class="ui-checkbox checkbox-options">
+                            read
+                            <input [checked]="resource.pread" (click)="update(resource.pread, rolePermissions[i].id, 'pread')" type="checkbox">
+                          </label>
+                        </span>
+                      <span class="text-right body-description">
+                          <label class="ui-checkbox checkbox-options">
+                            write
+                            <input [checked]="resource.pwrite" (click)="update(resource.pwrite, rolePermissions[i].id, 'pwrite')" type="checkbox">
+                          </label>
+                        </span>
+                      <span class="text-right body-description">
+                          <label class="ui-checkbox checkbox-options">
+                            create
+                            <input [checked]="resource.pcreate" (click)="update(resource.pcreate, rolePermissions[i].id, 'pcreate')" type="checkbox">
+                          </label>
+                        </span>
+                      <span class="text-right body-description">
+                          <label class="ui-checkbox checkbox-options">
+                            delete
+                            <input [checked]="resource.pdelete" (click)="update(resource.pdelete, rolePermissions[i].id, 'pdelete')" type="checkbox">
+                          </label>
+                        </span>
+                    </li>
+                  </ul>
+                </div>
+
                 <div *ngIf="resource.children.length > 0">
                   <ul *ngFor="let child of resource.children; let j = index" style="margin-left: 15px; list-style-type:circle">
                     <li>
-                      {{child.name}} - {{child.id}}
+                      {{child.name}}
                       <span class="text-right body-description">
                           <label class="ui-checkbox checkbox-options">
                             read

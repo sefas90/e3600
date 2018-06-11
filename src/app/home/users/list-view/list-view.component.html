@@ -1,6 +1,6 @@
 <div class="col-lg-12 page-list">
   <div class="action-buttons">
-    <div class="button element_button">
+    <div class="button element_button" *ngIf="this.permissions.pcreate">
       <a (click)="createUser()" class="d-flex justify-content-center">
         Nuevo
       </a>
@@ -21,7 +21,7 @@
         <td class="text-left">{{user.name}}</td>
         <td class="text-left">{{user.username}}</td>
         <td class="text-left">{{user.role}}</td>
-        <td class="text-right">
+        <td class="text-right" *ngIf="this.permissions.pdelete">
           <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
             <a (click)="openModal(user)">
               X
