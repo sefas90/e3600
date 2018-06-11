@@ -28,9 +28,23 @@
       </div>
 
       <div class="form-group row">
-        <label for="last_name" class="col-12 col-form-label">Apellidos*
+        <label for="middle_name" class="col-12 col-form-label">Segundo Nombre
+          <div class="valid-form" *ngIf="authorFormGroup.controls.middle_name.errors?.minlength">
+            <strong> Minimo 4 caracteres </strong>
+          </div>
+          <div class="valid-form" *ngIf="authorFormGroup.controls.middle_name.errors?.pattern">
+            <strong> Caracteres no permitidos </strong>
+          </div>
+        </label>
+        <div class="col-10">
+          <input class="input_field form_subject" type="text" [(ngModel)]="author.middle_name" id="middle_name" formControlName="middle_name">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="last_name" class="col-12 col-form-label">Apellido Paterno
           <div class="valid-form" *ngIf="authorFormGroup.controls.last_name.errors?.required && authorFormGroup.controls.last_name.touched">
-            <strong> Apellido(s) requerido(s)</strong>
+            <strong> Apellido requerido</strong>
           </div>
           <div class="valid-form" *ngIf="authorFormGroup.controls.last_name.errors?.minlength">
             <strong> Minimo 4 caracteres </strong>
@@ -44,12 +58,60 @@
         </div>
       </div>
 
+      <div class="form-group row">
+        <label for="surname" class="col-12 col-form-label">Apellido Materno
+          <div class="valid-form" *ngIf="authorFormGroup.controls.surname.errors?.minlength">
+            <strong> Minimo 4 caracteres </strong>
+          </div>
+          <div class="valid-form" *ngIf="authorFormGroup.controls.surname.errors?.pattern">
+            <strong> Caracteres no permitidos </strong>
+          </div>
+        </label>
+        <div class="col-10">
+          <input class="input_field form_subject" type="text" [(ngModel)]="author.surname" id="surname" formControlName="surname" >
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="phone" class="col-12 col-form-label">Telefono*
+          <div class="valid-form" *ngIf="authorFormGroup.controls.phone.errors?.required && authorFormGroup.controls.phone.touched">
+            <strong> El telefono requerido</strong>
+          </div>
+          <div class="valid-form" *ngIf="authorFormGroup.controls.phone.errors?.minlength">
+            <strong> Minimo 7 numeros </strong>
+          </div>
+          <div class="valid-form" *ngIf="authorFormGroup.controls.phone.errors?.pattern">
+            <strong> Caracteres no permitidos </strong>
+          </div>
+        </label>
+        <div class="col-10">
+          <input class="input_field form_subject" type="number" [(ngModel)]="author.phone" id="phone" formControlName="phone">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label for="email" class="col-12 col-form-label">Correo electronico*
+          <div class="valid-form" *ngIf="authorFormGroup.controls.email.errors?.required && authorFormGroup.controls.email.touched">
+            <strong> El Correo requerido</strong>
+          </div>
+          <div class="valid-form" *ngIf="authorFormGroup.controls.email.errors?.minlength">
+            <strong> Minimo 7 numeros </strong>
+          </div>
+          <div class="valid-form" *ngIf="authorFormGroup.controls.email.errors?.pattern">
+            <strong> Debe contener @ </strong>
+          </div>
+        </label>
+        <div class="col-10">
+          <input class="input_field form_subject" type="email" [(ngModel)]="author.email" id="email" formControlName="email">
+        </div>
+      </div>
+
       <div class="text-right">
         <button type="submit" class="trans_300" [ngClass]="{'button border_button_black': authorFormGroup.invalid, 'submit_btn':authorFormGroup.valid}"
                 [disabled]="!authorFormGroup.valid">{{this.button}}
         </button>
       </div>
-
     </div>
   </form>
 </div>

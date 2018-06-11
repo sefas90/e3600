@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LogoutService } from '../shared/services/logout.service';
 import { InformationService } from '../login/information.service';
-// import { PermissionsService } from '../shared/services/permissions.service';
 
 @Component({
   selector: 'app-navbar',
@@ -29,7 +28,5 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.logoutService.logout();
-    // this.permissionsService.cleanData();
   }
-
 }

@@ -29,10 +29,27 @@ export class PageViewComponent implements OnInit {
         Validators.minLength(4),
         Validators.pattern('^[a-zA-Z \-\']+')
       ]),
+      middle_name: new FormControl('', [
+        Validators.minLength(4),
+        Validators.pattern('^[a-zA-Z \-\']+')
+      ]),
       last_name: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
         Validators.pattern('^[a-zA-Z \-\']+')
+      ]),
+      surname: new FormControl('', [
+        Validators.minLength(4),
+        Validators.pattern('^[a-zA-Z \-\']+')
+      ]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.minLength(7),
+        Validators.pattern('^(0|[1-9][0-9]*)')
+      ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[^ @]*@[^ @]*')
       ])
     });
     if (this.id === '0') {
