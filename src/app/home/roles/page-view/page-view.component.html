@@ -31,7 +31,7 @@
       </div>
 
       <div class="text-right">
-        <button type="submit" class="trans_300" [ngClass]="{'button border_button_black': roleFormGroup.invalid, 'submit_btn':roleFormGroup.valid}"
+        <button type="submit" class="trans_300" [ngClass]="{'button border_button_black disabled': roleFormGroup.invalid, 'submit_btn':roleFormGroup.valid}"
                 [disabled]="!roleFormGroup.valid">{{this.button}}</button>
       </div>
 

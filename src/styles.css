@@ -348,6 +348,10 @@ section
 .login-panel {
   margin-top: 5%;
 }
+
+.disabled {
+  cursor: not-allowed;
+}
 /*********************************
 7.2 Elements - Progress Bars
 *********************************/

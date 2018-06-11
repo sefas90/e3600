@@ -81,7 +81,7 @@
       </div>
 
       <div class="text-right">
-        <button type="submit" class="trans_300" [ngClass]="{'button border_button_black': bookFormGroup.invalid, 'submit_btn':bookFormGroup.valid}"
+        <button type="submit" class="trans_300" [ngClass]="{'button border_button_black disabled': bookFormGroup.invalid, 'submit_btn':bookFormGroup.valid}"
                 [disabled]="!bookFormGroup.valid">{{this.button}}</button>
       </div>
 

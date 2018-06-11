@@ -61,7 +61,7 @@
 
       </div>
       <div class="form-group">
-        <button class="submit_btn trans_300" type="submit" [ngClass]="{'button border_button_black': registrationFormGroup.invalid, 'submit_btn':registrationFormGroup.valid}"
+        <button class="submit_btn trans_300" type="submit" [ngClass]="{'button border_button_black disabled': registrationFormGroup.invalid, 'submit_btn':registrationFormGroup.valid}"
                 [disabled]="!registrationFormGroup.valid">Register</button>
       </div>
     </div>

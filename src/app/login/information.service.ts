@@ -7,6 +7,7 @@ export class InformationService {
 
   private data: any;
   _dashboard: any;
+  _permissions: any;
 
   constructor(public http: HttpClient) {
     this.data = null;
@@ -64,5 +65,9 @@ export class InformationService {
 
   getDashboard(): Observable<any> {
     return this._dashboard;
+  }
+
+  getPermissions(data): Observable<any> {
+    return this.http.post('http://e3600.test/api/v1/modulePermissions/', data);
   }
 }

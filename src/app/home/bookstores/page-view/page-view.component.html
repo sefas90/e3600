@@ -73,7 +73,7 @@
       </div>
 
       <div class="text-right">
-        <button type="submit" class="trans_300" [ngClass]="{'button border_button_black': bookstoreFormGroup.invalid, 'submit_btn':bookstoreFormGroup.valid}"
+        <button type="submit" class="trans_300" [ngClass]="{'button border_button_black disabled': bookstoreFormGroup.invalid, 'submit_btn':bookstoreFormGroup.valid}"
                 [disabled]="!bookstoreFormGroup.valid">{{this.button}}</button>
       </div>
 

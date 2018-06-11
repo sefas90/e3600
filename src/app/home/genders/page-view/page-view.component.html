@@ -28,7 +28,7 @@
       </div>
 
       <div class="text-right">
-        <button type="submit" class="trans_300" [ngClass]="{'button border_button_black': genderFormGroup.invalid, 'submit_btn':genderFormGroup.valid}"
+        <button type="submit" class="trans_300" [ngClass]="{'button border_button_black disabled': genderFormGroup.invalid, 'submit_btn':genderFormGroup.valid}"
                 [disabled]="!genderFormGroup.valid">{{this.button}}</button>
       </div>
     </form>

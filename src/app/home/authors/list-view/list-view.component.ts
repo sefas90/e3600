@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthorService } from '../author.service';
 import { Author } from '../author';
+import { InformationService } from '../../../login/information.service';
+import { CONSTANTS } from '../../../core/constants';
 
 @Component({
   selector: 'app-list-view',
@@ -12,8 +14,18 @@ import { Author } from '../author';
 export class ListViewComponent implements OnInit {
   public authors: any;
   public author: Author;
+  private permissions: any = {
+    pcreate: 0,
+    pread: 0,
+    pwrite: 0,
+    pdelete: 0,
+    pexecute: 0
+  };
+  private CONSTANTS = CONSTANTS;
+  private user = this.informationService.getAttributeFromData('user');
   constructor(private router: Router,
-              private authorService: AuthorService) {
+              private authorService: AuthorService,
+              private informationService: InformationService) {
     this.author = new Author (null, null, null);
   }
 
@@ -24,6 +36,19 @@ export class ListViewComponent implements OnInit {
       },
       error => {
         console.log(<any>error);
+      }
+    );
+    const data = {
+      module: this.CONSTANTS.MODULES.AUTHORS,
+      role: this.user.id_role
+    };
+    this.informationService.getPermissions(data).subscribe(
+      response => {
+        this.permissions = response;
+        console.log(this.permissions);
+      },
+      error => {
+        console.log(error);
       }
     );
   }
