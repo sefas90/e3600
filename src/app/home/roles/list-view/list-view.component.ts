@@ -4,8 +4,6 @@ import { RoleService } from '../roles.service';
 import { Role } from '../role';
 import { InformationService } from '../../../login/information.service';
 import { CONSTANTS } from '../../../core/constants';
-import { InformationService } from '../../../login/information.service';
-import { CONSTANTS } from '../../../core/constants';
 
 @Component({
   selector: 'app-list-view',

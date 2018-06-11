@@ -30,82 +30,100 @@
     <div class="form-group row">
       <div class="col-md-12">
         <div class="table-content">
-          <div class="box-header name">
-            <span class="name" data-translate="global.resourceName"></span>
-            <span class="description pull-right checkbox-last">execute</span>
-            <span class="description pull-right">delete</span>
-            <span class="description pull-right">create</span>
-            <span class="description pull-right">write</span>
-            <span class="description pull-right">read</span>
+          <div class="box-header name row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2 right"><span class="description pull-right">Lectura</span></div>
+            <div class="col-md-2 right"><span class="description pull-right">Escritura</span></div>
+            <div class="col-md-2 right"><span class="description pull-right">Crear</span></div>
+            <div class="col-md-2 right"><span class="description pull-right">Eliminar</span></div>
+            <div class="col-md-2 right"><span class="description pull-right checkbox-last">Ejecutar</span></div>
           </div>
-          <div class="collapse show" id="collapseExample">
-            <ul *ngFor="let resource of rolePermissions; let i = index" style="list-style-type:disc">
-              <li [id]="resource.id">
-                {{resource.name}} - {{resource.url.length}}
-                <span class="fa-pull-right body-description">
-                    <label class="ui-checkbox checkbox-options">
-                      <input [checked]="resource.pexecute" (click)="update(resource.pexecute, rolePermissions[i].id, 'pexecute')" type="checkbox">
-                    </label>
-                  </span>
-                <div *ngIf="resource.url.length > 0">
-                  <ul style="margin-left: 15px; list-style-type:circle">
-                    <li>
-                      <span class="text-right body-description">
-                          <label class="ui-checkbox checkbox-options">
-                            read
-                            <input [checked]="resource.pread" (click)="update(resource.pread, rolePermissions[i].id, 'pread')" type="checkbox">
-                          </label>
-                        </span>
-                      <span class="text-right body-description">
-                          <label class="ui-checkbox checkbox-options">
-                            write
+          <div>
+            <ul *ngFor="let resource of rolePermissions; let i = index">
+              <li style="position: relative;">
+                <div class="col-md-4">
+                  <label>
+                    <span>{{resource.name}}</span>
+                  </label>
+                </div>
+                <div class="execute">
+                  <label class="container">
+                    <input [checked]="resource.pexecute" (click)="update(resource.pexecute, rolePermissions[i].id, 'pexecute')" type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div *ngIf="resource.url.length > 0" >
+                  <ul>
+                    <li class="col-md-12 row">
+                      <div class="col-md-4"></div>
+                      <div class="col-md-2">
+                        <label class="container">
+                          <input [checked]="resource.pread" (click)="update(resource.pread, rolePermissions[i].id, 'pread')" type="checkbox">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div class="col-md-2">
+                        <label class="container">
                             <input [checked]="resource.pwrite" (click)="update(resource.pwrite, rolePermissions[i].id, 'pwrite')" type="checkbox">
-                          </label>
-                        </span>
-                      <span class="text-right body-description">
-                          <label class="ui-checkbox checkbox-options">
-                            create
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div class="col-md-2">
+                        <label class="container">
                             <input [checked]="resource.pcreate" (click)="update(resource.pcreate, rolePermissions[i].id, 'pcreate')" type="checkbox">
-                          </label>
-                        </span>
-                      <span class="text-right body-description">
-                          <label class="ui-checkbox checkbox-options">
-                            delete
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div class="col-md-2">
+                        <label class="container">
                             <input [checked]="resource.pdelete" (click)="update(resource.pdelete, rolePermissions[i].id, 'pdelete')" type="checkbox">
-                          </label>
-                        </span>
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
                     </li>
                   </ul>
                 </div>
 
-                <div *ngIf="resource.children.length > 0">
-                  <ul *ngFor="let child of resource.children; let j = index" style="margin-left: 15px; list-style-type:circle">
-                    <li>
-                      {{child.name}}
-                      <span class="text-right body-description">
-                          <label class="ui-checkbox checkbox-options">
-                            read
-                            <input [checked]="child.pread" (click)="update(child.pread, rolePermissions[i].children[j].id, 'pread')" type="checkbox">
+                <div *ngIf="resource.children.length > 0" >
+                  <ul *ngFor="let child of resource.children; let j = index">
+                    <li class="row">
+                      <div class="col-md-2">
+                        <span>
+                          <label>
+                            {{child.name}}
                           </label>
                         </span>
-                      <span class="text-right body-description">
-                          <label class="ui-checkbox checkbox-options">
-                            write
-                            <input [checked]="child.pwrite" (click)="update(child.pwrite, rolePermissions[i].children[j].id, 'pwrite')" type="checkbox">
-                          </label>
-                        </span>
-                      <span class="text-right body-description">
-                          <label class="ui-checkbox checkbox-options">
-                            create
-                            <input [checked]="child.pcreate" (click)="update(child.pcreate, rolePermissions[i].children[j].id, 'pcreate')" type="checkbox">
-                          </label>
-                        </span>
-                      <span class="text-right body-description">
-                          <label class="ui-checkbox checkbox-options">
-                            delete
-                            <input [checked]="child.pdelete" (click)="update(child.pdelete, rolePermissions[i].children[j].id, 'pdelete')" type="checkbox">
-                          </label>
-                        </span>
+                      </div>
+                      <div class="col-md-2">
+                        <label class="container" style="text-align: right !important;">
+                          <input [checked]="child.pread" (click)="update(child.pread, rolePermissions[i].children[j].id, 'pread')" type="checkbox">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div class="col-md-2">
+                        <label class="container">
+                          <input [checked]="child.pwrite" (click)="update(child.pwrite, rolePermissions[i].children[j].id, 'pwrite')" type="checkbox">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div class="col-md-2">
+                        <label class="container">
+                          <input [checked]="child.pcreate" (click)="update(child.pcreate, rolePermissions[i].children[j].id, 'pcreate')" type="checkbox">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div class="col-md-2">
+                        <label class="container">
+                          <input [checked]="child.pdelete" (click)="update(child.pdelete, rolePermissions[i].children[j].id, 'pdelete')" type="checkbox">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div class="col-md-2">
+                        <label class="container">
+                          <input [checked]="child.pexecute" (click)="update(child.pexecute, rolePermissions[i].children[j].id, 'pexecute')" type="checkbox">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
                     </li>
                   </ul>
                 </div>

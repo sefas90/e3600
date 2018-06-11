@@ -1543,7 +1543,7 @@ section
   color: #6e6e6e !important;
 }
 .pull-right{
-  float: right;
+  float: right !important;
 }
 
 /* validations */
@@ -1645,3 +1645,67 @@ section
 .menu .equipamento { border-left: 4px solid #65c465; }
 .menu .ponto { border-left: 4px solid #98b3fa; }
 .menu .collapse.in { overflow: visible; }
+
+.container {
+  display: block;
+  position: relative;
+}
+
+/* Hide the browser's default checkbox */
+.container input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #ff4200;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input[type=checkbox]:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.execute {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
