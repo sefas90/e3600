@@ -27,12 +27,12 @@ export class PageViewComponent implements OnInit {
       name: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
-        Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')
+        Validators.pattern('^[a-zA-Z \-\']+')
       ]),
       last_name: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
-        Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')
+        Validators.pattern('^[a-zA-Z \-\']+')
       ])
     });
     if (this.id === '0') {

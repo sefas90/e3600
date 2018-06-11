@@ -1,85 +1,88 @@
 <div class="main-content">
-  <form [formGroup]="roleFormGroup" (ngSubmit)="saveForm(roleFormGroup.value)" novalidate>
-    <div class="action-buttons row">
-      <div class="button border_button element_button">
-        <a [routerLink]="['/roles']" class="d-flex justify-content-center">
-          Volver
-        </a>
-      </div>
-      <h2>rol</h2>
+  <div class="action-buttons row">
+    <div class="button border_button element_button">
+      <a [routerLink]="['/roles']" class="d-flex justify-content-center">
+        Volver
+      </a>
     </div>
-    <div class="form-control">
-
+    <h2>rol</h2>
+  </div>
+  <div class="form-control">
+    <form #roleForm="ngForm" (ngSubmit)="saveForm(roleForm.value)" novalidate>
       <div class="form-group row">
         <div class="col-md-4">
           <label for="role" class="col-12 col-form-label">Rol*
-            <div class="valid-form" *ngIf="roleFormGroup.controls.role.errors?.required && roleFormGroup.controls.role.touched">
-              <strong> Nombre es requerido</strong>
-            </div>
-            <div class="valid-form" *ngIf="roleFormGroup.controls.role.errors?.minlength">
-              <strong> Minimo 4 caracteres </strong>
-            </div>
           </label>
-          <input class="input_field form_subject" type="text" [(ngModel)]="role.role" id="role" formControlName="role">
+          <input class="input_field form_subject" type="text" id="role" [name]="role.role">
         </div>
         <div class="col-md-4">
           <label for="description" class="col-12 col-form-label">Descripcion</label>
-          <input class="input_field form_subject" type="text" [(ngModel)]="role.description" id="description" formControlName="description">
+          <input class="input_field form_subject" type="text" id="description" [name]="role.description">
         </div>
       </div>
-      <div class="form-check-inline">
-        Resources
+      <div class="text-right">
+        <button type="submit" class="submit_btn trans_300">Grabar</button>
       </div>
-      <div class="form-group row">
-        <div class="col-md-12">
-          <div class="table-content">
-            <div class="collapse show" id="collapseExample">
-              <ul *ngFor="let resource of rolePermissions; let i = index" style="list-style-type:disc">
-                <li [id]="resource.id">
-                  {{resource.name}} <input type="checkbox" [checked]="resource.pexecute" [(ngModel)]="rolePermissions[i].pexecute" [name]="resource.id" [id]="resource.id">
-                  <div *ngIf="resource.children.length > 0">
-                    <ul *ngFor="let child of resource.children" style="margin-left: 15px; list-style-type:circle">
-                      <li>
-                        {{child.name}}
-                        <span class="text-right body-description">
+    </form>
+    <div class="form-check-inline">
+      Resources
+    </div>
+    <div class="form-group row">
+      <div class="col-md-12">
+        <div class="table-content">
+          <div class="box-header name">
+            <span class="name" data-translate="global.resourceName"></span>
+            <span class="description pull-right checkbox-last">execute</span>
+            <span class="description pull-right">delete</span>
+            <span class="description pull-right">create</span>
+            <span class="description pull-right">write</span>
+            <span class="description pull-right">read</span>
+          </div>
+          <div class="collapse show" id="collapseExample">
+            <ul *ngFor="let resource of rolePermissions; let i = index" style="list-style-type:disc">
+              <li [id]="resource.id">
+                {{resource.name}} - {{resource.id}}
+                <span class="fa-pull-right body-description">
+                    <label class="ui-checkbox checkbox-options">
+                      <input [checked]="resource.pexecute" (click)="update(resource.pexecute, rolePermissions[i].id, 'pexecute')" type="checkbox">
+                    </label>
+                  </span>
+                <div *ngIf="resource.children.length > 0">
+                  <ul *ngFor="let child of resource.children; let j = index" style="margin-left: 15px; list-style-type:circle">
+                    <li>
+                      {{child.name}} - {{child.id}}
+                      <span class="text-right body-description">
                           <label class="ui-checkbox checkbox-options">
-                            <label class="checkbox-dash ng-scope">- -</label>
+                            read
+                            <input [checked]="child.pread" (click)="update(child.pread, rolePermissions[i].children[j].id, 'pread')" type="checkbox">
                           </label>
                         </span>
-                        <span class="text-right body-description">
+                      <span class="text-right body-description">
                           <label class="ui-checkbox checkbox-options">
-                            <input [checked]="child.pread" type="checkbox" [id]="child.id" [name]="child.id" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" aria-invalid="false">
+                            write
+                            <input [checked]="child.pwrite" (click)="update(child.pwrite, rolePermissions[i].children[j].id, 'pwrite')" type="checkbox">
                           </label>
                         </span>
-                        <span class="text-right body-description">
+                      <span class="text-right body-description">
                           <label class="ui-checkbox checkbox-options">
-                            <input [checked]="child.pwrite" type="checkbox" [id]="child.id" [name]="child.id" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" aria-invalid="false">
+                            create
+                            <input [checked]="child.pcreate" (click)="update(child.pcreate, rolePermissions[i].children[j].id, 'pcreate')" type="checkbox">
                           </label>
                         </span>
-                        <span class="text-right body-description">
+                      <span class="text-right body-description">
                           <label class="ui-checkbox checkbox-options">
-                            <input [checked]="child.pcreate" type="checkbox" [id]="child.id" [name]="child.id" data-ng-model="item.permissionWrite" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" aria-invalid="false">
+                            delete
+                            <input [checked]="child.pdelete" (click)="update(child.pdelete, rolePermissions[i].children[j].id, 'pdelete')" type="checkbox">
                           </label>
                         </span>
-                        <span class="text-right body-description">
-                          <label class="ui-checkbox checkbox-options">
-                            <input [checked]="child.pdelete" type="checkbox" [id]="child.id" [name]="child.id" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" aria-invalid="false">
-                          </label>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-
-    <div class="text-right">
-      <button type="submit" class="submit_btn trans_300">Grabar</button>
     </div>
-
-</div>
-</form>
+  </div>
 </div>

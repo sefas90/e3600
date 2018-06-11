@@ -9,13 +9,13 @@
   <form [formGroup]="manuscriptFormGroup" (ngSubmit)="registerForm(manuscriptFormGroup.value)" novalidate>
     <div class="form-control">
       <div class="form-group row">
-        <label for="title" class="col-2 col-form-label">Titulo* {{manuscriptFormGroup.controls.title.errors?.required}}
-          <div class="valid-form" *ngIf="manuscriptFormGroup.controls.title.errors?.required && manuscriptFormGroup.controls.title.touched">
+        <label for="title" class="col-2 col-form-label">Titulo*
+          <span class="valid-form" *ngIf="manuscriptFormGroup.controls.title.errors?.required && manuscriptFormGroup.controls.title.touched">
             <strong> Titulo es requerido</strong>
-          </div>
-          <div class="valid-form" *ngIf="manuscriptFormGroup.controls.title.errors?.minlength">
+          </span>
+          <span class="valid-form" *ngIf="manuscriptFormGroup.controls.title.errors?.minlength">
             <strong> Minimo 4 caracteres </strong>
-          </div>
+          </span>
         </label>
         <div class="col-10">
           <input class="input_field form_subject" type="text" [(ngModel)]="manuscript.title" id="title" formControlName="title">

@@ -24,11 +24,15 @@ export class RoleService {
   }
 
   getRolePermissions(id): Observable<any> {
-    return this.http.get('http://e3600.test/api/v1/rolePermissions/' + id);
+    return this.http.get('http://e3600.test/api/v1/rolePermissions2/' + id);
   }
 
   createRole(data: Role): Observable<any> {
     return this.http.post(this.url, data);
+  }
+
+  updatePermission(updatePermission): Observable<any> {
+    return this.http.put('http://e3600.test/api/v1/rolePermissions/', updatePermission);
   }
 
   editRole(data: Role, id): Observable<any> {

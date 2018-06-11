@@ -1,25 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RoleService } from '../roles.service';
+import { InformationService } from '../../../login/information.service';
 import { Role } from '../role';
-
+import * as _ from 'lodash';
 @Component({
   selector: 'app-role-permissions-view',
   templateUrl: './role-permissions.component.html'
 })
-export class RolePermissionsComponent implements OnInit {
+export class RolePermissionsComponent implements OnInit, OnChanges {
   roleFormGroup: FormGroup;
+  checkboxesForm: FormGroup;
   private id = this.route.snapshot.params['id'];
   public role: Role;
   public rolePermissions: any;
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private roleService: RoleService) {
+              private roleService: RoleService,
+              private informationService: InformationService) {
     this.role = new Role (null, null, null);
     this.roleService.getRolePermissions(this.id).subscribe(
       result => {
         this.rolePermissions = result;
+        console.log(this.rolePermissions);
       },
       error => {
         console.log(error);
@@ -46,7 +50,6 @@ export class RolePermissionsComponent implements OnInit {
   }
 
   saveForm(value) {
-    console.log(value);
     /*this.roleService.createRole(value).subscribe(
       result => {
         // this.router.navigate(['/roles/page'], {skipLocationChange: true});
@@ -55,5 +58,27 @@ export class RolePermissionsComponent implements OnInit {
         console.log(error);
       }
     );*/
+  }
+
+  ngOnChanges() {
+
+  }
+
+  update(checkbox, id, permission) {
+    checkbox = !checkbox ? 1 : 0;
+    console.log(checkbox);
+    const data = {
+      id: id,
+      permission: permission,
+      value: checkbox
+    };
+    this.roleService.updatePermission(data).subscribe(
+      result => {
+
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

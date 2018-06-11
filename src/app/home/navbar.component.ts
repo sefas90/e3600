@@ -10,10 +10,21 @@ import { InformationService } from '../login/information.service';
 })
 export class NavbarComponent implements OnInit {
   currentUser = this.informationService.getAttributeFromData('user');
+  _dashboard: any;
   constructor(private logoutService: LogoutService,
-              private informationService: InformationService) { }
+              private informationService: InformationService) {
+  }
 
   ngOnInit() {
+    this.informationService.getDashboard().subscribe(
+      response => {
+        this._dashboard = response;
+        console.log(this._dashboard);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   logout() {

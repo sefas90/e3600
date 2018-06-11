@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class InformationService {
 
   private data: any;
+  _dashboard: any;
 
-  constructor() {
+  constructor(public http: HttpClient) {
     this.data = null;
   }
 
@@ -53,5 +56,13 @@ export class InformationService {
   removeData() {
     localStorage.clear();
     this.data = null;
+  }
+
+  setDashboard(id) {
+    this._dashboard = this.http.get('http://e3600.test/api/v1/rolePermissions/' + id);
+  }
+
+  getDashboard(): Observable<any> {
+    return this._dashboard;
   }
 }

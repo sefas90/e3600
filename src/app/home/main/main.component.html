@@ -29,10 +29,15 @@
           Libros con bajo stock
           <div class="elements_accordions">
             <div class="accordion_container" *ngFor="let book of books">
-              <div class="accordion d-flex flex-row align-items-center">Stock: {{book.stock}} - del libro: {{book.title}}</div>
+              <div class="accordion d-flex flex-row align-items-center">
+                <a (click)="addToStock()">
+                  Stock: {{book.stock}} - del libro: {{book.title}}
+                </a>
+              </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

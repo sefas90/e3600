@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   doLogin(loginForm) {
     this.loginService.doLogin(loginForm).subscribe(
       serviceUser => {
-        console.log(serviceUser);
         this.informationService.setAttributeToData('user', serviceUser);
         this.router.navigate(['/home'], {skipLocationChange: false});
       },

@@ -2,35 +2,17 @@
   <div class="logo_background" style="float: left;"></div>
   <ul class="nav_items">
     <li class="nav-item text-left "><a class="nav-link" [routerLink]="['/main']">HOME</a></li>
-    <li class="nav-item"><a class="nav-link" [routerLink]="['/manuscripts']">Manuscritos</a></li>
-    <li class="nav-item"><a class="nav-link" [routerLink]="['/books']">Libros</a></li>
-    <li class="nav-item dropdown">
-      <a class="nav-link" href="#" id="salesDropdown" role="button"
-         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Ventas
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="nav-link" [routerLink]="['/consignments']">Consignacion</a>
-        <a class="nav-link" [routerLink]="['/conciliations']">Conciliaciones</a>
-        <a class="nav-link" [routerLink]="['/sales']">Ventas directas</a>
+
+    <li *ngFor="let menu of _dashboard" [ngClass]="{'nav-item dropdown': menu.url === '', 'nav-item': menu.url !== ''}">
+      <a *ngIf="menu.url !== ''" class="nav-link" [routerLink]="menu.url">{{menu.name}}</a>
+      <a *ngIf="menu.url === ''" class="nav-link" href="#" id="menu.id" role="button"
+         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{menu.name}}</a>
+      <div *ngIf="menu.url === ''" class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a *ngFor="let child of menu.children" class="nav-link" [routerLink]="child.url">{{child.name}}</a>
       </div>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link" href="#" id="navbarDropdown" role="button"
-         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Gestion
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="nav-link" [routerLink]="['/authors']">Autores</a>
-        <a class="nav-link" [routerLink]="['/editors']">Editores</a>
-        <a class="nav-link" [routerLink]="['/genders']">Genero</a>
-        <a class="nav-link" [routerLink]="['/readers']">Lectores</a>
-        <a class="nav-link" [routerLink]="['/bookstores']">Librerias</a>
-        <a class="nav-link" [routerLink]="['/roles']">Roles</a>
-        <a class="nav-link" [routerLink]="['/resources']">Recursos</a>
-        <a class="nav-link" [routerLink]="['/users']">Usuarios</a>
-      </div>
-    </li>
+
+
     <li class="nav-item dropdown">
       <a class="nav-link" href="#" id="userDropdown" role="button"
          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
